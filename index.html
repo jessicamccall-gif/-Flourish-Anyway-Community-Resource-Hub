@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Flourish Anyway Community Resource Hub for Rogue Valley families.">
+  <meta name="description" content="Flourish Anyway Community Resource Hub for Jackson and Josephine Counties, Oregon.">
   <title>Flourish Anyway Community Resource Hub</title>
 
   <style>
@@ -17,6 +17,7 @@
       --ink:#111111;
       --muted:#645c56;
     }
+    html{scroll-behavior:smooth}
     body{
       margin:0;
       font-family:Arial,Helvetica,sans-serif;
@@ -51,16 +52,27 @@
       text-transform:uppercase;
     }
     h1 span{color:var(--pink);text-shadow:2px 2px 0 var(--ink)}
-    .lead{max-width:760px;font-size:1.06rem;font-weight:650}
+    .lead{max-width:820px;font-size:1.06rem;font-weight:650}
+    .scope-note{
+      margin-top:14px;
+      display:inline-block;
+      border:2px solid var(--ink);
+      background:#fff;
+      padding:7px 10px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:.88rem;
+    }
     main{padding:26px 0 50px}
-    .quick-find,.rules{
+    .quick-find,.rules,.audience{
       background:var(--paper);
       border:3px solid var(--ink);
       border-radius:22px;
       padding:22px;
       box-shadow:6px 6px 0 rgba(0,0,0,.12);
     }
-    .quick-find{margin-bottom:28px}
+    .quick-find{margin-bottom:24px}
+    .audience{margin-bottom:28px}
     .quick-grid,.toc{
       display:grid;
       grid-template-columns:repeat(3,minmax(0,1fr));
@@ -73,12 +85,13 @@
       background:#fff;
       padding:16px;
       box-shadow:4px 4px 0 rgba(0,0,0,.1);
-    }
-    .quick-card{font-weight:800}
-    .card{
-      min-height:145px;
       text-decoration:none;
       color:var(--ink);
+    }
+    .quick-card{font-weight:800;display:block}
+    .quick-card:focus,.quick-card:hover,.card:focus,.card:hover{transform:translateY(-1px)}
+    .card{
+      min-height:145px;
       display:block;
     }
     .card h3{margin:0 0 7px}
@@ -96,6 +109,16 @@
       font-size:.75rem;
       font-weight:900;
     }
+    .audience-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .tag{
+      border:2px solid var(--ink);
+      border-radius:999px;
+      background:#fff;
+      padding:6px 10px;
+      font-size:.86rem;
+      font-weight:800;
+    }
+    .category-anchor{scroll-margin-top:18px}
     .rules{margin-top:30px}
     .rule{padding:11px 0;border-top:1px solid #ded2ad}
     .rule:first-of-type{border-top:0}
@@ -117,8 +140,19 @@
     <div class="brand">🌸 Flourish Anyway</div>
     <h1>Community<br><span>Resource Hub</span></h1>
     <p class="lead">
-      Rogue Valley resources in plain English — for families who need help,
-      information, opportunities, or just a place to start.
+      A women-centered community resource hub connecting people across Jackson and
+      Josephine Counties with local support, practical information and opportunities.
+      Built by Flourish Anyway, a peer-led recovery and wellness nonprofit serving women 18+,
+      with resources that also support children, families and the wider community.
+    </p>
+    <div class="scope-note">Jackson County + Josephine County, Oregon</div>
+    <p style="margin-top:18px">
+      <a href="https://weflourishanyway.org/" target="_blank" rel="noopener"
+         style="display:inline-block;background:#111;color:#fff;text-decoration:none;
+                border:3px solid #111;border-radius:999px;padding:9px 14px;font-weight:900;
+                box-shadow:4px 4px 0 rgba(0,0,0,.18)">
+        Visit Flourish Anyway ↗
+      </a>
     </p>
   </div>
 </header>
@@ -128,88 +162,111 @@
   <section class="quick-find">
     <div class="status">FIRST VERSION</div>
     <h2>I don't know where to start.</h2>
-    <p>Choose the thing that sounds closest to what you need. More guided search tools are being added.</p>
+    <p>Choose what sounds closest to what you need. Each choice takes you to the matching resource section.</p>
 
     <div class="quick-grid">
-      <div class="quick-card">👧 Something for my kid</div>
-      <div class="quick-card">🍎 I need food</div>
-      <div class="quick-card">🏠 I need help with rent or utilities</div>
-      <div class="quick-card">🚗 I need transportation or license help</div>
-      <div class="quick-card">💰 I want to understand money or credit</div>
-      <div class="quick-card">🆘 I need help right now</div>
+      <a class="quick-card" href="#kids-family">👧 Something for my kid</a>
+      <a class="quick-card" href="#food">🍎 I need food or everyday basics</a>
+      <a class="quick-card" href="#housing">🏠 I need help with housing or utilities</a>
+      <a class="quick-card" href="#transportation">🚗 I need transportation or license help</a>
+      <a class="quick-card" href="#money">💰 I need money or credit information</a>
+      <a class="quick-card" href="#emergency">🆘 I need help right now</a>
+    </div>
+  </section>
+
+  <section class="audience">
+    <h2>Who this hub is for</h2>
+    <p>
+      Flourish Anyway's own programs are centered on women age 18 and older, including
+      peer-led recovery support, wellness and community connection. The Community Resource Hub
+      is broader: it helps women find resources for themselves, their children, their families,
+      their households and other community needs. Some listings are also open to single adults,
+      seniors, veterans, people with disabilities and other Jackson or Josephine County residents.
+      Each provider sets its own eligibility rules.
+    </p>
+    <div class="audience-tags">
+      <span class="tag">Women 18+</span>
+      <span class="tag">Single adults</span>
+      <span class="tag">Parents & caregivers</span>
+      <span class="tag">Children & teens</span>
+      <span class="tag">Families & households</span>
+      <span class="tag">Older adults & seniors</span>
+      <span class="tag">People with disabilities</span>
+      <span class="tag">Veterans</span>
+      <span class="tag">People in recovery</span>
     </div>
   </section>
 
   <h2>Resource Hub</h2>
 
   <section class="toc">
-    <a class="card active" href="#">
+    <a id="kids-family" class="card active category-anchor" href="#kids-family">
       <div class="icon">👧</div>
       <h3>Kids & Family</h3>
       <p>Activities, sports, art, music, theater, LEGO/STEAM, school opportunities, camps, trials and scholarships.</p>
     </a>
 
-    <a class="card" href="#">
+    <a id="food" class="card category-anchor" href="#food">
       <div class="icon">🍎</div>
       <h3>Food & Everyday Needs</h3>
-      <p>Food pantries, community meals, SNAP, WIC, school meals, hygiene and household resources.</p>
+      <p>Food pantries, community meals, SNAP, WIC, school meals, clothing, hygiene and household resources.</p>
     </a>
 
-    <a class="card" href="#">
+    <a id="housing" class="card category-anchor" href="#housing">
       <div class="icon">🏠</div>
       <h3>Housing, Rent & Utilities</h3>
-      <p>Rent assistance, eviction prevention, electric, heating, water, deposits and emergency housing.</p>
+      <p>Rent assistance, eviction prevention, electric, heating, water, deposits, shelter and housing navigation.</p>
     </a>
 
-    <a class="card" href="#">
+    <a id="transportation" class="card category-anchor" href="#transportation">
       <div class="icon">🚗</div>
       <h3>Transportation & Driver's License</h3>
       <p>Bus and ride help, medical transportation, license reinstatement, suspended license and reentry support.</p>
     </a>
 
-    <a class="card" href="#">
+    <a id="money" class="card category-anchor" href="#money">
       <div class="icon">💰</div>
       <h3>Money & Credit</h3>
       <p>Budgeting, banking, credit scores, rebuilding credit, debt, collections, renting and first-time buying.</p>
     </a>
 
-    <a class="card" href="#">
+    <a id="health" class="card category-anchor" href="#health">
       <div class="icon">❤️</div>
       <h3>Health & Wellness</h3>
-      <p>Medical, dental, vision, mental health, recovery, women's health, prescriptions and insurance navigation.</p>
+      <p>Medical, dental, vision, mental health, women's health, prescriptions, insurance and wellness navigation.</p>
     </a>
 
-    <a class="card" href="#">
+    <a id="parenting" class="card category-anchor" href="#parenting">
       <div class="icon">🧸</div>
       <h3>Parenting & Kids</h3>
-      <p>Childcare, school resources, IEP support, tutoring, parenting classes, baby supplies and youth programs.</p>
+      <p>Childcare, school support, IEP resources, tutoring, parenting programs, baby supplies and youth services.</p>
     </a>
 
-    <a class="card" href="#">
+    <a id="jobs" class="card category-anchor" href="#jobs">
       <div class="icon">🛠️</div>
       <h3>Jobs, Education & Skills</h3>
       <p>Jobs, resumes, GED, college, trades, apprenticeships, scholarships, training and work supports.</p>
     </a>
 
-    <a class="card" href="#">
+    <a id="legal" class="card category-anchor" href="#legal">
       <div class="icon">⚖️</div>
       <h3>Legal & Government Help</h3>
       <p>Legal aid, benefits, IDs, Social Security, disability, DMV, reentry and consumer protection.</p>
     </a>
 
-    <a class="card" href="#">
+    <a id="recovery" class="card category-anchor" href="#recovery">
       <div class="icon">🌱</div>
       <h3>Recovery & Community</h3>
-      <p>Flourish programs, recovery meetings, peer support, sober activities, women's groups and community events.</p>
+      <p>Flourish Anyway programs, peer-led recovery support, recovery meetings, sober activities, women's groups and community connection.</p>
     </a>
 
-    <a class="card" href="#">
+    <a id="senior" class="card category-anchor" href="#senior">
       <div class="icon">🤝</div>
       <h3>Senior & Disability Resources</h3>
-      <p>Caregiving, meals, rides, benefits, home assistance, pharmacy support and disability navigation.</p>
+      <p>Caregiving, meals, rides, benefits, home assistance, pharmacy support, aging and disability navigation.</p>
     </a>
 
-    <a class="card emergency" href="#">
+    <a id="emergency" class="card emergency category-anchor" href="#emergency">
       <div class="icon">🆘</div>
       <h3>Emergency Help</h3>
       <p>Crisis, shelter, food tonight, utility shutoff, eviction, domestic violence and immediate safety resources.</p>
@@ -219,23 +276,25 @@
   <section class="rules">
     <h2>How this resource works</h2>
 
+    <div class="rule"><strong>Jackson and Josephine Counties first.</strong> Listings are limited to local providers or Oregon programs that people in Jackson or Josephine County can actually use.</div>
+
     <div class="rule"><strong>Information changes.</strong> Program hours, funding, prices, eligibility and openings can change. Listings will show when they were last checked whenever possible.</div>
 
-    <div class="rule"><strong>Official sources first.</strong> Whenever possible, this hub links directly to the organization, school, government program or provider.</div>
+    <div class="rule"><strong>Official sources first.</strong> Resource listings link directly to the organization, school, government program or provider whenever an official page exists. Flourish Anyway information links back to <a href="https://weflourishanyway.org/" target="_blank" rel="noopener">weflourishanyway.org</a>.</div>
 
-    <div class="rule"><strong>Search is clearly labeled.</strong> “Search Current Information” may open an external web search or provider page. The basic site does not pretend it searched the internet if it did not.</div>
+    <div class="rule"><strong>Search is clearly labeled.</strong> “Search Current Information” may open an official provider page or an external web search. The site will not claim that information was checked live when it was not.</div>
 
     <div class="rule"><strong>Education, not professional advice.</strong> Money information is educational, legal information is not legal advice, and health information is not medical diagnosis or treatment.</div>
 
     <div class="rule"><strong>Emergency situations.</strong> If someone is in immediate danger or facing a life-threatening emergency, contact 911 or the appropriate emergency/crisis service.</div>
 
-    <div class="rule"><strong>Flourish Anyway cannot guarantee eligibility or funding.</strong> This hub helps people find and understand resources; final eligibility and availability are determined by each provider.</div>
+    <div class="rule"><strong>Flourish Anyway cannot guarantee eligibility or funding.</strong> This hub helps people find and understand resources; final eligibility, availability and acceptance are determined by each provider.</div>
   </section>
 
 </main>
 
 <footer>
-  <div class="wrap">Flourish Anyway • Rogue Valley Community Resource Hub</div>
+  <div class="wrap">Flourish Anyway • Jackson & Josephine County Community Resource Hub</div>
 </footer>
 
 </body>
