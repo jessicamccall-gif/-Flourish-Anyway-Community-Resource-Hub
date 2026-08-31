@@ -1,0 +1,71 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Driver's License Help | Flourish Anyway</title><style>
+*{box-sizing:border-box}:root{--p:#d23b67;--y:#f6d86f;--c:#fff8d8;--g:#4e8f3a;--i:#111;--w:#fffdf3;--t:#c96745}
+body{margin:0;font-family:Arial,sans-serif;color:var(--i);background:var(--c);line-height:1.45}
+.wrap{width:min(1050px,calc(100% - 28px));margin:auto}
+header{padding:24px 0;background:var(--y);border-bottom:4px solid #111}
+.topbar{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.brand{display:inline-block;background:var(--p);color:white;border:3px solid #111;border-radius:999px;padding:7px 13px;font-weight:900;box-shadow:4px 4px #111;text-decoration:none}
+.home{font-weight:900;color:#111;text-decoration:none;border:2px solid #111;border-radius:999px;padding:7px 11px;background:#fff}
+h1{font-size:clamp(2rem,7vw,4.2rem);line-height:1;margin:24px 0 12px}
+.lead{font-size:1.05rem;max-width:760px}
+main{padding:26px 0 48px}
+.panel{background:var(--w);border:3px solid #111;border-radius:20px;padding:20px;box-shadow:5px 5px rgba(0,0,0,.10)}
+.eyebrow{font-size:.8rem;font-weight:900;letter-spacing:.08em;color:var(--p)}
+.searchgrid{display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:10px;margin-top:16px;align-items:end}
+.field{display:grid;gap:5px;font-weight:900}
+input,select,button{font:inherit}input,select{min-height:50px;border:2px solid #111;border-radius:12px;background:#fff;padding:10px;width:100%}
+button,.btn{cursor:pointer}.go{min-height:50px;border:2px solid #111;border-radius:12px;background:#111;color:#fff;font-weight:900;padding:0 18px}
+.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:18px}
+.cat{display:block;text-align:left;background:#fff;border:3px solid #111;border-radius:18px;padding:17px;box-shadow:4px 4px rgba(0,0,0,.1);text-decoration:none;color:#111}
+.cat span{font-size:1.7rem;display:block}.cat b{font-size:1.05rem;display:block;margin:5px 0}.cat small{font-size:.86rem;line-height:1.3;display:block}
+.results{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;margin-top:16px}
+.result{background:#fff;border:3px solid #111;border-radius:18px;padding:17px;box-shadow:4px 4px rgba(0,0,0,.1)}
+.result h3{margin:3px 0 8px}.category{font-size:.75rem;font-weight:900;color:var(--p);text-transform:uppercase}
+.meta{display:grid;gap:5px;font-size:.9rem}.actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.actions a{text-decoration:none;border:2px solid #111;border-radius:9px;padding:7px 9px;background:#111;color:#fff;font-size:.82rem;font-weight:900}
+.actions a.alt{background:#fff;color:#111}.actions a.call{background:var(--g)}
+.count{font-weight:900;margin:16px 0 6px}.empty{background:white;border:2px dashed #111;border-radius:14px;padding:18px}
+.gateway{background:var(--y);border:3px solid #111;border-radius:18px;padding:17px;margin-top:22px}
+.helpbox{background:#fff;border:3px solid #111;border-radius:20px;padding:18px;margin:0 0 22px;box-shadow:5px 5px rgba(0,0,0,.1)}
+.helpbox h2{margin:4px 0 6px}.helpchoices{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
+.helpchoice{display:block;text-decoration:none;color:#111;border:2px solid #111;border-radius:14px;padding:14px;background:var(--c);font-weight:900}
+.guide-step{background:#fff;border:3px solid #111;border-radius:18px;padding:17px;margin:14px 0}
+.guide-step h2{margin:0 0 8px}.ask{background:var(--y);border-left:6px solid #111;padding:12px;border-radius:8px;margin-top:10px}
+.checks{display:grid;gap:7px;margin-top:10px}.check{background:#fff;border:2px solid #111;border-radius:10px;padding:10px;display:flex;gap:10px;align-items:flex-start}.check input{width:22px;height:22px;flex:0 0 auto}.check:has(input:checked){opacity:.65;text-decoration:line-through}
+.notice{margin-top:22px;font-size:.86rem;color:#544d47}
+@media(max-width:760px){.searchgrid,.categories,.results,.helpchoices{grid-template-columns:1fr}.go{width:100%}}
+</style></head><body>
+<header><div class="wrap"><div class="topbar"><a class="brand" href="index.html">✿ FLOURISH ANYWAY</a><a class="home" href="category.html?cat=transportation">← Transportation</a></div>
+<h1>DRIVER'S LICENSE<br>HELP</h1><p class="lead">A simple starting path for getting an Oregon driver's license back in the Rogue Valley.</p></div></header>
+<main><div class="wrap">
+<section class="helpbox"><div class="eyebrow">START HERE</div><h2>First: find out what is actually blocking your license.</h2><p>You can have more than one issue at the same time — court debt, DUII requirements, SR-22, treatment, ignition interlock, a waiting period, revocation or another DMV hold. Don't assume you have to pay everything at once.</p></section>
+
+<section class="guide-step"><h2>1. Call Oregon DMV</h2><p><b>Medford DMV:</b> 987 Medford Center, Medford, OR 97504<br><b>Medford:</b> <a href="tel:5417766025">541-776-6025</a><br><b>Statewide:</b> <a href="tel:5039455000">503-945-5000</a></p>
+<div class="ask"><b>Ask exactly:</b><br>“What are ALL of the active suspensions, revocations, holds and reinstatement requirements preventing me from having a valid license?”<br><br>Also ask: “Am I eligible for a hardship permit?”</div></section>
+
+<section class="guide-step"><h2>2. If it feels overwhelming, get local navigation help</h2><p><b>Golden Rule ReEntry</b><br>715 W. Main St., Medford<br><a href="tel:5419308933">541-930-8933</a></p><p>They provide peer/case-management help with DMV privilege restoration, transportation, resource navigation, goal setting and problem solving.</p></section>
+
+<section class="guide-step"><h2>3. Check whether court debt or a court case is involved</h2><p><b>Jackson County Circuit Court</b><br>100 S. Oakdale Ave., Medford<br><a href="tel:5417767171">541-776-7171</a></p>
+<div class="ask"><b>Ask:</b> “Do I have any cases, unpaid balances or court requirements that are preventing DMV reinstatement?”</div><p>If you have a current criminal Driving While Suspended case, ask the court whether you qualify for court-appointed counsel.</p></section>
+
+<section class="guide-step"><h2>4. Ask if qualifying court debt can go on a reinstatement payment plan</h2><p><b>Oregon License Reinstatement Program</b><br><a href="tel:8772222346">877-222-2346</a> or <a href="tel:5039458199">503-945-8199</a><br><a href="mailto:oaa.help@dor.oregon.gov">oaa.help@dor.oregon.gov</a></p><p>Some qualifying Oregon Circuit Court debt may be eligible for a payment agreement. This does <b>not</b> remove every suspension or DUII-related requirement.</p></section>
+
+<section class="guide-step"><h2>5. Ask about a hardship permit</h2><p>Depending on your status, a hardship permit may allow limited driving for work, looking for work, medical care, addiction treatment and certain family needs.</p><p><b>Ask DMV about eligibility before paying a nonrefundable application fee.</b></p></section>
+
+<section class="guide-step"><h2>6. If DUII treatment or documentation is involved</h2><p><b>OnTrack Rogue Valley:</b> <a href="tel:5417721777">541-772-1777</a><br><b>Addictions Recovery Center:</b> <a href="tel:5417791282">541-779-1282</a></p><p>These may help when an assessment, treatment, documentation or reconnection with DUII services is part of reinstatement.</p></section>
+
+<section class="guide-step"><h2>7. Transportation while you work on it</h2><p><b>RVTD:</b> <a href="tel:5417792877">541-779-2877</a><br><b>RVTD TransLink:</b> <a href="tel:5418422060">541-842-2060</a></p><p>Useful for work, DMV, court and appointments. TransLink may cover eligible medical transportation.</p></section>
+
+<section class="guide-step" id="plan"><h2>My License Recovery Plan</h2><div class="checks">
+<label class="check"><input type="checkbox" data-check="license-0"><span>I called DMV and learned whether I am suspended or revoked.</span></label>
+<label class="check"><input type="checkbox" data-check="license-1"><span>I wrote down every active hold or reinstatement requirement.</span></label>
+<label class="check"><input type="checkbox" data-check="license-2"><span>I checked whether court debt or a court case is involved.</span></label>
+<label class="check"><input type="checkbox" data-check="license-3"><span>I asked whether a payment plan applies.</span></label>
+<label class="check"><input type="checkbox" data-check="license-4"><span>I asked whether I qualify for a hardship permit.</span></label>
+<label class="check"><input type="checkbox" data-check="license-5"><span>I identified treatment, SR-22, ignition interlock or waiting-period requirements.</span></label>
+<label class="check"><input type="checkbox" data-check="license-6"><span>I know my next step and who can help me complete it.</span></label></div></section>
+
+<section class="gateway"><h3>Need a person to help sort this out?</h3><p>Start with Golden Rule ReEntry or 211. They can help connect the pieces when several barriers are happening at once.</p><div class="actions"><a class="call" href="tel:5419308933">Call Golden Rule</a><a href="tel:211">Call 211</a><a class="alt" href="category.html?cat=transportation">Transportation resources →</a></div></section>
+<p class="notice"><b>Important:</b> Completing one requirement does not necessarily mean your license is valid again. Before driving, confirm directly with Oregon DMV that your driving privileges have been restored or that an approved hardship permit is active. This guide is general community-resource information, not legal advice.</p>
+</div></main><script>document.querySelectorAll('[data-check]').forEach(x=>{const k='flourish-'+x.dataset.check;x.checked=localStorage.getItem(k)==='1';x.onchange=()=>localStorage.setItem(k,x.checked?'1':'0')})</script></body></html>
