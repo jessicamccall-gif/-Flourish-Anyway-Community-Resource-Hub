@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Getting Your First Oregon Driver's License | Flourish Anyway</title>
+<style>
+*{box-sizing:border-box}:root{--p:#d23b67;--y:#f6d86f;--c:#fff8d8;--g:#4e8f3a;--i:#111;--w:#fffdf3}
+body{margin:0;font-family:Arial,sans-serif;background:var(--c);color:var(--i);line-height:1.5}
+.wrap{width:min(900px,calc(100% - 28px));margin:auto}
+header{background:var(--y);border-bottom:4px solid #111;padding:24px 0}
+.top{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.brand{background:var(--p);color:#fff;border:3px solid #111;border-radius:999px;padding:7px 13px;font-weight:900;box-shadow:4px 4px #111;text-decoration:none}
+.back{background:#fff;color:#111;border:2px solid #111;border-radius:999px;padding:7px 11px;font-weight:900;text-decoration:none}
+h1{font-size:clamp(2rem,7vw,4rem);line-height:1;margin:24px 0 12px}
+main{padding:26px 0 50px}.step{background:var(--w);border:3px solid #111;border-radius:18px;padding:18px;margin:14px 0;box-shadow:4px 4px rgba(0,0,0,.1)}
+.step h2{margin:0 0 8px}.num{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--p);color:#fff;border:2px solid #111;font-weight:900;margin-right:8px}
+.ask{background:var(--y);border-left:6px solid #111;padding:12px;border-radius:8px;margin-top:10px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.actions a{background:#111;color:#fff;border:2px solid #111;border-radius:10px;padding:9px 11px;text-decoration:none;font-weight:900}.actions a.alt{background:#fff;color:#111}.actions a.call{background:var(--g)}
+.notice{font-size:.88rem;color:#554;margin-top:22px}
+</style></head>
+<body>
+<header><div class="wrap"><div class="top"><a class="brand" href="index.html">✿ FLOURISH ANYWAY</a><a class="back" href="category.html?cat=transportation">← Transportation</a></div>
+<h1>GETTING MY FIRST LICENSE</h1>
+<p>Oregon driver's-license steps in plain language. Use this page as a checklist, then confirm current requirements with Oregon DMV.</p></div></header>
+<main><div class="wrap">
+<section class="step"><h2><span class="num">1</span>Know which license path you are on</h2>
+<p>If you have never been licensed, start with Oregon DMV's first-license requirements. If you had a license before and it is suspended or revoked, use the separate <a href="drivers-license.html">Getting My License Back</a> guide.</p></section>
+
+<section class="step"><h2><span class="num">2</span>Gather identity and residency documents</h2>
+<p>Before going to DMV, check the current Oregon identity, lawful-status, Social Security and Oregon-residency document rules. REAL ID has additional document requirements.</p>
+<div class="ask"><b>Tip:</b> Use DMV's official document checklist before your appointment so you do not make a wasted trip.</div>
+<div class="actions"><a href="https://www.oregon.gov/odot/dmv/pages/driverid/index.aspx" target="_blank" rel="noopener">Oregon DMV Driver & ID ↗</a></div></section>
+
+<section class="step"><h2><span class="num">3</span>Study for the knowledge test</h2>
+<p>Use the current Oregon Driver Manual and DMV practice information. Focus on signs, right-of-way, safe following distance, speed rules, impaired driving and sharing the road.</p>
+<div class="actions"><a href="https://www.oregon.gov/odot/dmv/pages/online_manual/study-section_1.aspx" target="_blank" rel="noopener">Oregon Driver Manual ↗</a></div></section>
+
+<section class="step"><h2><span class="num">4</span>Get your instruction permit if required for your path</h2>
+<p>DMV will tell you whether you need a permit and which tests apply based on your age and situation. Ask what you need before paying fees.</p>
+<div class="ask"><b>Ask DMV:</b> “I am getting my first Oregon driver’s license. What tests, permit steps, documents and fees apply to me?”</div></section>
+
+<section class="step"><h2><span class="num">5</span>Practice driving safely</h2>
+<p>If your path requires supervised practice, track it. Practice city streets, lane changes, parking, backing, intersections, freeway/highway driving where appropriate, and driving in different conditions.</p>
+<p>If you are under 18, Oregon has additional provisional-license and supervised-driving requirements. Check DMV for the current rules.</p></section>
+
+<section class="step"><h2><span class="num">6</span>Schedule the drive test</h2>
+<p>When you are ready, check DMV's current drive-test options and appointment rules. Make sure the vehicle you use is properly registered, insured and safe for the test.</p>
+<div class="actions"><a href="https://www.oregon.gov/odot/dmv/pages/driverid/licenseget.aspx" target="_blank" rel="noopener">DMV License Steps ↗</a></div></section>
+
+<section class="step"><h2><span class="num">7</span>Local DMV — Medford</h2>
+<p><b>Oregon DMV Medford</b><br>987 Medford Center, Medford, OR 97504<br>541-776-6025<br>Statewide DMV: 503-945-5000</p>
+<div class="actions"><a class="call" href="tel:5417766025">Call Medford DMV</a><a class="alt" href="https://www.oregon.gov/odot/dmv/pages/offices/medford.aspx" target="_blank" rel="noopener">Office info ↗</a></div></section>
+
+<section class="step"><h2><span class="num">8</span>Need help studying or getting to DMV?</h2>
+<p>Use the Transportation directory for local transit, disability transportation and other options. Libraries can also be useful places to study or access computers.</p>
+<div class="actions"><a href="category.html?cat=transportation">Transportation resources →</a><a class="alt" href="category.html?cat=kids-family">Learning resources →</a></div></section>
+
+<section class="step"><h2>My First-License Checklist</h2>
+<p>☐ I checked the current DMV requirements for my age and situation<br>
+☐ I gathered my documents<br>
+☐ I studied the Oregon Driver Manual<br>
+☐ I completed the knowledge/permit steps that apply to me<br>
+☐ I practiced driving<br>
+☐ I checked the vehicle requirements<br>
+☐ I scheduled/completed my drive test<br>
+☐ I confirmed my license is valid before driving alone</p></section>
+
+<p class="notice">General resource information, not legal advice. Oregon DMV requirements, fees, testing and document rules can change. Confirm current requirements directly with Oregon DMV.</p>
+</div></main></body></html>
