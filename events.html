@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Local Events & Calendars | Flourish Anyway</title>
+<meta name="description" content="Local event calendars and community event sources across Jackson and Josephine Counties, Oregon.">
+<style>
+*{box-sizing:border-box}
+:root{--p:#d23b67;--y:#f6d86f;--c:#fff8d8;--g:#4e8f3a;--i:#111;--w:#fffdf3}
+body{margin:0;font-family:Arial,sans-serif;color:var(--i);background:var(--c);line-height:1.45}
+.wrap{width:min(1050px,calc(100% - 28px));margin:auto}
+header{padding:24px 0;background:var(--y);border-bottom:4px solid #111}
+.topbar{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.brand{display:inline-block;background:var(--p);color:white;border:3px solid #111;border-radius:999px;padding:7px 13px;font-weight:900;box-shadow:4px 4px #111;text-decoration:none}
+.home{font-weight:900;color:#111;text-decoration:none;border:2px solid #111;border-radius:999px;padding:7px 11px;background:#fff}
+h1{font-size:clamp(2rem,7vw,4.2rem);line-height:1;margin:24px 0 12px}
+.lead{font-size:1.05rem;max-width:780px}
+main{padding:24px 0 48px}
+.helpbox,.panel,.section-block{background:var(--w);border:3px solid #111;border-radius:20px;padding:18px;box-shadow:5px 5px rgba(0,0,0,.10)}
+.helpbox{margin-bottom:18px}
+.eyebrow{font-size:.8rem;font-weight:900;letter-spacing:.08em;color:var(--p)}
+.helpbox h2,.section-title{margin:4px 0 7px}
+.checks{display:grid;gap:8px;margin-top:12px}
+.check{display:flex;align-items:flex-start;gap:10px;background:#fff;border:2px solid #111;border-radius:10px;padding:10px;font-weight:700;cursor:pointer}
+.check input{width:20px;height:20px;margin:1px 0 0;flex:0 0 auto;accent-color:var(--g)}
+.check.done{background:#eef8e9}.check.done span{text-decoration:line-through;opacity:.72}
+.small{font-size:.86rem;color:#544d47}
+.reset{margin-top:10px;border:2px solid #111;border-radius:9px;background:#fff;padding:7px 10px;font-weight:900;cursor:pointer}
+.filters{display:grid;grid-template-columns:1fr 2fr;gap:10px;align-items:end}
+.field{display:grid;gap:5px;font-weight:900}
+input,select,button{font:inherit}
+input,select{min-height:48px;border:2px solid #111;border-radius:12px;background:#fff;padding:10px;width:100%}
+.count{font-weight:900;margin:16px 0 8px}
+.section-block{margin:16px 0}
+.results{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;margin-top:12px}
+.result{background:#fff;border:3px solid #111;border-radius:18px;padding:17px;box-shadow:4px 4px rgba(0,0,0,.1)}
+.result h3{margin:3px 0 8px}.category{font-size:.75rem;font-weight:900;color:var(--p);text-transform:uppercase}
+.meta{display:grid;gap:5px;font-size:.9rem}.actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.actions a,.actions button{text-decoration:none;border:2px solid #111;border-radius:9px;padding:7px 9px;background:#111;color:#fff;font-size:.82rem;font-weight:900;cursor:pointer}
+.actions a.alt{background:#fff;color:#111}.actions a.call{background:var(--g)}
+.quick{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.quick a{text-decoration:none;border:2px solid #111;border-radius:10px;padding:9px 11px;background:#fff;color:#111;font-weight:900}
+.notice{background:var(--y);border:3px solid #111;border-radius:18px;padding:16px;margin-top:20px}
+.empty{background:white;border:2px dashed #111;border-radius:14px;padding:18px}
+@media(max-width:760px){.filters,.results{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="topbar"><a class="brand" href="index.html">✿ FLOURISH ANYWAY</a><a class="home" href="index.html">← Home</a></div>
+<h1>LOCAL EVENTS<br>& CALENDARS</h1>
+<p class="lead">Find places that regularly post events across Jackson and Josephine Counties. Open the source you want, then confirm the current date, time, cost and registration directly with the organizer.</p>
+</div>
+</header>
+
+<main><div class="wrap">
+<section class="helpbox">
+<div class="eyebrow">QUICK EVENT PLAN</div>
+<h2>Find something to do</h2>
+<p>This is optional. Your checks stay saved on this device.</p>
+<div class="checks" id="eventChecks"></div>
+<button class="reset" id="resetChecks" type="button">Clear checklist</button>
+<p class="small">Event information changes often. Always confirm current details before you leave.</p>
+</section>
+
+<section class="panel">
+<div class="filters">
+<label class="field">Area
+<select id="county">
+<option value="all">Jackson + Josephine</option>
+<option value="Jackson">Jackson County only</option>
+<option value="Josephine">Josephine County only</option>
+</select>
+</label>
+<label class="field">Find a source
+<input id="q" type="search" placeholder="Library, kids, music, Grants Pass, fair...">
+</label>
+</div>
+</section>
+
+<div id="count" class="count">Loading event sources…</div>
+<div id="results"></div>
+
+<section class="notice">
+<strong>Don’t see what you’re looking for?</strong>
+<p>Community events happen everywhere, and no directory can catch them all. Check your favorite local businesses, churches, nonprofits, schools, restaurants, venues and community groups too.</p>
+<div class="quick">
+<a href="https://www.facebook.com/events/search/?q=Medford%20Oregon" target="_blank" rel="noopener">Facebook — Medford events ↗</a>
+<a href="https://www.facebook.com/events/search/?q=Grants%20Pass%20Oregon" target="_blank" rel="noopener">Facebook — Grants Pass events ↗</a>
+</div>
+</section>
+</div></main>
+
+<script src="resource-loader.js"></script>
+<script>
+const county=document.getElementById("county");
+const q=document.getElementById("q");
+const checks=[
+["pick","Pick what kind of event I want"],
+["area","Choose how far I can travel"],
+["sources","Open 2–3 event calendars"],
+["confirm","Confirm the date and time before leaving"],
+["cost","Check cost, tickets or registration"],
+["save","Save the event or source I want"],
+["calendar","Add the event to my calendar"]
+];
+const CHECK_KEY="flourish-events-checklist-v1";
+
+function getChecks(){try{return JSON.parse(localStorage.getItem(CHECK_KEY)||"{}")}catch{return{}}}
+function drawChecks(){
+  const s=getChecks();
+  document.getElementById("eventChecks").innerHTML=checks.map(([id,label])=>`<label class="check ${s[id]?"done":""}"><input type="checkbox" data-check="${id}" ${s[id]?"checked":""}><span>${label}</span></label>`).join("");
+  document.querySelectorAll("[data-check]").forEach(x=>x.onchange=()=>{
+    const s=getChecks();s[x.dataset.check]=x.checked;localStorage.setItem(CHECK_KEY,JSON.stringify(s));
+    x.closest(".check").classList.toggle("done",x.checked);
+  });
+}
+document.getElementById("resetChecks").onclick=()=>{localStorage.removeItem(CHECK_KEY);drawChecks()};
+drawChecks();
+
+function slug(v){return String(v||"more-event-sources").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")}
+
+function render(){
+  const co=county.value, term=norm(q.value);
+  let a=RES.filter(r=>
+    r.category==="events" &&
+    r.id!=="events-community-tip" &&
+    r.id!=="events-start-here" &&
+    (co==="all"||(r.counties||[]).includes(co)) &&
+    (!term||resourceHaystack(r).includes(term))
+  );
+  a.sort((x,y)=>(x.section||"More Event Sources").localeCompare(y.section||"More Event Sources")||String(x.name||"").localeCompare(String(y.name||"")));
+
+  document.getElementById("count").textContent=`${a.length} event source${a.length===1?"":"s"} • Jackson + Josephine Counties`;
+
+  if(!a.length){
+    document.getElementById("results").innerHTML=`<div class="empty"><b>No matches in this view.</b><p>Try both counties or a broader search word.</p></div>`;
+    return;
+  }
+
+  const groups=new Map();
+  for(const r of a){
+    const s=r.section||"More Event Sources";
+    if(!groups.has(s))groups.set(s,[]);
+    groups.get(s).push(r);
+  }
+
+  document.getElementById("results").innerHTML=[...groups].map(([section,rows])=>
+    `<section class="section-block" id="${slug(section)}"><h2 class="section-title">${esc(section)}</h2><div class="results">${rows.map(resultCard).join("")}</div></section>`
+  ).join("");
+}
+getResources().then(render);
+county.onchange=render;
+q.oninput=render;
+</script>
+</body>
+</html>
