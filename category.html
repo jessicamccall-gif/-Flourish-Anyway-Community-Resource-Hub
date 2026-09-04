@@ -145,32 +145,30 @@ function render(){
  let a=RES.filter(r=>r.category===c&&(co==="all"||(r.counties||[]).includes(co)));
  document.getElementById("count").textContent=`${a.length} resource${a.length===1?"":"s"}`;
  if(!a.length){box.classList.remove("grouped");box.innerHTML=`<div class="empty"><b>No resources in this view yet.</b><p>Try both counties or search all resources.</p></div>`;return}
- if(c==="senior"){
-  const order=[
-   "Start Here & Local Senior Navigation",
-   "Older Women — Health, Recovery & Connection",
-   "Affordable Senior Apartments",
-   "Independent Senior Living",
-   "Independent & Assisted Living",
-   "Assisted Living",
-   "Memory Care",
-   "Assisted Living, Memory Care & Respite",
-   "Help Choosing Housing & Care",
-   "Licensed Care, Inspections & Complaints",
-   "Staying Safely at Home",
-   "Caregiver Help, Dementia & Respite",
-   "Benefits, Medicare & Long-Term Care Help",
-   "Money, Social Security & Disability Benefits",
-   "Food & Meals on Wheels",
-   "Transportation",
-   "Mental Health, Grief & Loneliness",
-   "Recovery & Sobriety",
-   "Veterans & Surviving Spouses",
-   "Senior Centers, Activities & Connection",
-   "Legal Rights, Safety & Advocacy"
-  ];
+ const sectionOrders={
+  senior:[
+   "Start Here & Local Senior Navigation","Older Women — Health, Recovery & Connection","Affordable Senior Apartments",
+   "Independent Senior Living","Independent & Assisted Living","Assisted Living","Memory Care",
+   "Assisted Living, Memory Care & Respite","Help Choosing Housing & Care","Licensed Care, Inspections & Complaints",
+   "Staying Safely at Home","Caregiver Help, Dementia & Respite","Benefits, Medicare & Long-Term Care Help",
+   "Money, Social Security & Disability Benefits","Food & Meals on Wheels","Transportation",
+   "Mental Health, Grief & Loneliness","Recovery & Sobriety","Veterans & Surviving Spouses",
+   "Senior Centers, Activities & Connection","Legal Rights, Safety & Advocacy"
+  ],
+  legal:[
+   "Start Here — Legal Aid & Courts","Family, Custody & Child Support","Safety, Protective Orders & Child Welfare",
+   "Renters, Housing & Homelessness","Criminal, Public Defense & Recovery Court","Records, Fines & Driver License",
+   "Work, Wages & Civil Rights","Disability, Mental Health & Health-Care Rights","Money, Debt, Scams & Consumer Problems",
+   "Immigration & Language Rights","Crime Victims & Survivor Rights","Seniors, Elder Abuse & Legal Assistance",
+   "Wills, Probate & Life Planning","Guardianship, Conservatorship & Decision-Making",
+   "Business, Contractors, Taxes & Workers","Animals, Service Animals & Veterinary Complaints",
+   "School, IEP & Education Rights","Small Claims & Court Self-Help"
+  ]
+ };
+ if(a.some(r=>r.section)){
+  const order=sectionOrders[c]||[];
   const groups=new Map();
-  for(const r of a){const sec=r.section||"More Senior Resources";if(!groups.has(sec))groups.set(sec,[]);groups.get(sec).push(r)}
+  for(const r of a){const sec=r.section||"More Resources";if(!groups.has(sec))groups.set(sec,[]);groups.get(sec).push(r)}
   const sections=[...groups.keys()].sort((x,y)=>{const ax=order.indexOf(x),ay=order.indexOf(y);return (ax<0?999:ax)-(ay<0?999:ay)||x.localeCompare(y)});
   box.classList.add("grouped");
   box.innerHTML=sections.map(sec=>`<section class="section-block" id="${slug(sec)}"><h2 class="section-title">${esc(sec)}</h2><div class="results">${groups.get(sec).sort((x,y)=>x.name.localeCompare(y.name)).map(resultCard).join("")}</div></section>`).join("");
