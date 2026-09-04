@@ -1,42 +1,80 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Help Me Make a Plan | Flourish Anyway</title><style>*{box-sizing:border-box}:root{--p:#d23b67;--y:#f6d86f;--c:#fff8d8;--g:#4e8f3a;--i:#111}body{margin:0;font-family:Arial,sans-serif;background:var(--c);color:#111;line-height:1.5}.wrap{width:min(900px,calc(100% - 28px));margin:auto}header{background:var(--y);border-bottom:4px solid #111;padding:24px 0}.top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.brand,.home{border:3px solid #111;border-radius:999px;padding:7px 12px;text-decoration:none;font-weight:900;color:#111;background:#fff}.brand{background:var(--p);color:#fff;box-shadow:4px 4px #111}h1{font-size:clamp(2.4rem,8vw,4.5rem);line-height:.95;margin:25px 0 10px}main{padding:24px 0 50px}.guide{background:#fff;border:3px solid #111;border-radius:20px;padding:18px;margin:16px 0;box-shadow:4px 4px rgba(0,0,0,.1);scroll-margin-top:10px}.guide h2{margin:3px 0 8px}.eyebrow{font-size:.78rem;font-weight:900;letter-spacing:.08em;color:var(--p)}.checks{display:grid;gap:8px;margin-top:12px}.check{display:flex;gap:10px;align-items:flex-start;border:2px solid #111;border-radius:11px;padding:10px;background:#fffdf3}.check input{width:22px;height:22px;flex:0 0 auto}.check:has(input:checked){opacity:.62;text-decoration:line-through}.actions{margin-top:12px}.actions a{display:inline-block;background:#111;color:#fff;text-decoration:none;font-weight:900;border:2px solid #111;border-radius:10px;padding:9px 11px}.notice{font-size:.86rem;color:#544d47;margin-top:25px}
-.focus-toolbar{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}.focus-toolbar button,.focus-toolbar a{appearance:none;border:2px solid #111;border-radius:10px;padding:9px 11px;background:#fff;color:#111;font:inherit;font-weight:900;text-decoration:none;cursor:pointer}.focus-toolbar .primary{background:#111;color:#fff}.learn{background:#fff8d8;border:2px solid #111;border-radius:14px;padding:14px;margin:14px 0}.site-disclaimer{font-size:.9rem;color:#544d47;border-top:2px solid #111;padding-top:18px;margin-top:28px}.plan-picker{display:grid;gap:10px}.plan-picker a{display:block;background:#fff;border:2px solid #111;border-radius:12px;padding:12px;color:#111;text-decoration:none;font-weight:900}@media print{header .top,.focus-toolbar,.site-disclaimer .screen-only{display:none!important}.guide{box-shadow:none!important;border:1px solid #111!important}body{background:#fff!important}}
-
-.step{background:#fff8d8;border:2px solid #111;border-radius:14px;padding:14px;margin:12px 0}.step strong{display:block;margin-bottom:4px}
-</style></head><body>
-<header><div class="wrap"><div class="top"><a class="brand" href="index.html">✿ FLOURISH ANYWAY</a><a class="home" href="index.html">← Home</a></div>
-<h1>HELP ME MAKE A PLAN</h1><p>Plain-language steps for real-life processes. Choose one need and work through it at your pace.</p></div></header>
-<main><div class="wrap" id="app"></div></main>
-<script src="life-plans-data.js?v=20260901"></script>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Help Me Make a Plan | Flourish Anyway</title>
+<style>
+*{box-sizing:border-box}
+:root{--pink:#d23b67;--yellow:#f6d86f;--cream:#fff8d8;--green:#4e8f3a;--ink:#111}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:var(--ink);line-height:1.45}
+.wrap{width:min(900px,calc(100% - 28px));margin:auto}
+header{background:var(--yellow);border-bottom:4px solid var(--ink);padding:22px 0}
+.top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.brand,.home{border:3px solid var(--ink);border-radius:999px;padding:8px 13px;text-decoration:none;font-weight:900;color:var(--ink);background:#fff}
+.brand{background:var(--pink);color:#fff;box-shadow:4px 4px var(--ink)}
+h1{font-size:clamp(2.15rem,8vw,4.25rem);line-height:.97;margin:24px 0 8px}
+header p{font-size:1.05rem;font-weight:700;max-width:720px}
+main{padding:22px 0 52px}
+.panel,.guide{background:#fff;border:3px solid var(--ink);border-radius:22px;padding:18px;margin:16px 0;box-shadow:5px 5px rgba(0,0,0,.10)}
+.eyebrow{font-size:.8rem;font-weight:900;letter-spacing:.08em;color:var(--pink);text-transform:uppercase}
+.guide h2,.panel h2{font-size:clamp(1.7rem,6vw,2.45rem);line-height:1.1;margin:7px 0 8px}
+.intro{font-size:1.05rem;margin:0 0 14px}
+.category-block{margin:20px 0}
+.category-title{background:var(--yellow);border:3px solid var(--ink);border-radius:18px;padding:13px 15px;font-weight:900;font-size:1.25rem;box-shadow:3px 3px var(--ink);margin-bottom:12px}
+.chooser{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px}
+.choice{display:block;background:#fff;border:3px solid var(--ink);border-radius:15px;padding:13px;text-decoration:none;color:var(--ink);font-weight:900;box-shadow:3px 3px var(--ink)}
+.choice:active{transform:translate(2px,2px);box-shadow:1px 1px var(--ink)}
+.searchbox{width:100%;border:3px solid var(--ink);border-radius:14px;padding:13px 14px;font:inherit;font-size:1rem;margin:10px 0 4px}
+.quick{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.quick a,.quick span{display:inline-flex;gap:7px;align-items:center;border:3px solid var(--ink);border-radius:13px;padding:9px 11px;background:var(--green);color:#fff;text-decoration:none;font-weight:900}
+.script{background:var(--yellow);border:3px solid var(--ink);border-radius:15px;padding:13px 14px;margin:12px 0}
+.script strong{display:block;margin-bottom:5px}
+.checks{display:grid;gap:10px;margin-top:14px}
+.check{display:flex;gap:12px;align-items:flex-start;border:3px solid var(--ink);border-radius:15px;padding:13px;background:#fffdf3}
+.check input{width:24px;height:24px;flex:0 0 auto;margin-top:2px}
+.check-title{font-weight:900;font-size:1.05rem;display:block}
+.check-text{display:block;margin-top:3px}
+.check.done{opacity:.58;text-decoration:line-through}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
+.actions a{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;font-weight:900;border:3px solid var(--ink);border-radius:12px;padding:10px 12px}
+.plan-tools{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}
+.toolbtn,.backbtn{appearance:none;border:3px solid var(--ink);border-radius:12px;padding:10px 12px;background:#fff;color:var(--ink);font:inherit;font-weight:900;text-decoration:none;cursor:pointer}
+.toolbtn.primary{background:var(--pink);color:#fff}
+.saved-note{font-size:.92rem;font-weight:800;margin:4px 0 14px}
+.notice{font-size:.88rem;color:#544d47;border-top:2px solid var(--ink);padding-top:17px;margin-top:28px}
+.hidden{display:none!important}
+@media(max-width:560px){.wrap{width:min(100% - 20px,900px)}.panel,.guide{padding:15px;border-radius:19px}.chooser{grid-template-columns:1fr}.toolbtn,.backbtn{flex:1 1 auto;text-align:center}}
+@media print{header,.plan-tools,.notice{display:none!important}body{background:#fff}.guide{box-shadow:none;border:1px solid #777}.actions a{color:#111;background:#fff;border:1px solid #777}.wrap{width:100%}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div class="top"><a class="brand" href="index.html">✿ FLOURISH ANYWAY</a><a class="home" href="index.html">← Home</a></div>
+<h1>HELP ME MAKE A PLAN</h1>
+<p id="subhead">Pick the situation that fits. One plan at a time. Your checks save on this device.</p>
+</div></header>
+<main><div class="wrap" id="app"><div class="panel"><strong>Loading Help Plans…</strong></div></div></main>
+<script src="life-plans-data.js?v=20260903"></script>
 <script>
 (function(){
- const app=document.getElementById('app'), plans=window.FLOURISH_LIFE_PLANS||[];
- const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- const disclaimer=`<div class="site-disclaimer"><strong>Community information only.</strong> Flourish Anyway provides navigation and community-resource information, not legal, medical, financial or emergency advice. Listings are not endorsements. Eligibility, costs, availability, schedules, forms and program rules can change; confirm important details directly with the provider or official agency. For immediate danger call 911; for suicide or mental-health crisis support call or text 988.<br><br><strong>Missing or outdated resource?</strong> No directory can include every local organization. Please <a href="https://weflourishanyway.org/" target="_blank" rel="noopener">contact Flourish Anyway</a> so it can be reviewed.</div>`;
- function bind(scope){
-   scope.querySelectorAll('[data-check]').forEach(x=>{let k='flourish-plan-'+x.dataset.check;x.checked=localStorage.getItem(k)==='1';x.onchange=()=>localStorage.setItem(k,x.checked?'1':'0')});
- }
- function toolbar(plan){
-   return `<div class="focus-toolbar"><a href="life-plans.html">← All Help Plans</a><button class="primary" type="button" data-print>Print / Save PDF</button><button type="button" data-share>Share</button><button type="button" data-email>Email</button><button type="button" data-clear>Clear checks</button></div>`;
- }
- function render(){
-   const id=decodeURIComponent(location.hash.slice(1));
-   if(!id){
-     app.innerHTML=`<section class="guide plan-picker"><div class="eyebrow">HELP PLANS</div><h2>What do you need help with?</h2><p>Choose one need. You will only see that plan.</p>${plans.map(p=>`<a href="#${encodeURIComponent(p.id)}">${esc(p.title)}</a>`).join('')}</section>${disclaimer}`;
-     return;
-   }
-   const p=plans.find(x=>x.id===id); if(!p){location.hash='';return}
-   const steps=(p.steps||[]).map(s=>`<div class="step"><strong>${esc(s.title)}</strong>${esc(s.text)}</div>`).join('');
-   const checks=(p.checks||[]).map(c=>`<label class="check"><input type="checkbox" data-check="${esc(c.id)}"><span>${esc(c.text)}</span></label>`).join('');
-   const actions=(p.actions||[]).map(a=>`<a href="${esc(a.href)}" ${/^https?:/.test(a.href)?'target="_blank" rel="noopener"':''}>${esc(a.label)}</a>`).join(' ');
-   app.innerHTML=`<section class="guide">${toolbar(p)}<div class="eyebrow">${esc(p.eyebrow||'HELP PLAN')}</div><h2>${esc(p.title)}</h2><p>${esc(p.intro)}</p>${steps}<h3>My Plan</h3><div class="checks">${checks}</div><div class="actions">${actions}</div></section>${disclaimer}`;
-   bind(app); document.title=p.title+' | Flourish Anyway'; window.scrollTo(0,0);
-   app.querySelector('[data-print]').onclick=()=>window.print();
-   app.querySelector('[data-share]').onclick=async()=>{const d={title:document.title,text:'Flourish Anyway Help Plan: '+p.title,url:location.href};if(navigator.share){try{await navigator.share(d)}catch(e){}}else{await navigator.clipboard?.writeText(location.href);alert('Plan link copied.')}};
-   app.querySelector('[data-email]').onclick=()=>location.href='mailto:?subject='+encodeURIComponent('Flourish Anyway Help Plan: '+p.title)+'&body='+encodeURIComponent('Here is the help plan:\n'+location.href);
-   app.querySelector('[data-clear]').onclick=()=>{if(!confirm('Clear the checked steps in this plan?'))return;app.querySelectorAll('[data-check]').forEach(x=>{x.checked=false;localStorage.removeItem('flourish-plan-'+x.dataset.check)})};
- }
- window.addEventListener('hashchange',render); render();
+const app=document.getElementById('app'), plans=window.FLOURISH_LIFE_PLANS||[], cats=window.FLOURISH_HELP_PLAN_CATEGORIES||{};
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function disclaimer(){return `<div class="notice"><strong>Community information only.</strong> Flourish Anyway provides navigation and community-resource information, not legal, medical, financial or emergency advice. Eligibility, costs, availability, schedules, forms and program rules can change; confirm important details directly with the provider or official agency. For immediate danger call 911; for suicide or mental-health crisis support call or text 988.<br><br><strong>Missing or outdated resource?</strong> <a href="https://weflourishanyway.org/" target="_blank" rel="noopener">Contact Flourish Anyway</a>.</div>`}
+function bindChecks(root){root.querySelectorAll('[data-check]').forEach(x=>{const k='flourish-plan-'+x.dataset.check;x.checked=localStorage.getItem(k)==='1';x.closest('.check')?.classList.toggle('done',x.checked);x.onchange=()=>{localStorage.setItem(k,x.checked?'1':'0');x.closest('.check')?.classList.toggle('done',x.checked)}})}
+function planText(p,root){const lines=[p.title,'',p.intro,''];root.querySelectorAll('.check').forEach(row=>{const box=row.querySelector('input'),t=row.querySelector('.check-title')?.textContent||'',d=row.querySelector('.check-text')?.textContent||'';lines.push((box?.checked?'☑':'☐')+' '+t+(d?' — '+d:''))});if(p.script)lines.push('','WHAT TO SAY: '+p.script);lines.push('','Flourish Anyway Help Plan',location.href);return lines.join('\n')}
+function tools(p,root){const bar=document.createElement('div');bar.className='plan-tools';bar.innerHTML=`<a class="backbtn" href="life-plans.html">← All Help Plans</a><button class="toolbtn primary" type="button" data-print>Print / Save PDF</button><button class="toolbtn" type="button" data-share>Share</button><button class="toolbtn" type="button" data-email>Email</button><button class="toolbtn" type="button" data-clear>Clear checks</button>`;root.prepend(bar);
+bar.querySelector('[data-print]').onclick=()=>window.print();
+bar.querySelector('[data-share]').onclick=async()=>{const data={title:'Flourish Anyway Help Plan: '+p.title,text:planText(p,root),url:location.href};if(navigator.share){try{await navigator.share(data)}catch(e){}}else{try{await navigator.clipboard.writeText(data.text+'\n'+data.url);alert('Plan copied.')}catch(e){alert('Use your browser Share menu to share this plan.')}}};
+bar.querySelector('[data-email]').onclick=()=>{location.href='mailto:?subject='+encodeURIComponent('My Flourish Help Plan: '+p.title)+'&body='+encodeURIComponent(planText(p,root))};
+bar.querySelector('[data-clear]').onclick=()=>{if(!confirm('Clear the checked steps in this plan?'))return;root.querySelectorAll('[data-check]').forEach(x=>{x.checked=false;localStorage.removeItem('flourish-plan-'+x.dataset.check);x.closest('.check')?.classList.remove('done')})}}
+function renderPlan(p){const quick=(p.quick||[]).map(q=>q.href?`<a href="${esc(q.href)}">${esc(q.label)}: ${esc(q.value)}</a>`:`<span>${esc(q.label)}: ${esc(q.value)}</span>`).join('');const script=p.script?`<div class="script"><strong>What to say</strong>${esc(p.script)}</div>`:'';const checks=(p.checks||[]).map(c=>`<label class="check"><input type="checkbox" data-check="${esc(c.id)}"><span><span class="check-title">${esc(c.title||c.text)}</span>${c.title&&c.text?`<span class="check-text">${esc(c.text)}</span>`:''}</span></label>`).join('');const actions=(p.actions||[]).map(a=>`<a href="${esc(a.href)}" ${/^https?:/.test(a.href)?'target="_blank" rel="noopener"':''}>${esc(a.label)}</a>`).join('');
+app.innerHTML=`<section class="guide"><div class="eyebrow">${esc(cats[p.category]||'HELP PLAN')}</div><h2>${esc(p.title)}</h2><p class="intro">${esc(p.intro)}</p><div class="saved-note">✓ Your checks save automatically on this device.</div>${quick?`<div class="quick">${quick}</div>`:''}${script}<div class="checks">${checks}</div>${actions?`<div class="actions">${actions}</div>`:''}</section>${disclaimer()}`;const root=app.querySelector('.guide');bindChecks(root);tools(p,root);document.getElementById('subhead').textContent='One need. One focused plan. Check things off as you go.';document.title=p.title+' | Flourish Anyway';window.scrollTo(0,0)}
+function renderPicker(){document.title='Help Me Make a Plan | Flourish Anyway';document.getElementById('subhead').textContent='Pick the situation that fits. One plan at a time. Your checks save on this device.';let body=`<section class="panel"><div class="eyebrow">HELP PLANS</div><h2>What do you need help with?</h2><p>Pick one situation. You will only see that plan.</p><input id="planSearch" class="searchbox" type="search" placeholder="Search: license, food, custody, job…"></section>`;
+for(const[cid,label]of Object.entries(cats)){const items=plans.filter(p=>p.category===cid);if(!items.length)continue;body+=`<section class="category-block"><div class="category-title">${esc(label)}</div><div class="chooser">${items.map(p=>`<a class="choice" data-plan-title="${esc((p.title+' '+p.intro).toLowerCase())}" href="#${encodeURIComponent(p.id)}">${esc(p.title)}</a>`).join('')}</div></section>`}app.innerHTML=body+disclaimer();const s=document.getElementById('planSearch');s.oninput=()=>{const q=s.value.trim().toLowerCase();document.querySelectorAll('.choice').forEach(a=>a.classList.toggle('hidden',q&&!a.dataset.planTitle.includes(q)));document.querySelectorAll('.category-block').forEach(sec=>sec.classList.toggle('hidden',![...sec.querySelectorAll('.choice')].some(a=>!a.classList.contains('hidden'))))};window.scrollTo(0,0)}
+function render(){const id=decodeURIComponent(location.hash.slice(1));if(!id){renderPicker();return}const p=plans.find(x=>x.id===id);if(!p){location.hash='';return}renderPlan(p)}
+window.addEventListener('hashchange',render);render();
 })();
-</script></body></html>
+</script>
+</body>
+</html>
