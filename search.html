@@ -1,180 +1,36 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Search Resources | Flourish Anyway</title><style>
-*{box-sizing:border-box}:root{--p:#d23b67;--y:#f6d86f;--c:#fff8d8;--g:#4e8f3a;--i:#111;--w:#fffdf3;--t:#c96745}
-body{margin:0;font-family:Arial,sans-serif;color:var(--i);background:var(--c);line-height:1.45}
-.wrap{width:min(1050px,calc(100% - 28px));margin:auto}
-header{padding:24px 0;background:var(--y);border-bottom:4px solid #111}
-.topbar{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-.brand{display:inline-block;background:var(--p);color:white;border:3px solid #111;border-radius:999px;padding:7px 13px;font-weight:900;box-shadow:4px 4px #111;text-decoration:none}
+<title>Find Resources | Flourish Anyway</title><style>
+
+*{box-sizing:border-box}:root{--p:#d23b67;--y:#fad569;--c:#fff8d8;--g:#4e8f3a;--i:#111;--w:#fffdf3;--pl:#fce8ed}
+body{margin:0;font-family:Arial,sans-serif;color:var(--i);background:var(--c);line-height:1.45}.wrap{width:min(1100px,calc(100% - 28px));margin:auto}
+header{padding:24px 0;background:var(--y);border-bottom:4px solid #111}.topbar{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.brand{display:inline-block;background:var(--p);color:#fff;border:3px solid #111;border-radius:999px;padding:7px 13px;font-weight:900;box-shadow:4px 4px #111;text-decoration:none}
 .home{font-weight:900;color:#111;text-decoration:none;border:2px solid #111;border-radius:999px;padding:7px 11px;background:#fff}
-h1{font-size:clamp(2rem,7vw,4.2rem);line-height:1;margin:24px 0 12px}
-.lead{font-size:1.05rem;max-width:760px}
-main{padding:26px 0 48px}
-.panel{background:var(--w);border:3px solid #111;border-radius:20px;padding:20px;box-shadow:5px 5px rgba(0,0,0,.10)}
+h1{font-size:clamp(2rem,7vw,4.2rem);line-height:1;margin:24px 0 12px}.lead{font-size:1.05rem;max-width:780px}main{padding:26px 0 48px}
 .eyebrow{font-size:.8rem;font-weight:900;letter-spacing:.08em;color:var(--p)}
-.searchgrid{display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:10px;margin-top:16px;align-items:end}
-.field{display:grid;gap:5px;font-weight:900}
-input,select,button{font:inherit}input,select{min-height:50px;border:2px solid #111;border-radius:12px;background:#fff;padding:10px;width:100%}
-button,.btn{cursor:pointer}.go{min-height:50px;border:2px solid #111;border-radius:12px;background:#111;color:#fff;font-weight:900;padding:0 18px}
-.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:18px}
-.cat{display:block;text-align:left;background:#fff;border:3px solid #111;border-radius:18px;padding:17px;box-shadow:4px 4px rgba(0,0,0,.1);text-decoration:none;color:#111}
-.cat span{font-size:1.7rem;display:block}.cat b{font-size:1.05rem;display:block;margin:5px 0}.cat small{font-size:.86rem;line-height:1.3;display:block}
-.results{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;margin-top:16px}
-.result{background:#fff;border:3px solid #111;border-radius:18px;padding:17px;box-shadow:4px 4px rgba(0,0,0,.1)}
-.result h3{margin:3px 0 8px}.category{font-size:.75rem;font-weight:900;color:var(--p);text-transform:uppercase}
-.meta{display:grid;gap:5px;font-size:.9rem}.actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
-.actions a{text-decoration:none;border:2px solid #111;border-radius:9px;padding:7px 9px;background:#111;color:#fff;font-size:.82rem;font-weight:900}
-.actions a.alt{background:#fff;color:#111}.actions a.call{background:var(--g)}
-.plan{background:#fff;border:3px solid #111;border-radius:18px;padding:17px;box-shadow:4px 4px rgba(0,0,0,.1)}.plan h3{margin:3px 0 8px}.plan a{text-decoration:none;color:#111}.count{font-weight:900;margin:16px 0 6px}.empty{background:white;border:2px dashed #111;border-radius:14px;padding:18px}
-.gateway{background:var(--y);border:3px solid #111;border-radius:18px;padding:17px;margin-top:22px}.searchnote{background:#fff;border:2px solid #111;border-radius:14px;padding:13px;margin:14px 0;font-size:.92rem}.outside{background:#fff;border:3px solid #111;border-radius:18px;padding:17px;margin-top:18px}.outside h3{margin:0 0 6px}.outside p{margin:0 0 10px}.outside .actions{margin-top:8px}
-.helpbox{background:#fff;border:3px solid #111;border-radius:20px;padding:18px;margin:0 0 22px;box-shadow:5px 5px rgba(0,0,0,.1)}
-.helpbox h2{margin:4px 0 6px}.helpchoices{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
-.helpchoice{display:block;text-decoration:none;color:#111;border:2px solid #111;border-radius:14px;padding:14px;background:var(--c);font-weight:900}
-.guide-step{background:#fff;border:3px solid #111;border-radius:18px;padding:17px;margin:14px 0}
-.guide-step h2{margin:0 0 8px}.ask{background:var(--y);border-left:6px solid #111;padding:12px;border-radius:8px;margin-top:10px}
-.checks{display:grid;gap:7px;margin-top:10px}.check{background:#fff;border:2px solid #111;border-radius:10px;padding:10px}
-.notice{margin-top:22px;font-size:.86rem;color:#544d47}
-@media(max-width:760px){.searchgrid,.categories,.results,.helpchoices{grid-template-columns:1fr}.go{width:100%}}
+
+.panel,.outside{background:var(--w);border:3px solid #111;border-radius:20px;padding:18px;box-shadow:5px 5px rgba(0,0,0,.1);margin-bottom:20px}.searchgrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;margin-top:12px}.field{display:grid;gap:5px;font-weight:900}.full{grid-column:1/-1}input,select,button{font:inherit;min-height:48px;border:2px solid #111;border-radius:12px;padding:9px;background:#fff}.go{background:#111;color:#fff;font-weight:900}
+.results{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}.result,.plan{background:#fff;border:3px solid #111;border-radius:18px;padding:17px;box-shadow:4px 4px rgba(0,0,0,.1)}.result h3,.plan h3{margin:3px 0 8px}.category{font-size:.75rem;font-weight:900;color:var(--p);text-transform:uppercase}.meta{display:grid;gap:5px;font-size:.9rem}.actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}.actions a,.plan a{text-decoration:none}.actions a{border:2px solid #111;border-radius:9px;padding:7px 9px;background:#111;color:#fff;font-size:.82rem;font-weight:900}.actions a.alt{background:#fff;color:#111}.actions a.call{background:var(--g)}.count{font-weight:900;margin:16px 0 8px}.empty{background:#fff;border:2px dashed #111;border-radius:14px;padding:18px}
+@media(max-width:760px){.searchgrid,.results{grid-template-columns:1fr}.full{grid-column:auto}}
 </style></head><body>
-<header><div class="wrap"><div class="topbar"><a class="brand" href="index.html">✿ FLOURISH ANYWAY</a><a class="home" href="index.html">← Home</a></div><h1>FIND RESOURCES</h1><p class="lead">Ask for what you need in plain language. You can change the search without leaving this page.</p></div></header>
+<header><div class="wrap"><div class="topbar"><a class="brand" href="index.html">✿ FLOURISH ANYWAY</a><a class="home" href="index.html">← Home</a></div><h1>FIND RESOURCES</h1><p class="lead">Ask for what you need. Add a circumstance only if it helps narrow the results.</p></div></header>
 <main><div class="wrap"><section class="panel"><form id="form" class="searchgrid">
-<label class="field">What do you need?<input id="q" name="q" type="search" placeholder="Example: help getting my license back"></label>
-<label class="field">County<select id="county" name="county"><option value="all">Both counties</option><option value="Jackson">Jackson County</option><option value="Josephine">Josephine County</option></select></label>
-<label class="field">City<input id="city" name="city" type="text" placeholder="Optional"></label>
-<button class="go">Find Resources</button></form></section>
+<label class="field full">What do you need?<input id="q" type="search" placeholder="Example: my child needs help at school"></label>
+<label class="field">County<select id="county"><option value="all">Both counties</option><option value="Jackson">Jackson County</option><option value="Josephine">Josephine County</option></select></label>
+<label class="field">City<input id="city" type="text" placeholder="Optional"></label>
+<label class="field">Does any of this describe you?<select id="who"><option value="">No extra filter</option></select></label>
+<button class="go full">Find Resources →</button></form></section>
 <div id="count" class="count">Loading resources…</div><div id="results" class="results"></div>
-<section id="outsideSearch" class="outside">
-<h3>Search beyond the Flourish directory</h3>
-<p>This page first searches Flourish Anyway's local directory. Use these links when you want to search farther. External results are not verified or endorsed by Flourish Anyway.</p>
-<div class="actions">
-<a id="webSearch" target="_blank" rel="noopener">Search the wider web ↗</a>
-<a id="search211" class="alt" target="_blank" rel="noopener">Search 211 + your words ↗</a>
-<a class="call" href="tel:211">Call 211</a>
-</div>
-</section></div></main>
-<script src="resource-loader.js"></script><script src="life-plans-data.js?v=20260904repair1"></script><script>
-const p=new URLSearchParams(location.search),q=document.getElementById("q"),county=document.getElementById("county"),city=document.getElementById("city");
-q.value=p.get("q")||"";county.value=p.get("county")||"all";city.value=p.get("city")||"";
-const HELP_PLANS=(window.FLOURISH_LIFE_PLANS||[]).map(plan=>({
-  title:plan.title||"Help Plan",
-  cat:(window.FLOURISH_HELP_PLAN_CATEGORIES||{})[plan.category]||plan.category||"Help Plan",
-  url:"life-plans.html#"+encodeURIComponent(plan.id),
-  terms:[plan.intro||"",...(plan.checks||[]).flatMap(c=>[c.title||"",c.text||""]),(plan.script||"")].filter(Boolean)
-}));
-
+<section class="outside"><h3>Search beyond the Flourish directory</h3><p>If the Hub does not have a close match yet, use 211 for current statewide resources.</p><div class="actions"><a href="https://www.211info.org/" target="_blank" rel="noopener">Search 211info ↗</a><a class="call" href="tel:211">Call 211</a></div></section></div></main>
+<script src="hub-pathways-data.js"></script><script src="resource-loader.js"></script><script src="life-plans-data.js?v=20260904master1"></script><script>
+const H=window.FLOURISH_HUB_PATHWAYS||{circumstances:[]},P=new URLSearchParams(location.search),q=document.getElementById("q"),county=document.getElementById("county"),city=document.getElementById("city"),who=document.getElementById("who");
+q.value=P.get("q")||"";county.value=P.get("county")||"all";city.value=P.get("city")||"";who.innerHTML='<option value="">No extra filter</option>'+H.circumstances.map(x=>`<option value="${esc(x.id)}">${esc(x.label)}</option>`).join("");who.value=P.get("who")||"";
+const planCategories=window.FLOURISH_HELP_PLAN_CATEGORIES||{},lifePlans=window.FLOURISH_LIFE_PLANS||[];
 const STOP=new Set(["the","and","for","with","that","this","from","into","need","help","find","near","around","local","someone","my","me","i","a","an","of","to","in","on"]);
-function wordsOf(x){
-  return norm(x).split(/\s+/).map(w=>w.replace(/[^a-z0-9-]/g,"")).filter(w=>w.length>1&&!STOP.has(w))
-}
-function textParts(r){
-  return {
-    name:norm(r.name),
-    helps:norm(r.helps||r.description||r.service),
-    kw:norm([...(r.keywords||[]),...(r.labels||[])].join(" ")),
-    cat:norm(r.category||""),
-    audience:norm((r.audience||[]).join(" ")),
-    addr:norm([r.city,r.address].join(" ")),
-    all:resourceHaystack(r)
-  }
-}
-function scoreResource(r,term,ci){
-  if(!term&&!ci)return 1;
-  const t=textParts(r), ws=wordsOf(term);
-  let score=0, matched=0;
-
-  if(term){
-    if(t.name===term)score+=220;
-    if(t.name.includes(term))score+=150;
-    if(t.kw.includes(term))score+=125;
-    if(t.helps.includes(term))score+=105;
-    if(t.audience.includes(term))score+=55;
-
-    for(const w of ws){
-      let hit=false;
-      if(t.name.includes(w)){score+=34;hit=true}
-      if(t.kw.includes(w)){score+=30;hit=true}
-      if(t.helps.includes(w)){score+=22;hit=true}
-      if(t.audience.includes(w)){score+=12;hit=true}
-      if(t.cat.includes(w)){score+=8;hit=true}
-      if(hit)matched++;
-    }
-
-    // Multi-word searches must match the idea, not just one stray word.
-    if(ws.length>=2){
-      const needed=Math.ceil(ws.length*0.75);
-      if(matched<needed)return 0;
-    } else if(ws.length===1 && matched===0 && !t.name.includes(term) && !t.kw.includes(term) && !t.helps.includes(term)){
-      return 0;
-    }
-
-    // Extra reward when every meaningful word appears somewhere in the record.
-    if(ws.length && ws.every(w=>t.all.includes(w)))score+=70;
-  }
-
-  if(ci){
-    if(t.addr.includes(ci))score+=70;
-    else if(!t.all.includes(ci))return 0;
-  }
-  return score;
-}
-function planMatches(term){
-  if(!term)return[];
-  const ws=wordsOf(term);
-  return HELP_PLANS.map(p=>{
-    const h=norm(p.title+" "+p.cat+" "+(p.terms||[]).join(" "));
-    let matched=0,score=h.includes(term)?180:0;
-    for(const w of ws)if(h.includes(w)){matched++;score+=35}
-    if(ws.length>=2 && matched<Math.ceil(ws.length*.75))score=0;
-    return {...p,score}
-  }).filter(p=>p.score>=35).sort((a,b)=>b.score-a.score).slice(0,2)
-}
-function planCard(p){
-  return `<article class="plan"><div class="category">HELP PLAN • ${esc(p.cat)}</div><h3><a href="${p.url}">📋 ${esc(p.title)} →</a></h3><p>Step-by-step help: what to do, what to gather, who to call and what to ask.</p></article>`
-}
-function updateOutsideLinks(){
-  const term=q.value.trim();
-  const ci=city.value.trim();
-  const place=ci?`${ci}, Oregon`:"Jackson Josephine County Oregon";
-  const webQ=[term,place].filter(Boolean).join(" ");
-  const q211=["site:211info.org",term,place].filter(Boolean).join(" ");
-  document.getElementById("webSearch").href="https://www.google.com/search?q="+encodeURIComponent(webQ);
-  document.getElementById("search211").href="https://www.google.com/search?q="+encodeURIComponent(q211);
-}
-function render(){
-  const term=norm(q.value),co=county.value,ci=norm(city.value.trim());
-  let scored=RES
-    .filter(r=>co==="all"||(r.counties||[]).includes(co))
-    .map(r=>({r,score:scoreResource(r,term,ci)}))
-    .filter(x=>x.score>0)
-    .sort((a,b)=>b.score-a.score||a.r.name.localeCompare(b.r.name));
-
-  // Show up to 30 genuinely relevant matches for the searched need.
-  if(term)scored=scored.slice(0,30);
-
-  const plans=planMatches(term);
-  const cards=[...plans.map(planCard),...scored.map(x=>resultCard(x.r))];
-
-  const count=document.getElementById("count");
-  if(cards.length){
-    count.textContent=`${cards.length} focused match${cards.length===1?"":"es"} from the Flourish directory`;
-  }else{
-    count.textContent="No focused matches in the Flourish directory";
-  }
-
-  document.getElementById("results").innerHTML=cards.length?cards.join(""):`<div class="empty">
-    <b>No close directory match yet.</b>
-    <p>That does not mean the service does not exist. Try a shorter phrase, pick a county/city, or use the wider-search tools below.</p>
-  </div>`;
-  updateOutsideLinks();
-}
-getResources().then(render).catch(err=>{
-  console.error(err);
-  document.getElementById("count").textContent="Resources could not load. Please refresh or use the wider-search tools below.";
-  updateOutsideLinks();
-});
-document.getElementById("form").onsubmit=e=>{
-  e.preventDefault();
-  history.replaceState(null,"",`?q=${encodeURIComponent(q.value)}&county=${encodeURIComponent(county.value)}&city=${encodeURIComponent(city.value)}`);
-  render()
-};
+function wordsOf(x){return norm(x).split(/\s+/).map(w=>w.replace(/[^a-z0-9-]/g,"")).filter(w=>w.length>1&&!STOP.has(w))}
+function scoreResource(r,term,ci){const h=resourceHaystack(r),name=norm(r.name),section=norm(r.section),ws=wordsOf(term);let score=0,matched=0;if(term){if(name.includes(term))score+=170;if(section.includes(term))score+=80;for(const w of ws){if(h.includes(w)){matched++;score+=35}}if(ws.length>=2&&matched<Math.ceil(ws.length*.6))return 0;if(ws.length===1&&matched===0)return 0;if(ws.length&&ws.every(w=>h.includes(w)))score+=70;}else score=1;if(ci&&!h.includes(ci))return 0;return score;}
+function planMatches(term){if(!term)return[];const ws=wordsOf(term);return lifePlans.map(p=>{const h=norm([p.title,p.intro,p.script,...(p.checks||[]).flatMap(c=>[c.title,c.text])].filter(Boolean).join(" "));let matched=0,score=h.includes(term)?180:0;ws.forEach(w=>{if(h.includes(w)){matched++;score+=35}});if(ws.length>=2&&matched<Math.ceil(ws.length*.6))score=0;return {...p,score};}).filter(p=>p.score>=35).sort((a,b)=>b.score-a.score).slice(0,3);}
+function planCard(p){return `<article class="plan"><div class="category">HELP PLAN • ${esc(planCategories[p.category]||p.category||"")}</div><h3><a href="life-plans.html#${encodeURIComponent(p.id)}">📋 ${esc(p.title)} →</a></h3><p>${esc(p.intro||"Step-by-step help.")}</p></article>`}
+function render(){const term=norm(q.value),co=county.value,ci=norm(city.value),circ=H.circumstances.find(x=>x.id===who.value);let scored=RES.filter(r=>co==="all"||(r.counties||[]).includes(co)).filter(r=>!circ||matchesCircumstance(r,circ.terms)).map(r=>({r,score:scoreResource(r,term,ci)})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score||String(a.r.name).localeCompare(String(b.r.name)));if(term)scored=scored.slice(0,40);const plans=planMatches(term);const cards=[...plans.map(planCard),...scored.map(x=>resultCard(x.r))];document.getElementById("count").textContent=cards.length?`${cards.length} focused match${cards.length===1?"":"es"}`:"No close Hub matches yet";document.getElementById("results").innerHTML=cards.length?cards.join(""):`<div class="empty"><b>No close match yet.</b><p>Try a shorter phrase, remove the extra filter, or use 211 below.</p></div>`;}
+getResources().then(render);document.getElementById("form").onsubmit=e=>{e.preventDefault();history.replaceState(null,"",`?q=${encodeURIComponent(q.value)}&county=${encodeURIComponent(county.value)}&city=${encodeURIComponent(city.value)}&who=${encodeURIComponent(who.value)}`);render();};
 </script></body></html>
