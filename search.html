@@ -52,21 +52,15 @@ button,.btn{cursor:pointer}.go{min-height:50px;border:2px solid #111;border-radi
 <a class="call" href="tel:211">Call 211</a>
 </div>
 </section></div></main>
-<script src="resource-loader.js"></script><script>
+<script src="resource-loader.js"></script><script src="life-plans-data.js?v=20260904repair1"></script><script>
 const p=new URLSearchParams(location.search),q=document.getElementById("q"),county=document.getElementById("county"),city=document.getElementById("city");
 q.value=p.get("q")||"";county.value=p.get("county")||"all";city.value=p.get("city")||"";
-const HELP_PLANS=[
-{title:"Getting my first driver's license",cat:"Transportation",url:"life-plans.html#first-license",terms:["first license","permit","drivers test","driving test","learn to drive","get license"]},
-{title:"Getting my license back",cat:"Transportation",url:"life-plans.html#license-back",terms:["license back","suspended license","revoked license","reinstatement","dws","duii","hardship permit"]},
-{title:"Fixing SR-22 or car insurance",cat:"Transportation",url:"life-plans.html#car-legal#insurance",terms:["sr22","sr-22","insurance lapse","car insurance","insurance canceled","uninsured"]},
-{title:"Tickets, court debt & DMV holds",cat:"Transportation",url:"life-plans.html#car-legal#tickets",terms:["ticket","tickets","court debt","traffic fine","dmv hold","fines"]},
-{title:"Tags, registration & title",cat:"Transportation",url:"life-plans.html#car-legal#tags",terms:["tags","registration","title","plates","car legal"]},
-{title:"Divorce papers & Oregon court forms",cat:"Legal & Government Help",url:"life-plans.html#divorce",terms:["divorce","divorce papers","dissolution","separation","respond to divorce"]},
-{title:"Child support help",cat:"Parenting & Legal",url:"life-plans.html#child-support",terms:["child support","support order","arrears","modify support"]},
-{title:"Apply for OHP / health coverage",cat:"Health & Wellness",url:"life-plans.html#ohp",terms:["ohp","health insurance","medicaid","uninsured","health coverage"]},
-{title:"Apply for food, cash or child-care benefits",cat:"Food & Everyday Needs",url:"life-plans.html#food-now",terms:["snap","food stamps","tanf","cash assistance","child care benefits","benefits"]},
-{title:"School, tutoring & learning help",cat:"Kids & Family",url:"life-plans.html#school",terms:["school","tutor","tutoring","homework","learning","iep","special education"]}
-];
+const HELP_PLANS=(window.FLOURISH_LIFE_PLANS||[]).map(plan=>({
+  title:plan.title||"Help Plan",
+  cat:(window.FLOURISH_HELP_PLAN_CATEGORIES||{})[plan.category]||plan.category||"Help Plan",
+  url:"life-plans.html#"+encodeURIComponent(plan.id),
+  terms:[plan.intro||"",...(plan.checks||[]).flatMap(c=>[c.title||"",c.text||""]),(plan.script||"")].filter(Boolean)
+}));
 
 const STOP=new Set(["the","and","for","with","that","this","from","into","need","help","find","near","around","local","someone","my","me","i","a","an","of","to","in","on"]);
 function wordsOf(x){
@@ -127,7 +121,7 @@ function planMatches(term){
   if(!term)return[];
   const ws=wordsOf(term);
   return HELP_PLANS.map(p=>{
-    const h=norm(p.title+" "+p.cat+" "+p.terms.join(" "));
+    const h=norm(p.title+" "+p.cat+" "+(p.terms||[]).join(" "));
     let matched=0,score=h.includes(term)?180:0;
     for(const w of ws)if(h.includes(w)){matched++;score+=35}
     if(ws.length>=2 && matched<Math.ceil(ws.length*.75))score=0;

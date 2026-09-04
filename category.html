@@ -32,13 +32,7 @@ button,.btn{cursor:pointer}.go{min-height:50px;border:2px solid #111;border-radi
 .helpchoice{display:block;text-decoration:none;color:#111;border:2px solid #111;border-radius:14px;padding:14px;background:var(--c);font-weight:900}
 .guide-step{background:#fff;border:3px solid #111;border-radius:18px;padding:17px;margin:14px 0}
 .guide-step h2{margin:0 0 8px}.ask{background:var(--y);border-left:6px solid #111;padding:12px;border-radius:8px;margin-top:10px}
-.checks{display:grid;gap:8px;margin-top:12px}
-.check{display:flex;align-items:flex-start;gap:10px;background:#fff;border:2px solid #111;border-radius:10px;padding:10px;font-weight:700;cursor:pointer}
-.check input{width:20px;height:20px;min-height:0;margin:1px 0 0;flex:0 0 auto;accent-color:var(--g)}
-.check.done{background:#eef8e9}
-.check.done span{text-decoration:line-through;opacity:.72}
-.checknote{font-size:.84rem;color:#544d47;margin:9px 0 0}
-.checkreset{margin-top:10px;border:2px solid #111;border-radius:9px;background:#fff;padding:7px 10px;font-weight:900}
+.checks{display:grid;gap:7px;margin-top:10px}.check{background:#fff;border:2px solid #111;border-radius:10px;padding:10px}
 .notice{margin-top:22px;font-size:.86rem;color:#544d47}
 @media(max-width:760px){.searchgrid,.categories,.results,.helpchoices{grid-template-columns:1fr}.go{width:100%}}
 </style></head><body>
@@ -52,69 +46,90 @@ button,.btn{cursor:pointer}.go{min-height:50px;border:2px solid #111;border-radi
 <section class="gateway"><h3>Need something else?</h3><div class="actions"><a href="search.html">Ask a question →</a><a href="https://www.211info.org/" target="_blank" rel="noopener">Search 211info ↗</a></div></section></div></main>
 <script src="resource-loader.js"></script><script>
 const p=new URLSearchParams(location.search),cat=document.getElementById("cat"),county=document.getElementById("county");cat.value=p.get("cat")||"food";
-const CHECK_KEY="flourish-category-checklists-v1";
-
-function checklistState(){
-  try{return JSON.parse(localStorage.getItem(CHECK_KEY)||"{}")}
-  catch{return{}}
-}
-
-function saveChecklistState(state){
-  localStorage.setItem(CHECK_KEY,JSON.stringify(state));
-}
-
-function eventChecklist(){
-  const items=[
-    ["pick","Pick what kind of event I want"],
-    ["county","Check both counties if I can travel"],
-    ["sources","Open 2–3 event calendars"],
-    ["confirm","Confirm the date and time before leaving"],
-    ["cost","Check cost, tickets or registration"],
-    ["save","Save the event or source I want"],
-    ["calendar","Add the event to my calendar"]
-  ];
-  const state=checklistState().events||{};
-  return `<section class="helpbox">
-    <div class="eyebrow">QUICK EVENT PLAN</div>
-    <h2>Find something to do</h2>
-    <p>Use this as a small optional checklist. Your checks stay saved on this device.</p>
-    <div class="checks">
-      ${items.map(([id,label])=>`<label class="check ${state[id]?"done":""}">
-        <input type="checkbox" data-event-check="${id}" ${state[id]?"checked":""}>
-        <span>${label}</span>
-      </label>`).join("")}
-    </div>
-    <button type="button" class="checkreset" id="resetEventChecklist">Clear checklist</button>
-    <p class="checknote">Event information changes often. Always confirm current details with the organizer.</p>
-  </section>`;
-}
-
 function helpFor(c){
-  if(c==="events")return eventChecklist();
-  if(c!=="transportation")return "";
-  return `<section class="helpbox"><div class="eyebrow">START HERE</div><h2>Driver's License Help</h2><p>If your license is suspended, revoked, you have court fines, DUII requirements, SR-22 questions, a DWS case, or you simply don't know what is blocking you, use the guided license-recovery page first.</p><div class="helpchoices"><a class="helpchoice" href="drivers-license.html">🚘 Get my license back →</a><a class="helpchoice" href="drivers-license.html#plan">📝 Build my recovery plan →</a></div></section>`;
+const guides={
+"kids-family":{
+title:"Kids & Family — Start Here",
+desc:"Pick the kind of help you need first. The full local directory is underneath.",
+a:["📚 School, tutoring & learning →","life-plans.html#school"],
+b:["🎂 Activities, birthdays & things to do →","life-plans.html#kids-activities"]
+},
+"food":{
+title:"Food & Everyday Needs — Start Here",
+desc:"Use a quick path, then browse the full resource list below.",
+a:["🥫 I need food now →","life-plans.html#food-now"],
+b:["🧼 I need household, clothing or basic needs →","life-plans.html#basic-needs"]
+},
+"housing":{
+title:"Housing — Start Here",
+desc:"Start with the situation that is most urgent.",
+a:["🏠 I need housing or shelter →","life-plans.html#housing-now"],
+b:["💡 I am behind on rent or utilities →","life-plans.html#rent-utilities"]
+},
+"transportation":{
+title:"Transportation — Start Here",
+desc:"Pick the situation that matches what is blocking you right now.",
+a:["🚌 I need transportation / I do not have a car →","life-plans.html#no-car"],
+b:["🪪 Getting my first license →","life-plans.html#first-license"]
+},
+"money":{
+title:"Money & Credit — Start Here",
+desc:"Choose the problem you want to solve first.",
+a:["💵 I am behind on bills →","life-plans.html#bills"],
+b:["📈 I want to build credit or make a money plan →","life-plans.html#credit"]
+},
+"health":{
+title:"Health & Wellness — Start Here",
+desc:"Find care first, then browse the deeper directory.",
+a:["🩺 I need a doctor, dentist or women's health care →","life-plans.html#health-care"],
+b:["💳 I am uninsured or cannot afford care →","life-plans.html#ohp"]
+},
+"parenting":{
+title:"Parenting & Kids — Start Here",
+desc:"Choose the kind of family support you need.",
+a:["🧸 I need child care or parenting support →","life-plans.html#child-care"],
+b:["🧠 My child needs developmental or behavioral help →","life-plans.html#child-development"]
+},
+"jobs":{
+title:"Jobs, Education & Skills — Start Here",
+desc:"Pick work now or training for what comes next.",
+a:["💼 I need a job →","life-plans.html#job"],
+b:["🎓 I want GED, college or job training →","life-plans.html#education"]
+},
+"legal":{
+title:"Legal & Government Help — Start Here",
+desc:"Start with advice or with an active court/government problem.",
+a:["⚖️ I need legal advice or legal aid →","life-plans.html#legal-help"],
+b:["📄 I have court papers, fines or a government issue →","life-plans.html#court-forms"]
+},
+"recovery":{
+title:"Recovery & Community — Start Here",
+desc:"Treatment and community support are different needs; both matter.",
+a:["🛟 I need treatment, detox or stabilization →","life-plans.html#treatment"],
+b:["🤝 I want peer support, meetings or community →","life-plans.html#peer-support"]
+},
+"senior":{
+title:"Senior & Disability — Start Here",
+desc:"Choose support for yourself or for someone you care for.",
+a:["🏡 I need help living independently →","life-plans.html#independent-living"],
+b:["❤️ I am caring for someone →","life-plans.html#caregiver"]
+},
+"emergency":{
+title:"Emergency Help — Start Here",
+desc:"If there is immediate danger, call 911. Otherwise choose the closest need.",
+a:["🚨 I need emergency shelter or safety help →","life-plans.html#safety"],
+b:["🧠 I need crisis or mental-health help →","life-plans.html#crisis"]
+},
+"events":{
+title:"Local Events — Start Here",
+desc:"Find family-friendly community connection or nonprofit/recovery events.",
+a:["🎈 Family & kids events →","life-plans.html#kids-activities"],
+b:["🌼 Community, recovery & nonprofit events →","life-plans.html#community-events"]
 }
-
-function wireChecklist(){
-  document.querySelectorAll("[data-event-check]").forEach(box=>{
-    box.onchange=()=>{
-      const all=checklistState();
-      all.events=all.events||{};
-      all.events[box.dataset.eventCheck]=box.checked;
-      saveChecklistState(all);
-      box.closest(".check")?.classList.toggle("done",box.checked);
-    };
-  });
-
-  const reset=document.getElementById("resetEventChecklist");
-  if(reset)reset.onclick=()=>{
-    const all=checklistState();
-    all.events={};
-    saveChecklistState(all);
-    document.getElementById("help").innerHTML=eventChecklist();
-    wireChecklist();
-  };
+};
+const g=guides[c]; if(!g) return "";
+return `<section class="helpbox"><div class="eyebrow">START HERE</div><h2>${g.title}</h2><p>${g.desc}</p><div class="helpchoices"><a class="helpchoice" href="${g.a[1]}">${g.a[0]}</a><a class="helpchoice" href="${g.b[1]}">${g.b[0]}</a></div>${c==="transportation"?`<div class="helpchoices" style="margin-top:10px"><a class="helpchoice" href="life-plans.html#license-back">🚘 I lost my license / need it back →</a><a class="helpchoice" href="life-plans.html#car-legal">🚗 My car is not legal or usable →</a><a class="helpchoice" href="life-plans.html#lost-car">🔑 I lost, sold or had my car repossessed →</a><a class="helpchoice" href="life-plans.html">📋 Browse all Help Plans →</a></div>`:""}</section>`;
 }
-function render(){const c=cat.value,co=county.value;document.getElementById("title").textContent=(CAT[c]||"Resources").toUpperCase();document.title=(CAT[c]||"Resources")+" | Flourish Anyway";document.getElementById("help").innerHTML=helpFor(c);wireChecklist();let a=RES.filter(r=>r.category===c&&(co==="all"||(r.counties||[]).includes(co)));if(c==="events")a.sort((x,y)=>(x.eventDate||"9999").localeCompare(y.eventDate||"9999"));else a.sort((a,b)=>a.name.localeCompare(b.name));document.getElementById("count").textContent=`${a.length} resource${a.length===1?"":"s"}`;document.getElementById("results").innerHTML=a.length?a.map(resultCard).join(""):`<div class="empty"><b>No resources in this view yet.</b><p>Try both counties or search all resources.</p></div>`}
+function render(){const c=cat.value,co=county.value;document.getElementById("title").textContent=(CAT[c]||"Resources").toUpperCase();document.title=(CAT[c]||"Resources")+" | Flourish Anyway";document.getElementById("help").innerHTML=helpFor(c);let a=RES.filter(r=>r.category===c&&(co==="all"||(r.counties||[]).includes(co)));if(c==="events")a.sort((x,y)=>(x.eventDate||"9999").localeCompare(y.eventDate||"9999"));else a.sort((a,b)=>a.name.localeCompare(b.name));document.getElementById("count").textContent=`${a.length} resource${a.length===1?"":"s"}`;document.getElementById("results").innerHTML=a.length?a.map(resultCard).join(""):`<div class="empty"><b>No resources in this view yet.</b><p>Try both counties or search all resources.</p></div>`}
 getResources().then(render);cat.onchange=()=>{history.replaceState(null,"",`?cat=${encodeURIComponent(cat.value)}`);render()};county.onchange=render;document.getElementById("searchPage").onclick=()=>location.href="search.html";
 </script></body></html>
