@@ -69,7 +69,7 @@ function eventUrl(r){
 function loadScript(src){
   return new Promise(ok=>{
     let s=document.createElement("script");
-    s.src=src+"?v=20260904a";
+    s.src=src+"?v=20260904restore1";
     s.onload=ok;
     s.onerror=()=>{
       console.warn("Could not load resource file:",src);
