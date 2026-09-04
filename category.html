@@ -26,6 +26,12 @@ button,.btn{cursor:pointer}.go{min-height:50px;border:2px solid #111;border-radi
 .actions a{text-decoration:none;border:2px solid #111;border-radius:9px;padding:7px 9px;background:#111;color:#fff;font-size:.82rem;font-weight:900}
 .actions a.alt{background:#fff;color:#111}.actions a.call{background:var(--g)}
 .count{font-weight:900;margin:16px 0 6px}.empty{background:white;border:2px dashed #111;border-radius:14px;padding:18px}
+#results.grouped{display:block}
+.section-block{margin:18px 0 24px}
+.section-title{margin:0 0 12px;border:3px solid #111;border-radius:18px;padding:15px 18px;font-size:1.45rem;line-height:1.15;box-shadow:4px 4px rgba(0,0,0,.10)}
+.section-block:nth-child(odd) .section-title{background:#fad569}
+.section-block:nth-child(even) .section-title{background:#fce8ed}
+.section-block .results{margin-top:0}
 .gateway{background:var(--y);border:3px solid #111;border-radius:18px;padding:17px;margin-top:22px}
 .helpbox{background:#fff;border:3px solid #111;border-radius:20px;padding:18px;margin:0 0 22px;box-shadow:5px 5px rgba(0,0,0,.1)}
 .helpbox h2{margin:4px 0 6px}.helpchoices{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
@@ -109,7 +115,7 @@ a:["🛟 I need treatment, detox or stabilization →","life-plans.html#treatmen
 b:["🤝 I want peer support, meetings or community →","life-plans.html#peer-support"]
 },
 "senior":{
-title:"Senior & Disability — Start Here",
+title:"Seniors & Older Adults — Start Here",
 desc:"Choose support for yourself or for someone you care for.",
 a:["🏡 I need help living independently →","life-plans.html#independent-living"],
 b:["❤️ I am caring for someone →","life-plans.html#caregiver"]
@@ -130,6 +136,49 @@ b:["🌼 Community, recovery & nonprofit events →","life-plans.html#community-
 const g=guides[c]; if(!g) return "";
 return `<section class="helpbox"><div class="eyebrow">START HERE</div><h2>${g.title}</h2><p>${g.desc}</p><div class="helpchoices"><a class="helpchoice" href="${g.a[1]}">${g.a[0]}</a><a class="helpchoice" href="${g.b[1]}">${g.b[0]}</a></div>${c==="transportation"?`<div class="helpchoices" style="margin-top:10px"><a class="helpchoice" href="life-plans.html#license-back">🚘 I lost my license / need it back →</a><a class="helpchoice" href="life-plans.html#car-legal">🚗 My car is not legal or usable →</a><a class="helpchoice" href="life-plans.html#lost-car">🔑 I lost, sold or had my car repossessed →</a><a class="helpchoice" href="life-plans.html">📋 Browse all Help Plans →</a></div>`:""}</section>`;
 }
-function render(){const c=cat.value,co=county.value;document.getElementById("title").textContent=(CAT[c]||"Resources").toUpperCase();document.title=(CAT[c]||"Resources")+" | Flourish Anyway";document.getElementById("help").innerHTML=helpFor(c);let a=RES.filter(r=>r.category===c&&(co==="all"||(r.counties||[]).includes(co)));if(c==="events")a.sort((x,y)=>(x.eventDate||"9999").localeCompare(y.eventDate||"9999"));else a.sort((a,b)=>a.name.localeCompare(b.name));document.getElementById("count").textContent=`${a.length} resource${a.length===1?"":"s"}`;document.getElementById("results").innerHTML=a.length?a.map(resultCard).join(""):`<div class="empty"><b>No resources in this view yet.</b><p>Try both counties or search all resources.</p></div>`}
+function slug(v){return String(v||"more-resources").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")}
+function render(){
+ const c=cat.value,co=county.value,box=document.getElementById("results");
+ document.getElementById("title").textContent=(CAT[c]||"Resources").toUpperCase();
+ document.title=(CAT[c]||"Resources")+" | Flourish Anyway";
+ document.getElementById("help").innerHTML=helpFor(c);
+ let a=RES.filter(r=>r.category===c&&(co==="all"||(r.counties||[]).includes(co)));
+ document.getElementById("count").textContent=`${a.length} resource${a.length===1?"":"s"}`;
+ if(!a.length){box.classList.remove("grouped");box.innerHTML=`<div class="empty"><b>No resources in this view yet.</b><p>Try both counties or search all resources.</p></div>`;return}
+ if(c==="senior"){
+  const order=[
+   "Start Here & Local Senior Navigation",
+   "Older Women — Health, Recovery & Connection",
+   "Affordable Senior Apartments",
+   "Independent Senior Living",
+   "Independent & Assisted Living",
+   "Assisted Living",
+   "Memory Care",
+   "Assisted Living, Memory Care & Respite",
+   "Help Choosing Housing & Care",
+   "Licensed Care, Inspections & Complaints",
+   "Staying Safely at Home",
+   "Caregiver Help, Dementia & Respite",
+   "Benefits, Medicare & Long-Term Care Help",
+   "Money, Social Security & Disability Benefits",
+   "Food & Meals on Wheels",
+   "Transportation",
+   "Mental Health, Grief & Loneliness",
+   "Recovery & Sobriety",
+   "Veterans & Surviving Spouses",
+   "Senior Centers, Activities & Connection",
+   "Legal Rights, Safety & Advocacy"
+  ];
+  const groups=new Map();
+  for(const r of a){const sec=r.section||"More Senior Resources";if(!groups.has(sec))groups.set(sec,[]);groups.get(sec).push(r)}
+  const sections=[...groups.keys()].sort((x,y)=>{const ax=order.indexOf(x),ay=order.indexOf(y);return (ax<0?999:ax)-(ay<0?999:ay)||x.localeCompare(y)});
+  box.classList.add("grouped");
+  box.innerHTML=sections.map(sec=>`<section class="section-block" id="${slug(sec)}"><h2 class="section-title">${esc(sec)}</h2><div class="results">${groups.get(sec).sort((x,y)=>x.name.localeCompare(y.name)).map(resultCard).join("")}</div></section>`).join("");
+  return;
+ }
+ box.classList.remove("grouped");
+ if(c==="events")a.sort((x,y)=>(x.eventDate||"9999").localeCompare(y.eventDate||"9999"));else a.sort((x,y)=>x.name.localeCompare(y.name));
+ box.innerHTML=a.map(resultCard).join("");
+}
 getResources().then(render);cat.onchange=()=>{history.replaceState(null,"",`?cat=${encodeURIComponent(cat.value)}`);render()};county.onchange=render;document.getElementById("searchPage").onclick=()=>location.href="search.html";
 </script></body></html>
