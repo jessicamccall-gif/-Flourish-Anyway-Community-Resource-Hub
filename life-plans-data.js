@@ -15,7 +15,6 @@ window.FLOURISH_HELP_PLAN_CATEGORIES = {
   "language": "Language & Immigration Navigation",
   "community": "Community & Events"
 };
-
 window.FLOURISH_LIFE_PLANS = [
   {
     "id": "safety",
@@ -544,7 +543,35 @@ window.FLOURISH_LIFE_PLANS = [
         "href": "tel:211"
       }
     ],
-    "script": "“I need food today in [city]. What pantry or meal is open now, and what do I need to bring?”"
+    "script": "“I need food today in [city]. What pantry or meal is open now, and what do I need to bring?”",
+    "resourcePack": {
+      "title": "Calls & places to check",
+      "contacts": [
+        {
+          "name": "211info",
+          "phone": "211",
+          "url": "https://www.211info.org/",
+          "why": "Ask what food sites are open today."
+        },
+        {
+          "name": "ACCESS",
+          "url": "https://accesshelps.org/",
+          "why": "Check current Jackson County food options."
+        }
+      ],
+      "bring": [
+        "ID if you have it",
+        "Bags or boxes if available"
+      ],
+      "ask": [
+        "Are you open today?",
+        "Can I come without an appointment?",
+        "How often can I use this pantry?"
+      ],
+      "backup": [
+        "Call 211 for another pantry open today."
+      ]
+    }
   },
   {
     "id": "housing-now",
@@ -693,7 +720,38 @@ window.FLOURISH_LIFE_PLANS = [
     ],
     "category": "housing",
     "quick": [],
-    "script": ""
+    "script": "",
+    "resourcePack": {
+      "title": "Calls & places to check",
+      "contacts": [
+        {
+          "name": "211info",
+          "phone": "211",
+          "url": "https://www.211info.org/",
+          "why": "Ask for current rent and utility programs."
+        },
+        {
+          "name": "ACCESS",
+          "url": "https://accesshelps.org/",
+          "why": "Check Jackson County housing and utility help."
+        }
+      ],
+      "bring": [
+        "Lease",
+        "Eviction or shutoff notice",
+        "Utility bill/account number",
+        "Income information if requested"
+      ],
+      "ask": [
+        "Is funding open now?",
+        "What documents do I need?",
+        "Who should I call next if you cannot help?"
+      ],
+      "backup": [
+        "Ask landlord/utility about a payment arrangement.",
+        "Search Housing in the Hub."
+      ]
+    }
   },
   {
     "id": "no-car",
@@ -806,7 +864,37 @@ window.FLOURISH_LIFE_PLANS = [
         "href": "tel:5039455000"
       }
     ],
-    "script": "“Can you tell me every active suspension, revocation, hold and reinstatement requirement on my record? I want the complete list before I pay anything.”"
+    "script": "“Can you tell me every active suspension, revocation, hold and reinstatement requirement on my record? I want the complete list before I pay anything.”",
+    "resourcePack": {
+      "title": "Calls & places to check",
+      "contacts": [
+        {
+          "name": "Oregon DMV",
+          "url": "https://www.oregon.gov/odot/dmv/",
+          "why": "Confirm every hold and reinstatement requirement."
+        },
+        {
+          "name": "Golden Rule Reentry",
+          "url": "https://www.goldenrulereentry.org/",
+          "why": "Ask about local license-restoration navigation."
+        }
+      ],
+      "bring": [
+        "License/ID number",
+        "Court or citation numbers",
+        "DMV letters",
+        "SR-22 information if applicable"
+      ],
+      "ask": [
+        "What exactly blocks reinstatement?",
+        "Which item comes first?",
+        "Do I need SR-22?",
+        "Do I need court proof?"
+      ],
+      "backup": [
+        "Write down every hold before paying anything."
+      ]
+    }
   },
   {
     "id": "lost-car",
@@ -1383,7 +1471,36 @@ window.FLOURISH_LIFE_PLANS = [
         "label": "Browse full local directory →"
       }
     ],
-    "category": "kids"
+    "category": "kids",
+    "resourcePack": {
+      "title": "Who to contact & what to save",
+      "contacts": [
+        {
+          "name": "Your child's school or district",
+          "why": "Start with teacher, counselor, principal or district office."
+        },
+        {
+          "name": "Oregon Department of Education",
+          "url": "https://www.oregon.gov/ode/",
+          "why": "Official student-rights and special-education information."
+        }
+      ],
+      "bring": [
+        "School notices/emails",
+        "Attendance or grade information",
+        "IEP/504/evaluation documents if relevant"
+      ],
+      "ask": [
+        "Who is the right person?",
+        "What is the next written step?",
+        "What timeline applies?",
+        "Can you send that in writing?"
+      ],
+      "backup": [
+        "Use School & Education resources in the Hub.",
+        "For IEP/disability rights also check Legal."
+      ]
+    }
   },
   {
     "id": "ohp",
@@ -2440,7 +2557,37 @@ window.FLOURISH_LIFE_PLANS = [
       }
     ],
     "quick": [],
-    "script": ""
+    "script": "",
+    "resourcePack": {
+      "title": "Calls & places to check",
+      "contacts": [
+        {
+          "name": "VA",
+          "phone": "800-698-2411",
+          "url": "https://www.va.gov/",
+          "why": "General VA help and routing."
+        },
+        {
+          "name": "Oregon Department of Veterans' Affairs",
+          "url": "https://www.oregon.gov/odva/",
+          "why": "Find accredited county veteran service help."
+        }
+      ],
+      "bring": [
+        "DD214/service documents if available — do not delay calling if missing",
+        "VA letters or claim numbers",
+        "Short list of needs"
+      ],
+      "ask": [
+        "Which benefit fits this need?",
+        "Can a VSO help file it?",
+        "What evidence is needed?",
+        "Are caregiver/housing/transportation benefits relevant?"
+      ],
+      "backup": [
+        "Also use Housing, Transportation, Legal or Health in the Hub."
+      ]
+    }
   },
   {
     "id": "veteran-housing-work",
