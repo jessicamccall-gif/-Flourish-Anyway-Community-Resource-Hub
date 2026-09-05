@@ -1,8 +1,10 @@
-// Flourish Anyway Community Resource Hub
-// SCHOOL, EDUCATION & LEARNING
-// Reclassified from the verified 45-record Kids Education sweep.
-// Upload as: education-data.js
-window.FLOURISH_EDUCATION_DATA = [
+/* Flourish Anyway Community Resource Hub
+   SCHOOL, EDUCATION & TRAINING — FINAL ORGANIZED
+   Jackson + Josephine Counties, Oregon
+   Final organization/research pass: 2026-09-04
+*/
+
+window.FLOURISH_KIDS_EDUCATION_DATA = [
   {
     "id": "ashland-sd5",
     "category": "education",
@@ -33,11 +35,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "district"
     ],
     "sourceName": "Ashland School District 5",
-    "lastVerified": "2026-09-01",
-    "section": "Public School Districts & School Finder",
+    "lastVerified": "2026-09-04",
+    "section": "Public schools & districts",
     "situations": [
-      "I need to enroll my child in school",
-      "I need school district information"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -70,11 +72,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "district"
     ],
     "sourceName": "Butte Falls School District 91",
-    "lastVerified": "2026-09-01",
-    "section": "Public School Districts & School Finder",
+    "lastVerified": "2026-09-04",
+    "section": "Public schools & districts",
     "situations": [
-      "I need to enroll my child in school",
-      "I need school district information"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -107,11 +109,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "district"
     ],
     "sourceName": "Central Point School District 6",
-    "lastVerified": "2026-09-01",
-    "section": "Public School Districts & School Finder",
+    "lastVerified": "2026-09-04",
+    "section": "Public schools & districts",
     "situations": [
-      "I need to enroll my child in school",
-      "I need school district information"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -144,11 +146,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "district"
     ],
     "sourceName": "Eagle Point School District 9",
-    "lastVerified": "2026-09-01",
-    "section": "Public School Districts & School Finder",
+    "lastVerified": "2026-09-04",
+    "section": "Public schools & districts",
     "situations": [
-      "I need to enroll my child in school",
-      "I need school district information"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -181,11 +183,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "district"
     ],
     "sourceName": "Medford School District 549C",
-    "lastVerified": "2026-09-01",
-    "section": "Public School Districts & School Finder",
+    "lastVerified": "2026-09-04",
+    "section": "Public schools & districts",
     "situations": [
-      "I need to enroll my child in school",
-      "I need school district information"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -218,11 +220,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "district"
     ],
     "sourceName": "Phoenix-Talent School District 4",
-    "lastVerified": "2026-09-01",
-    "section": "Public School Districts & School Finder",
+    "lastVerified": "2026-09-04",
+    "section": "Public schools & districts",
     "situations": [
-      "I need to enroll my child in school",
-      "I need school district information"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -255,11 +257,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "district"
     ],
     "sourceName": "Pinehurst School District 94",
-    "lastVerified": "2026-09-01",
-    "section": "Public School Districts & School Finder",
+    "lastVerified": "2026-09-04",
+    "section": "Public schools & districts",
     "situations": [
-      "I need to enroll my child in school",
-      "I need school district information"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -292,11 +294,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "district"
     ],
     "sourceName": "Prospect School District 59",
-    "lastVerified": "2026-09-01",
-    "section": "Public School Districts & School Finder",
+    "lastVerified": "2026-09-04",
+    "section": "Public schools & districts",
     "situations": [
-      "I need to enroll my child in school",
-      "I need school district information"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -329,11 +331,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "district"
     ],
     "sourceName": "Rogue River School District 35",
-    "lastVerified": "2026-09-01",
-    "section": "Public School Districts & School Finder",
+    "lastVerified": "2026-09-04",
+    "section": "Public schools & districts",
     "situations": [
-      "I need to enroll my child in school",
-      "I need school district information"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -366,11 +368,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "district"
     ],
     "sourceName": "Grants Pass School District 7",
-    "lastVerified": "2026-09-01",
-    "section": "Public School Districts & School Finder",
+    "lastVerified": "2026-09-04",
+    "section": "Public schools & districts",
     "situations": [
-      "I need to enroll my child in school",
-      "I need school district information"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -403,11 +405,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "district"
     ],
     "sourceName": "Three Rivers School District",
-    "lastVerified": "2026-09-01",
-    "section": "Public School Districts & School Finder",
+    "lastVerified": "2026-09-04",
+    "section": "Public schools & districts",
     "situations": [
-      "I need to enroll my child in school",
-      "I need school district information"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -438,9 +440,12 @@ window.FLOURISH_EDUCATION_DATA = [
       "district"
     ],
     "sourceName": "Oregon School Directory",
-    "lastVerified": "2026-09-01",
-    "section": "Public School Districts & School Finder",
-    "situations": []
+    "lastVerified": "2026-09-04",
+    "section": "Public schools & districts",
+    "situations": [
+      "I need school or education help",
+      "I need help finding the right education program"
+    ]
   },
   {
     "id": "soesd-education-hub",
@@ -476,14 +481,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "STEAM"
     ],
     "sourceName": "Southern Oregon Education Service District",
-    "lastVerified": "2026-09-01",
-    "section": "Special Education, Student Rights & Targeted School Support",
+    "lastVerified": "2026-09-04",
+    "section": "Regional education support",
     "situations": [
-      "My child needs special education or IEP help",
-      "My child has a disability at school",
-      "I want STEM or STEAM learning opportunities",
-      "I need homeschool information",
-      "I need early learning or parent-child learning support"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -514,10 +516,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "registration"
     ],
     "sourceName": "SOESD — Homeschool Registration",
-    "lastVerified": "2026-09-01",
-    "section": "Regional Education Support",
+    "lastVerified": "2026-09-04",
+    "section": "Regional education support",
     "situations": [
-      "I need homeschool information"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -551,12 +554,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "flexible"
     ],
     "sourceName": "Willow Wind Community Learning Center",
-    "lastVerified": "2026-09-01",
-    "section": "Alternative, Charter & School Choice",
+    "lastVerified": "2026-09-04",
+    "section": "Charter, alternative & flexible school options",
     "situations": [
-      "I need to enroll my child in school",
-      "I need school district information",
-      "I need a different school option"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -590,12 +592,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "flexible"
     ],
     "sourceName": "Ashland Connect",
-    "lastVerified": "2026-09-01",
-    "section": "Alternative, Charter & School Choice",
+    "lastVerified": "2026-09-04",
+    "section": "Charter, alternative & flexible school options",
     "situations": [
-      "I need to enroll my child in school",
-      "I need school district information",
-      "I need a different school option"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -629,12 +630,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "flexible"
     ],
     "sourceName": "Kids Unlimited Academy",
-    "lastVerified": "2026-09-01",
-    "section": "Alternative, Charter & School Choice",
+    "lastVerified": "2026-09-04",
+    "section": "Charter, alternative & flexible school options",
     "situations": [
-      "I need to enroll my child in school",
-      "I need school district information",
-      "I need a different school option"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -668,12 +668,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "flexible"
     ],
     "sourceName": "Logos Public Charter School",
-    "lastVerified": "2026-09-01",
-    "section": "Alternative, Charter & School Choice",
+    "lastVerified": "2026-09-04",
+    "section": "Charter, alternative & flexible school options",
     "situations": [
-      "I need to enroll my child in school",
-      "I need school district information",
-      "I need a different school option"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -707,12 +706,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "flexible"
     ],
     "sourceName": "Madrone Trail Public Charter School",
-    "lastVerified": "2026-09-01",
-    "section": "Alternative, Charter & School Choice",
+    "lastVerified": "2026-09-04",
+    "section": "Charter, alternative & flexible school options",
     "situations": [
-      "I need to enroll my child in school",
-      "I need school district information",
-      "I need a different school option"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -746,12 +744,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "flexible"
     ],
     "sourceName": "South Valley Academy",
-    "lastVerified": "2026-09-01",
-    "section": "Alternative, Charter & School Choice",
+    "lastVerified": "2026-09-04",
+    "section": "Charter, alternative & flexible school options",
     "situations": [
-      "I need to enroll my child in school",
-      "I need school district information",
-      "I need a different school option"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -785,12 +782,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "flexible"
     ],
     "sourceName": "Rivers Edge Academy Charter School",
-    "lastVerified": "2026-09-01",
-    "section": "Alternative, Charter & School Choice",
+    "lastVerified": "2026-09-04",
+    "section": "Charter, alternative & flexible school options",
     "situations": [
-      "I need to enroll my child in school",
-      "I need school district information",
-      "I need a different school option"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -824,12 +820,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "flexible"
     ],
     "sourceName": "Butte Falls Charter School",
-    "lastVerified": "2026-09-01",
-    "section": "Alternative, Charter & School Choice",
+    "lastVerified": "2026-09-04",
+    "section": "Charter, alternative & flexible school options",
     "situations": [
-      "I need to enroll my child in school",
-      "I need school district information",
-      "I need a different school option"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -863,12 +858,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "flexible"
     ],
     "sourceName": "Southern Oregon Success Academy",
-    "lastVerified": "2026-09-01",
-    "section": "Alternative, Charter & School Choice",
+    "lastVerified": "2026-09-04",
+    "section": "Charter, alternative & flexible school options",
     "situations": [
-      "I need to enroll my child in school",
-      "I need school district information",
-      "I need a different school option"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -902,12 +896,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "flexible"
     ],
     "sourceName": "Sunny Wolf Charter School",
-    "lastVerified": "2026-09-01",
-    "section": "Alternative, Charter & School Choice",
+    "lastVerified": "2026-09-04",
+    "section": "Charter, alternative & flexible school options",
     "situations": [
-      "I need to enroll my child in school",
-      "I need school district information",
-      "I need a different school option"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -941,12 +934,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "flexible"
     ],
     "sourceName": "Woodland Charter School",
-    "lastVerified": "2026-09-01",
-    "section": "Alternative, Charter & School Choice",
+    "lastVerified": "2026-09-04",
+    "section": "Charter, alternative & flexible school options",
     "situations": [
-      "I need to enroll my child in school",
-      "I need school district information",
-      "I need a different school option"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -980,12 +972,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "flexible"
     ],
     "sourceName": "Kalmiopsis Community Arts High School",
-    "lastVerified": "2026-09-01",
-    "section": "Alternative, Charter & School Choice",
+    "lastVerified": "2026-09-04",
+    "section": "Regional education support",
     "situations": [
-      "I need to enroll my child in school",
-      "I need school district information",
-      "I need a different school option"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -1019,12 +1010,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "flexible"
     ],
     "sourceName": "Applegate Valley Virtual Academy",
-    "lastVerified": "2026-09-01",
-    "section": "Alternative, Charter & School Choice",
+    "lastVerified": "2026-09-04",
+    "section": "Charter, alternative & flexible school options",
     "situations": [
-      "I need to enroll my child in school",
-      "I need school district information",
-      "I need a different school option"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -1058,12 +1048,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "flexible"
     ],
     "sourceName": "Lake Creek Learning Center",
-    "lastVerified": "2026-09-01",
-    "section": "Alternative, Charter & School Choice",
+    "lastVerified": "2026-09-04",
+    "section": "Charter, alternative & flexible school options",
     "situations": [
-      "I need to enroll my child in school",
-      "I need school district information",
-      "I need a different school option"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -1097,12 +1086,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "flexible"
     ],
     "sourceName": "Upper Rogue Center for Educational Opportunities (URCEO)",
-    "lastVerified": "2026-09-01",
-    "section": "Alternative, Charter & School Choice",
+    "lastVerified": "2026-09-04",
+    "section": "Charter, alternative & flexible school options",
     "situations": [
-      "I need to enroll my child in school",
-      "I need school district information",
-      "I need a different school option"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -1138,11 +1126,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "TBI"
     ],
     "sourceName": "SOESD — Special Education Services",
-    "lastVerified": "2026-09-01",
-    "section": "Special Education, Student Rights & Targeted School Support",
+    "lastVerified": "2026-09-04",
+    "section": "Special education & disability support",
     "situations": [
-      "My child needs special education or IEP help",
-      "My child has a disability at school"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -1175,12 +1163,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "school transportation"
     ],
     "sourceName": "McKinney-Vento — School Stability for Students Without Stable Housing",
-    "lastVerified": "2026-09-01",
-    "section": "Special Education, Student Rights & Targeted School Support",
+    "lastVerified": "2026-09-04",
+    "section": "Student access, language & school stability",
     "situations": [
-      "I need to enroll my child in school",
-      "I need school district information",
-      "My child is homeless, couch surfing or moving between homes"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -1212,10 +1199,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "summer school"
     ],
     "sourceName": "SOESD — Migrant Education",
-    "lastVerified": "2026-09-01",
-    "section": "Special Education, Student Rights & Targeted School Support",
+    "lastVerified": "2026-09-04",
+    "section": "Student access, language & school stability",
     "situations": [
-      "My child needs tutoring or homework help"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -1246,9 +1234,12 @@ window.FLOURISH_EDUCATION_DATA = [
       "Native students"
     ],
     "sourceName": "SOESD — Title VI Indian Education",
-    "lastVerified": "2026-09-01",
-    "section": "Special Education, Student Rights & Targeted School Support",
-    "situations": []
+    "lastVerified": "2026-09-04",
+    "section": "Student access, language & school stability",
+    "situations": [
+      "I need school or education help",
+      "I need help finding the right education program"
+    ]
   },
   {
     "id": "soesd-english-learners",
@@ -1279,11 +1270,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "newcomer"
     ],
     "sourceName": "SOESD — English Learner Support",
-    "lastVerified": "2026-09-01",
-    "section": "Special Education, Student Rights & Targeted School Support",
+    "lastVerified": "2026-09-04",
+    "section": "Student access, language & school stability",
     "situations": [
-      "My child needs English learner or multilingual support",
-      "I need language help at school"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -1318,11 +1309,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "RCC"
     ],
     "sourceName": "Rogue Community College — GED & Pre-College Education",
-    "lastVerified": "2026-09-01",
-    "section": "GED, College, Dual Credit & Education Planning",
+    "lastVerified": "2026-09-04",
+    "section": "GED, college & postsecondary pathways",
     "situations": [
-      "I need a GED or adult education",
-      "I need help with college, FAFSA or education planning"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -1354,10 +1345,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "college credit"
     ],
     "sourceName": "Rogue Community College — College Now / Early College",
-    "lastVerified": "2026-09-01",
-    "section": "GED, College, Dual Credit & Education Planning",
+    "lastVerified": "2026-09-04",
+    "section": "GED, college & postsecondary pathways",
     "situations": [
-      "I need help with college, FAFSA or education planning"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -1393,10 +1385,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "college application"
     ],
     "sourceName": "RCC TRIO Educational Opportunity Center",
-    "lastVerified": "2026-09-01",
-    "section": "GED, College, Dual Credit & Education Planning",
+    "lastVerified": "2026-09-04",
+    "section": "GED, college & postsecondary pathways",
     "situations": [
-      "I need help with college, FAFSA or education planning"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -1429,11 +1422,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "Project Youth+"
     ],
     "sourceName": "Project Youth+",
-    "lastVerified": "2026-09-01",
-    "section": "GED, College, Dual Credit & Education Planning",
+    "lastVerified": "2026-09-04",
+    "section": "GED, college & postsecondary pathways",
     "situations": [
-      "I need help with college, FAFSA or education planning",
-      "My child or teen needs a mentor"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -1467,10 +1460,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "STEAM"
     ],
     "sourceName": "SOESD — STEAM & Lending Resources",
-    "lastVerified": "2026-09-01",
-    "section": "Tutoring, Mentoring, Libraries & Learning",
+    "lastVerified": "2026-09-04",
+    "section": "Tutoring, mentoring & learning resources",
     "situations": [
-      "I want STEM or STEAM learning opportunities"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -1505,11 +1499,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "Ashland"
     ],
     "sourceName": "Jackson County Library Services — Learning Resources",
-    "lastVerified": "2026-09-01",
-    "section": "Tutoring, Mentoring, Libraries & Learning",
+    "lastVerified": "2026-09-04",
+    "section": "Tutoring, mentoring & learning resources",
     "situations": [
-      "My child needs tutoring or homework help",
-      "I need homeschool information"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -1545,10 +1539,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "Wolf Creek"
     ],
     "sourceName": "Josephine Community Library — Learning Resources",
-    "lastVerified": "2026-09-01",
-    "section": "Tutoring, Mentoring, Libraries & Learning",
+    "lastVerified": "2026-09-04",
+    "section": "Tutoring, mentoring & learning resources",
     "situations": [
-      "My child needs tutoring or homework help"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -1580,10 +1575,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "Rogue Valley"
     ],
     "sourceName": "Rogue Valley Mentoring",
-    "lastVerified": "2026-09-01",
-    "section": "Tutoring, Mentoring, Libraries & Learning",
+    "lastVerified": "2026-09-04",
+    "section": "Tutoring, mentoring & learning resources",
     "situations": [
-      "My child or teen needs a mentor"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -1615,14 +1611,12 @@ window.FLOURISH_EDUCATION_DATA = [
       "homework help"
     ],
     "sourceName": "Logos Public Charter — Structured Tutoring",
-    "lastVerified": "2026-09-01",
+    "lastVerified": "2026-09-04",
     "scheduleChangesOften": true,
-    "section": "Alternative, Charter & School Choice",
+    "section": "Charter, alternative & flexible school options",
     "situations": [
-      "I need to enroll my child in school",
-      "I need school district information",
-      "My child needs tutoring or homework help",
-      "I need a different school option"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -1655,10 +1649,11 @@ window.FLOURISH_EDUCATION_DATA = [
       "Family Connection"
     ],
     "sourceName": "The Family Connection — Parenting & Early Learning",
-    "lastVerified": "2026-09-01",
-    "section": "Early Learning & Family Education",
+    "lastVerified": "2026-09-04",
+    "section": "Family education navigation",
     "situations": [
-      "I need early learning or parent-child learning support"
+      "I need school or education help",
+      "I need help finding the right education program"
     ]
   },
   {
@@ -1690,8 +1685,49 @@ window.FLOURISH_EDUCATION_DATA = [
       "school support"
     ],
     "sourceName": "Southern Oregon Success — Family & Youth Navigation",
-    "lastVerified": "2026-09-01",
-    "section": "Early Learning & Family Education",
-    "situations": []
+    "lastVerified": "2026-09-04",
+    "section": "Family education navigation",
+    "situations": [
+      "I need school or education help",
+      "I need help finding the right education program"
+    ]
+  },
+  {
+    "id": "soesd-cte-school",
+    "category": "education",
+    "section": "Career & technical education in school",
+    "name": "Southern Oregon ESD — Career & Technical Education",
+    "helps": "Career-connected learning, technical skill development, industry credentials and work-based learning for students across Southern Oregon schools.",
+    "situations": [
+      "My student wants career and technical education",
+      "My student wants work-based learning or industry credentials"
+    ],
+    "audience": [
+      "Middle School Students",
+      "High School Students",
+      "Families",
+      "Educators"
+    ],
+    "counties": [
+      "Jackson",
+      "Josephine"
+    ],
+    "cost": "School/program-specific",
+    "phone": "541-776-8590",
+    "address": "Jackson + Josephine County school districts",
+    "website": "https://www.soesd.k12.or.us/cte-new/",
+    "labels": [
+      "CTE",
+      "STUDENTS",
+      "CAREER PATHWAYS"
+    ],
+    "keywords": [
+      "CTE",
+      "career technical education",
+      "high school trades",
+      "credentials",
+      "work based learning"
+    ],
+    "lastVerified": "2026-09-04"
   }
 ];
