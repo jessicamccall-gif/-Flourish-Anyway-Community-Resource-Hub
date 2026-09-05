@@ -15,6 +15,7 @@ window.FLOURISH_HELP_PLAN_CATEGORIES = {
   "language": "Language & Immigration Navigation",
   "community": "Community & Events"
 };
+
 window.FLOURISH_LIFE_PLANS = [
   {
     "id": "safety",
@@ -543,35 +544,7 @@ window.FLOURISH_LIFE_PLANS = [
         "href": "tel:211"
       }
     ],
-    "script": "“I need food today in [city]. What pantry or meal is open now, and what do I need to bring?”",
-    "resourcePack": {
-      "title": "Calls & places to check",
-      "contacts": [
-        {
-          "name": "211info",
-          "phone": "211",
-          "url": "https://www.211info.org/",
-          "why": "Ask what food sites are open today."
-        },
-        {
-          "name": "ACCESS",
-          "url": "https://accesshelps.org/",
-          "why": "Check current Jackson County food options."
-        }
-      ],
-      "bring": [
-        "ID if you have it",
-        "Bags or boxes if available"
-      ],
-      "ask": [
-        "Are you open today?",
-        "Can I come without an appointment?",
-        "How often can I use this pantry?"
-      ],
-      "backup": [
-        "Call 211 for another pantry open today."
-      ]
-    }
+    "script": "“I need food today in [city]. What pantry or meal is open now, and what do I need to bring?”"
   },
   {
     "id": "housing-now",
@@ -720,38 +693,7 @@ window.FLOURISH_LIFE_PLANS = [
     ],
     "category": "housing",
     "quick": [],
-    "script": "",
-    "resourcePack": {
-      "title": "Calls & places to check",
-      "contacts": [
-        {
-          "name": "211info",
-          "phone": "211",
-          "url": "https://www.211info.org/",
-          "why": "Ask for current rent and utility programs."
-        },
-        {
-          "name": "ACCESS",
-          "url": "https://accesshelps.org/",
-          "why": "Check Jackson County housing and utility help."
-        }
-      ],
-      "bring": [
-        "Lease",
-        "Eviction or shutoff notice",
-        "Utility bill/account number",
-        "Income information if requested"
-      ],
-      "ask": [
-        "Is funding open now?",
-        "What documents do I need?",
-        "Who should I call next if you cannot help?"
-      ],
-      "backup": [
-        "Ask landlord/utility about a payment arrangement.",
-        "Search Housing in the Hub."
-      ]
-    }
+    "script": ""
   },
   {
     "id": "no-car",
@@ -804,97 +746,107 @@ window.FLOURISH_LIFE_PLANS = [
     "id": "license-back",
     "eyebrow": "HELP PLAN",
     "title": "I lost my license / I need it back",
-    "intro": "Do not start by paying random tickets. First get the complete list of holds and requirements.",
+    "intro": "Do not start by paying random tickets. First find out every reason your driving privilege is suspended or revoked, then clear the requirements in the right order.",
     "checks": [
       {
         "id": "license-back-0",
-        "title": "Call Oregon DMV",
-        "text": "Ask for ALL active suspensions, revocations, holds and reinstatement requirements."
+        "title": "Get your complete DMV reinstatement list",
+        "text": "Call Oregon DMV first. Ask for every active suspension, revocation, court or agency hold, reinstatement requirement and the status of your driving privilege.",
+        "contacts": [
+          {"label":"DMV Customer Assistance / reinstatement","value":"503-945-5000","href":"tel:5039455000"},
+          {"label":"Medford DMV call center","value":"541-776-6025","href":"tel:5417766025"},
+          {"label":"Driver Sanctions Unit","value":"503-945-5037","href":"tel:5039455037"}
+        ],
+        "script": "“Can you tell me every active suspension, revocation, hold and reinstatement requirement on my record? I want the complete list before I pay anything.”",
+        "note": "Oregon DMV does not publish a general reinstatement email. DMV directs online questions through DMV2U → Ask DMV a Question."
       },
       {
         "id": "license-back-1",
-        "title": "Write every item down",
-        "text": "Court/agency ___  case ___  amount ___  requirement ___."
+        "title": "Write down every item DMV gives you",
+        "text": "Make one list. Do not rely on memory and do not pay something just because it is the oldest ticket.",
+        "worksheet": [
+          "Court or agency: ____________________",
+          "Case / docket number: ____________________",
+          "Amount owed, if any: ____________________",
+          "What must be done: ____________________",
+          "SR-22 required?  Yes / No / Ask DMV",
+          "IID or treatment required?  Yes / No / Ask DMV",
+          "Waiting period or other requirement: ____________________"
+        ]
       },
       {
         "id": "license-back-2",
-        "title": "Ask about a hardship permit",
-        "text": "Ask only if you need limited driving for a qualifying reason."
+        "title": "Clear each court or agency hold",
+        "text": "Use the exact court or agency DMV named. Ask what must be completed and whether they must send a clearance to DMV. A payment by itself does not always clear a suspension.",
+        "contacts": [
+          {"label":"Jackson County Circuit Court","value":"541-776-7171","href":"tel:5417767171"},
+          {"label":"Jackson County Circuit Court email","value":"JAC.Court.Info@ojd.state.or.us","href":"mailto:JAC.Court.Info@ojd.state.or.us"},
+          {"label":"Josephine County Circuit Court","value":"541-476-2309","href":"tel:5414762309"}
+        ],
+        "script": "“DMV shows a hold or suspension connected to this court. My case or docket number is ____. What exactly must I do for the court to clear it with DMV, and how will I know the clearance was sent?”",
+        "note": "Only use these county circuit-court contacts if DMV says your case is there. Municipal and justice courts have their own contact information."
       },
       {
         "id": "license-back-3",
-        "title": "Call each court/agency on the list",
-        "text": "Ask what must be completed before DMV can clear that item."
+        "title": "If you need to drive before full reinstatement, ask about a hardship permit",
+        "text": "A hardship permit is available for some suspensions, not all. Ask DMV if you qualify before paying or gathering documents.",
+        "contacts": [
+          {"label":"DMV hardship eligibility","value":"503-945-5000","href":"tel:5039455000"}
+        ],
+        "worksheet": [
+          "Reason I need limited driving: work / job search / treatment / medical / necessary services",
+          "DMV says I qualify?  Yes / No",
+          "Waiting period? ____________________",
+          "Documents DMV says I need: ____________________"
+        ],
+        "note": "Current Oregon hardship fees are $75 for the application plus the $85 reinstatement fee. An Oregon SR-22 is required for a hardship permit. Other documents may also be required."
       },
       {
         "id": "license-back-4",
-        "title": "Ask about court-debt reinstatement options",
-        "text": "Do not assume every debt qualifies."
+        "title": "Complete only the requirements that apply to your record",
+        "text": "Your list may include an SR-22, IID, DUII treatment, court clearance, child-support clearance, testing, a waiting period or another DMV requirement. Do not assume another person’s reinstatement steps are yours.",
+        "worksheet": [
+          "☐ Court / agency clearance",
+          "☐ SR-22 filed with Oregon DMV",
+          "☐ IID requirement handled",
+          "☐ Treatment / evaluation requirement handled",
+          "☐ Child-support requirement handled",
+          "☐ Testing / medical requirement handled",
+          "☐ Waiting period completed",
+          "☐ Other: ____________________"
+        ],
+        "note": "If the suspension is for failure to pay child support, the Oregon Child Support Program must notify DMV to reinstate the license."
       },
       {
         "id": "license-back-5",
-        "title": "Complete only the requirements that apply to you",
-        "text": "Examples may include SR-22, fees, treatment or court requirements."
+        "title": "Pay the DMV reinstatement fee when DMV says you are eligible",
+        "text": "The standard Oregon DMV reinstatement fee is currently $85. Paying the fee does not erase other holds or requirements, so make sure the required clearances are recorded first.",
+        "contacts": [
+          {"label":"DMV Customer Assistance","value":"503-945-5000","href":"tel:5039455000"}
+        ],
+        "script": "“Before I pay the reinstatement fee, does my record show that every required clearance has been received and that I am eligible to reinstate?”",
+        "note": "DMV says a standing of Eligible to Reinstate means required court clearances have been recorded. The $85 fee can be paid through DMV2U."
       },
       {
         "id": "license-back-6",
-        "title": "Call DMV again before driving",
-        "text": "Ask: “Is my driving privilege valid right now?”"
+        "title": "Verify your driving privilege before you drive",
+        "text": "Do not drive just because you paid a court, filed an SR-22 or paid the reinstatement fee. Check your DMV standing and confirm that your driving privilege is valid.",
+        "contacts": [
+          {"label":"DMV Customer Assistance","value":"503-945-5000","href":"tel:5039455000"},
+          {"label":"Medford DMV call center","value":"541-776-6025","href":"tel:5417766025"}
+        ],
+        "script": "“I completed my reinstatement requirements. Is my Oregon driving privilege valid right now? Is there anything still preventing me from legally driving?”",
+        "worksheet": [
+          "DMV status: ____________________",
+          "Date checked: ____________________",
+          "DMV says I may legally drive now?  Yes / No"
+        ]
       }
     ],
-    "actions": [
-      {
-        "href": "tel:5039455000",
-        "label": "Call Oregon DMV"
-      },
-      {
-        "href": "https://www.oregon.gov/odot/dmv/pages/driverid/suspreasons.aspx",
-        "label": "DMV reinstatement ↗"
-      },
-      {
-        "href": "category.html?cat=transportation",
-        "label": "Transportation directory →"
-      }
-    ],
+    "actions": [],
     "category": "transportation",
-    "quick": [
-      {
-        "label": "Oregon DMV",
-        "value": "503-945-5000",
-        "href": "tel:5039455000"
-      }
-    ],
-    "script": "“Can you tell me every active suspension, revocation, hold and reinstatement requirement on my record? I want the complete list before I pay anything.”",
-    "resourcePack": {
-      "title": "Calls & places to check",
-      "contacts": [
-        {
-          "name": "Oregon DMV",
-          "url": "https://www.oregon.gov/odot/dmv/",
-          "why": "Confirm every hold and reinstatement requirement."
-        },
-        {
-          "name": "Golden Rule Reentry",
-          "url": "https://www.goldenrulereentry.org/",
-          "why": "Ask about local license-restoration navigation."
-        }
-      ],
-      "bring": [
-        "License/ID number",
-        "Court or citation numbers",
-        "DMV letters",
-        "SR-22 information if applicable"
-      ],
-      "ask": [
-        "What exactly blocks reinstatement?",
-        "Which item comes first?",
-        "Do I need SR-22?",
-        "Do I need court proof?"
-      ],
-      "backup": [
-        "Write down every hold before paying anything."
-      ]
-    }
+    "quick": [],
+    "script": ""
   },
   {
     "id": "lost-car",
@@ -1471,36 +1423,7 @@ window.FLOURISH_LIFE_PLANS = [
         "label": "Browse full local directory →"
       }
     ],
-    "category": "kids",
-    "resourcePack": {
-      "title": "Who to contact & what to save",
-      "contacts": [
-        {
-          "name": "Your child's school or district",
-          "why": "Start with teacher, counselor, principal or district office."
-        },
-        {
-          "name": "Oregon Department of Education",
-          "url": "https://www.oregon.gov/ode/",
-          "why": "Official student-rights and special-education information."
-        }
-      ],
-      "bring": [
-        "School notices/emails",
-        "Attendance or grade information",
-        "IEP/504/evaluation documents if relevant"
-      ],
-      "ask": [
-        "Who is the right person?",
-        "What is the next written step?",
-        "What timeline applies?",
-        "Can you send that in writing?"
-      ],
-      "backup": [
-        "Use School & Education resources in the Hub.",
-        "For IEP/disability rights also check Legal."
-      ]
-    }
+    "category": "kids"
   },
   {
     "id": "ohp",
@@ -2557,37 +2480,7 @@ window.FLOURISH_LIFE_PLANS = [
       }
     ],
     "quick": [],
-    "script": "",
-    "resourcePack": {
-      "title": "Calls & places to check",
-      "contacts": [
-        {
-          "name": "VA",
-          "phone": "800-698-2411",
-          "url": "https://www.va.gov/",
-          "why": "General VA help and routing."
-        },
-        {
-          "name": "Oregon Department of Veterans' Affairs",
-          "url": "https://www.oregon.gov/odva/",
-          "why": "Find accredited county veteran service help."
-        }
-      ],
-      "bring": [
-        "DD214/service documents if available — do not delay calling if missing",
-        "VA letters or claim numbers",
-        "Short list of needs"
-      ],
-      "ask": [
-        "Which benefit fits this need?",
-        "Can a VSO help file it?",
-        "What evidence is needed?",
-        "Are caregiver/housing/transportation benefits relevant?"
-      ],
-      "backup": [
-        "Also use Housing, Transportation, Legal or Health in the Hub."
-      ]
-    }
+    "script": ""
   },
   {
     "id": "veteran-housing-work",
