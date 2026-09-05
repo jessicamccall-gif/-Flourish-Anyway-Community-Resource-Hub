@@ -5,133 +5,119 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Help Me Make a Plan | Flourish Anyway</title>
 <style>
-*{box-sizing:border-box}
-:root{--pink:#d23b67;--yellow:#f6d86f;--cream:#fff8d8;--green:#4e8f3a;--ink:#111}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:var(--ink);line-height:1.45}
-.wrap{width:min(900px,calc(100% - 28px));margin:auto}
-header{background:var(--yellow);border-bottom:4px solid var(--ink);padding:22px 0}
-.top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
-.brand,.home{border:3px solid var(--ink);border-radius:999px;padding:8px 13px;text-decoration:none;font-weight:900;color:var(--ink);background:#fff}
-.brand{background:var(--pink);color:#fff;box-shadow:4px 4px var(--ink)}
-h1{font-size:clamp(2.15rem,8vw,4.25rem);line-height:.97;margin:24px 0 8px}
-header p{font-size:1.05rem;font-weight:700;max-width:720px}
-main{padding:22px 0 52px}
-.panel,.guide{background:#fff;border:3px solid var(--ink);border-radius:22px;padding:18px;margin:16px 0;box-shadow:5px 5px rgba(0,0,0,.10)}
-.eyebrow{font-size:.8rem;font-weight:900;letter-spacing:.08em;color:var(--pink);text-transform:uppercase}
-.guide h2,.panel h2{font-size:clamp(1.7rem,6vw,2.45rem);line-height:1.1;margin:7px 0 8px}
-.intro{font-size:1.05rem;margin:0 0 14px}
-.category-block{margin:20px 0}
-.category-title{background:var(--yellow);border:3px solid var(--ink);border-radius:18px;padding:13px 15px;font-weight:900;font-size:1.25rem;box-shadow:3px 3px var(--ink);margin-bottom:12px}
-.chooser{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px}
-.choice{display:block;background:#fff;border:3px solid var(--ink);border-radius:15px;padding:13px;text-decoration:none;color:var(--ink);font-weight:900;box-shadow:3px 3px var(--ink)}
-.choice:active{transform:translate(2px,2px);box-shadow:1px 1px var(--ink)}
-.searchbox{width:100%;border:3px solid var(--ink);border-radius:14px;padding:13px 14px;font:inherit;font-size:1rem;margin:10px 0 4px}
-.quick{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
-.quick a,.quick span{display:inline-flex;gap:7px;align-items:center;border:3px solid var(--ink);border-radius:13px;padding:9px 11px;background:var(--green);color:#fff;text-decoration:none;font-weight:900}
-.script{background:var(--yellow);border:3px solid var(--ink);border-radius:15px;padding:13px 14px;margin:12px 0}
-.script strong{display:block;margin-bottom:5px}
-.checks{display:grid;gap:10px;margin-top:14px}
-.check{display:flex;gap:12px;align-items:flex-start;border:3px solid var(--ink);border-radius:15px;padding:13px;background:#fffdf3}
-.check input{width:24px;height:24px;flex:0 0 auto;margin-top:2px}
-.check-title{font-weight:900;font-size:1.05rem;display:block}
-.check-text{display:block;margin-top:3px}
-.check.done{opacity:.72}
-.step-card{border:3px solid var(--ink);border-radius:20px;background:#fff;margin:18px 0;overflow:hidden;box-shadow:4px 4px rgba(0,0,0,.08)}
-.step-head{display:flex;gap:12px;align-items:flex-start;padding:17px 17px 10px}
-.step-head input{width:26px;height:26px;flex:0 0 auto;margin-top:4px}
-.step-number{font-size:1.55rem;font-weight:900;line-height:1.15}
-.step-title{font-size:1.3rem;font-weight:900;line-height:1.2}
-.step-body{padding:0 17px 18px 55px}
-.step-text{font-size:1.03rem;margin:0 0 12px}
-.step-contact-list{display:grid;gap:8px;margin:10px 0 13px}
-.step-contact{display:block;border:2px solid var(--ink);border-radius:12px;padding:10px 12px;background:#fffdf3;color:var(--ink);text-decoration:none;font-weight:800}
-.step-contact[href^="tel:"]::before{content:"☎ ";font-weight:900}
-.step-contact[href^="mailto:"]::before{content:"✉ ";font-weight:900}
-.step-contact[href^="http"]::before{content:"↗ ";font-weight:900}
-.step-script,.step-note,.step-worksheet{border:3px solid var(--ink);border-radius:14px;padding:12px 13px;margin:11px 0;background:var(--yellow)}
-.step-note{background:#fff8d8}
-.step-worksheet{background:#fffdf3}
-.step-script strong,.step-note strong,.step-worksheet strong{display:block;margin-bottom:5px}
-.step-worksheet div{padding:4px 0;border-bottom:1px dashed #8b806b}
-.step-worksheet div:last-child{border-bottom:0}
-.step-card.done{opacity:.72}
-.step-card.done .step-title{text-decoration:line-through}
-.progress{font-weight:900;margin:7px 0 14px}
-.start-card{background:#fff;border:3px solid var(--ink);border-radius:22px;padding:18px;margin:0 0 18px;box-shadow:5px 5px rgba(0,0,0,.10)}
-.start-card h2{font-size:clamp(1.7rem,6vw,2.45rem);line-height:1.1;margin:7px 0 8px}
-.plan-actions{display:flex;gap:9px;flex-wrap:wrap;margin:16px 0}
-.plan-actions a{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;font-weight:900;border:3px solid var(--ink);border-radius:12px;padding:10px 12px}
-@media(max-width:560px){.step-body{padding:0 14px 16px}.step-head{padding:15px 14px 9px}.step-number{font-size:1.35rem}.step-title{font-size:1.18rem}.step-contact{font-size:.98rem;overflow-wrap:anywhere}}
-.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
-.actions a{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;font-weight:900;border:3px solid var(--ink);border-radius:12px;padding:10px 12px}
-.plan-tools{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}
-.toolbtn,.backbtn{appearance:none;border:3px solid var(--ink);border-radius:12px;padding:10px 12px;background:#fff;color:var(--ink);font:inherit;font-weight:900;text-decoration:none;cursor:pointer}
-.toolbtn.primary{background:var(--pink);color:#fff}
-.saved-note{font-size:.92rem;font-weight:800;margin:4px 0 14px}
-.notice{font-size:.88rem;color:#544d47;border-top:2px solid var(--ink);padding-top:17px;margin-top:28px}
-.hidden{display:none!important}
-@media(max-width:560px){.wrap{width:min(100% - 20px,900px)}.panel,.guide{padding:15px;border-radius:19px}.chooser{grid-template-columns:1fr}.toolbtn,.backbtn{flex:1 1 auto;text-align:center}}
-@media print{header,.plan-tools,.notice{display:none!important}body{background:#fff}.guide{box-shadow:none;border:1px solid #777}.actions a{color:#111;background:#fff;border:1px solid #777}.wrap{width:100%}}
+*{box-sizing:border-box}:root{--p:#ce3c5f;--y:#fad569;--c:#FDF8F5;--pl:#fce8ed;--g:#4e8f3a;--d:#2C1A22;--w:#fff}
+body{margin:0;font-family:Arial,sans-serif;background:var(--c);color:var(--d);line-height:1.5}.wrap{width:min(920px,calc(100% - 28px));margin:auto}
+header{background:var(--y);border-bottom:4px solid var(--d);padding:22px 0}.top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+.brand,.home{border:3px solid var(--d);border-radius:999px;padding:7px 12px;text-decoration:none;font-weight:900;color:var(--d);background:#fff}.brand{background:var(--p);color:#fff;box-shadow:4px 4px var(--d)}
+h1{font-size:clamp(2.1rem,8vw,4.2rem);line-height:.96;margin:24px 0 8px}main{padding:24px 0 52px}
+.panel,.guide{background:#fff;border:3px solid var(--d);border-radius:20px;padding:18px;margin:16px 0;box-shadow:4px 4px rgba(44,26,34,.10)}
+.eyebrow{font-size:.76rem;font-weight:900;letter-spacing:.08em;color:var(--p);text-transform:uppercase}.small{font-size:.9rem;color:#65565c}
+.search{width:100%;min-height:48px;border:2px solid var(--d);border-radius:12px;padding:10px 12px;font:inherit;background:#fff;margin:10px 0 14px}
+.group{margin:20px 0}.group h3{margin:0 0 9px;background:var(--y);border:2px solid var(--d);border-radius:12px;padding:9px 11px}.chooser{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:10px}
+.choice{display:block;background:#fff;border:2px solid var(--d);border-radius:14px;padding:13px;text-decoration:none;color:var(--d);font-weight:900;min-height:62px}.choice:hover{background:var(--pl)}
+.backrow{margin-bottom:10px}.progressrow{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:10px 0 8px;font-weight:900}.bar{height:12px;background:#eee;border:2px solid var(--d);border-radius:999px;overflow:hidden}.bar>div{height:100%;background:var(--p);width:0}
+.stepcard{background:#fff;border:3px solid var(--d);border-radius:20px;padding:20px;margin:16px 0;box-shadow:5px 5px rgba(44,26,34,.10)}.stepnum{font-size:.8rem;font-weight:900;color:var(--p);letter-spacing:.06em}.stepcard h2{margin:5px 0 8px;font-size:1.5rem}.steptext{margin:0 0 16px}
+.checkline{display:flex;gap:12px;align-items:flex-start;background:var(--pl);border:2px solid var(--d);border-radius:14px;padding:13px;font-weight:900}.checkline input{width:25px;height:25px;flex:0 0 auto;accent-color:var(--p)}.checkline.done{opacity:.68;text-decoration:line-through}
+.navrow{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:15px}.btn{border:2px solid var(--d);border-radius:11px;padding:10px 13px;background:#fff;color:var(--d);font-weight:900;text-decoration:none;cursor:pointer;font:inherit}.btn.primary{background:var(--d);color:#fff}.btn.pink{background:var(--p);color:#fff}.btn:disabled{opacity:.4;cursor:default}
+.summary{background:#fff;border:3px solid var(--d);border-radius:18px;padding:16px;margin-top:18px}.summary h3{margin:0 0 10px}.summary .item{display:flex;gap:9px;padding:8px 0;border-bottom:1px solid #ddd}.summary .item:last-child{border-bottom:0}.summary .mark{font-weight:900;min-width:22px}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.actions a{display:inline-block;background:var(--d);color:#fff;text-decoration:none;border:2px solid var(--d);border-radius:10px;padding:9px 11px;font-weight:900}.actions a.call{background:var(--g)}
+.quick{display:grid;gap:8px;margin-top:14px}.quickcard{background:var(--y);border:2px solid var(--d);border-radius:12px;padding:11px}.quickcard a{font-weight:900;color:var(--d)}
+.script{background:#fff8d8;border-left:6px solid var(--p);padding:12px;border-radius:10px;margin-top:14px}.notice{font-size:.84rem;color:#65565c;margin-top:24px}.tools{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+.complete{background:var(--y);border:3px solid var(--d);border-radius:18px;padding:18px;margin-top:18px}.complete h2{margin:0 0 8px}
+@media(max-width:680px){.chooser{grid-template-columns:1fr}.navrow .btn{flex:1;text-align:center}.progressrow{align-items:flex-start;flex-direction:column}}
+@media print{header,.backrow,.navrow,.tools,.notice,.search{display:none!important}body{background:#fff}.panel,.stepcard,.summary,.complete{box-shadow:none;border:1px solid #777}.wrap{width:100%}.stepcard{display:block!important}}
+
+.stepblock{margin:22px 0 0;padding-top:18px;border-top:2px solid #eee5df}.stepblock h3{margin:0 0 12px;font-size:1.12rem}.worksheet{background:#fffaf0;border:2px solid #ead9a2;border-radius:18px;padding:16px}.worksheet div{padding:9px 0;border-bottom:1px solid #eadfc5;line-height:1.45}.worksheet div:last-child{border-bottom:0}.worksheet .fieldrow{padding:10px 0}.worksheet .fieldprompt{font-weight:800;margin-bottom:7px}.worksheet input[type="text"],.worksheet textarea{width:100%;box-sizing:border-box;border:2px solid #bcae91;border-radius:10px;background:#fff;padding:10px 11px;font:inherit;color:var(--d);resize:vertical}.worksheet textarea{min-height:72px}.worksheet .savedanswer{font-size:.78rem;font-weight:800;color:#6f5d64;margin-top:5px}@media print{.worksheet input[type="text"],.worksheet textarea{border:1px solid #777;background:#fff;color:#000;overflow:visible}.worksheet .savedanswer{display:none}}.stepnote{margin:18px 0 0;padding:14px 16px;background:#fff6cf;border-left:6px solid #d83d67;border-radius:12px;line-height:1.5}.stepcard .quick{display:grid;gap:10px}.stepcard .quickcard{background:#ffd96f;border:2px solid #332028;border-radius:16px;padding:14px 16px}.stepcard .quickcard a{color:#332028;font-weight:800}.stepcard .script{margin:0;background:#fff8d9;border-left:7px solid #d83d67;border-radius:14px;padding:16px;line-height:1.55}
 </style>
 </head>
 <body>
-<header><div class="wrap">
-<div class="top"><a class="brand" href="index.html">✿ FLOURISH ANYWAY</a><a class="home" href="index.html">← Home</a></div>
-<h1>HELP ME MAKE A PLAN</h1>
-<p id="subhead">Pick the situation that fits. One plan at a time. Your checks save on this device.</p>
-</div></header>
-<main><div class="wrap" id="app"><div class="panel"><strong>Loading Help Plans…</strong></div></div></main>
-<script src="life-plans-data.js?v=20260904"></script>
+<header><div class="wrap"><div class="top"><a class="brand" href="https://weflourishanyway.org/" target="_blank" rel="noopener">✿ FLOURISH ANYWAY ↗</a><a class="home" href="index.html">← Resource Hub</a></div><h1>HELP ME MAKE A PLAN</h1><p id="subhead">Choose one situation. We will walk through it one step at a time.</p></div></header>
+<main><div class="wrap" id="app"><div class="panel">Loading Help Plans…</div></div></main>
+<script src="life-plans-data.js?v=20260905-fillable1"></script>
 <script>
 (function(){
-const app=document.getElementById('app'), plans=window.FLOURISH_LIFE_PLANS||[], cats=window.FLOURISH_HELP_PLAN_CATEGORIES||{};
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function disclaimer(){return `<div class="notice"><strong>Community information only.</strong> Flourish Anyway provides navigation and community-resource information, not legal, medical, financial or emergency advice. Eligibility, costs, availability, schedules, forms and program rules can change; confirm important details directly with the provider or official agency. For immediate danger call 911; for suicide or mental-health crisis support call or text 988.<br><br><strong>Missing or outdated resource?</strong> <a href="https://weflourishanyway.org/" target="_blank" rel="noopener">Contact Flourish Anyway</a>.</div>`}
-function bindChecks(root){
-const update=()=>{const boxes=[...root.querySelectorAll('[data-check]')],done=boxes.filter(x=>x.checked).length;const p=root.querySelector('[data-progress]');if(p)p.textContent=done+' of '+boxes.length+' steps checked';};
-root.querySelectorAll('[data-check]').forEach(x=>{const k='flourish-plan-'+x.dataset.check;x.checked=localStorage.getItem(k)==='1';x.closest('.step-card')?.classList.toggle('done',x.checked);x.onchange=()=>{localStorage.setItem(k,x.checked?'1':'0');x.closest('.step-card')?.classList.toggle('done',x.checked);update()}});
-update();
-}
-function planText(p,root){const lines=[p.title,'',p.intro,''];root.querySelectorAll('.check').forEach(row=>{const box=row.querySelector('input'),t=row.querySelector('.check-title')?.textContent||'',d=row.querySelector('.check-text')?.textContent||'';lines.push((box?.checked?'☑':'☐')+' '+t+(d?' — '+d:''))});if(p.script)lines.push('','WHAT TO SAY: '+p.script);lines.push('','Flourish Anyway Help Plan',location.href);return lines.join('\n')}
-function tools(p,root){const bar=document.createElement('div');bar.className='plan-tools';bar.innerHTML=`<a class="backbtn" href="life-plans.html">← All Help Plans</a><button class="toolbtn primary" type="button" data-print>Print / Save PDF</button><button class="toolbtn" type="button" data-share>Share</button><button class="toolbtn" type="button" data-email>Email</button><button class="toolbtn" type="button" data-clear>Clear checks</button>`;root.prepend(bar);
-bar.querySelector('[data-print]').onclick=()=>window.print();
-bar.querySelector('[data-share]').onclick=async()=>{const data={title:'Flourish Anyway Help Plan: '+p.title,text:planText(p,root),url:location.href};if(navigator.share){try{await navigator.share(data)}catch(e){}}else{try{await navigator.clipboard.writeText(data.text+'\n'+data.url);alert('Plan copied.')}catch(e){alert('Use your browser Share menu to share this plan.')}}};
-bar.querySelector('[data-email]').onclick=()=>{location.href='mailto:?subject='+encodeURIComponent('My Flourish Help Plan: '+p.title)+'&body='+encodeURIComponent(planText(p,root))};
-bar.querySelector('[data-clear]').onclick=()=>{if(!confirm('Clear the checked steps in this plan?'))return;root.querySelectorAll('[data-check]').forEach(x=>{x.checked=false;localStorage.removeItem('flourish-plan-'+x.dataset.check);x.closest('.step-card')?.classList.remove('done')})}}
-function contactHTML(c){
-const href=c.href||'';
-const label=esc(c.label||'Contact');
-const value=esc(c.value||'');
-if(href)return `<a class="step-contact" href="${esc(href)}" ${/^https?:/.test(href)?'target="_blank" rel="noopener"':''}><strong>${label}</strong>${value?`: ${value}`:''}</a>`;
-return `<div class="step-contact"><strong>${label}</strong>${value?`: ${value}`:''}</div>`;
-}
-function stepHTML(c,i){
-const contacts=(c.contacts||[]).map(contactHTML).join('');
-const worksheet=(c.worksheet||[]).length?`<div class="step-worksheet"><strong>Write this down / have this ready</strong>${c.worksheet.map(x=>`<div>${esc(x)}</div>`).join('')}</div>`:'';
-const script=c.script?`<div class="step-script"><strong>Ask exactly:</strong>${esc(c.script)}</div>`:'';
-const note=c.note?`<div class="step-note"><strong>Good to know</strong>${esc(c.note)}</div>`:'';
-return `<section class="step-card">
-<label class="step-head"><input type="checkbox" data-check="${esc(c.id)}"><span><span class="step-number">${i+1}.</span> <span class="step-title">${esc(c.title||c.text)}</span></span></label>
-<div class="step-body">${c.title&&c.text?`<p class="step-text">${esc(c.text)}</p>`:''}${contacts?`<div class="step-contact-list">${contacts}</div>`:''}${script}${worksheet}${note}</div>
-</section>`;
-}
-function renderPlan(p){
-const quick=(p.quick||[]).map(q=>q.href?`<a href="${esc(q.href)}">${esc(q.label)}: ${esc(q.value)}</a>`:`<span>${esc(q.label)}: ${esc(q.value)}</span>`).join('');
-const actions=(p.actions||[]).map(a=>`<a href="${esc(a.href)}" ${/^https?:/.test(a.href)?'target="_blank" rel="noopener"':''}>${esc(a.label)}</a>`).join('');
-const steps=(p.checks||[]).map(stepHTML).join('');
-app.innerHTML=`<section class="start-card"><div class="eyebrow">START HERE</div><h2>${esc(p.title)}</h2><p class="intro">${esc(p.intro)}</p><div class="saved-note">✓ Check each step as you finish it. Your progress saves automatically on this device.</div><div class="progress" data-progress></div>${quick?`<div class="quick">${quick}</div>`:''}</section><section class="guide">${steps}${actions?`<div class="plan-actions">${actions}</div>`:''}</section>${disclaimer()}`;
-const root=app.querySelector('.guide');
-bindChecks(root);
-tools(p,root);
-document.getElementById('subhead').textContent='Clear steps, real contacts, and exactly what to ask.';
-document.title=p.title+' | Flourish Anyway';
-window.scrollTo(0,0)
-}
-function renderPicker(){document.title='Help Me Make a Plan | Flourish Anyway';document.getElementById('subhead').textContent='Pick the situation that fits. One plan at a time. Your checks save on this device.';let body=`<section class="panel"><div class="eyebrow">HELP PLANS</div><h2>What do you need help with?</h2><p>Pick one situation. You will only see that plan.</p><input id="planSearch" class="searchbox" type="search" placeholder="Search: license, food, custody, job…"></section>`;
-for(const[cid,label]of Object.entries(cats)){const items=plans.filter(p=>p.category===cid);if(!items.length)continue;body+=`<section class="category-block"><div class="category-title">${esc(label)}</div><div class="chooser">${items.map(p=>`<a class="choice" data-plan-title="${esc((p.title+' '+p.intro).toLowerCase())}" href="#${encodeURIComponent(p.id)}">${esc(p.title)}</a>`).join('')}</div></section>`}app.innerHTML=body+disclaimer();const s=document.getElementById('planSearch');s.oninput=()=>{const q=s.value.trim().toLowerCase();document.querySelectorAll('.choice').forEach(a=>a.classList.toggle('hidden',q&&!a.dataset.planTitle.includes(q)));document.querySelectorAll('.category-block').forEach(sec=>sec.classList.toggle('hidden',![...sec.querySelectorAll('.choice')].some(a=>!a.classList.contains('hidden'))))};window.scrollTo(0,0)}
-function render(){const id=decodeURIComponent(location.hash.slice(1));if(!id){renderPicker();return}const p=plans.find(x=>x.id===id);if(!p){location.hash='';return}renderPlan(p)}
-window.addEventListener('hashchange',render);render();
+ const app=document.getElementById('app');
+ const plans=window.FLOURISH_LIFE_PLANS||[];
+ const cats=window.FLOURISH_HELP_PLAN_CATEGORIES||{};
+ const esc=s=>String(s??'').replace(/[&<>\"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[c]));
+ const key=id=>'flourish-plan-'+id;
+ const isDone=id=>localStorage.getItem(key(id))==='1';
+ const setDone=(id,v)=>localStorage.setItem(key(id),v?'1':'0');
+ const answerKey=(stepId,i)=>'flourish-answer-'+plan.id+'-'+stepId+'-'+i;
+ const getAnswer=(stepId,i)=>localStorage.getItem(answerKey(stepId,i))||'';
+ const setAnswer=(stepId,i,v)=>localStorage.setItem(answerKey(stepId,i),v);
+ function disclaimer(){return `<p class="notice"><strong>Community information only.</strong> Flourish Anyway provides navigation and community-resource information, not legal, medical, financial or emergency advice. Program details can change; confirm important information with the provider or official agency. For immediate danger call 911; for suicide or mental-health crisis support call or text 988.</p>`}
+ function picker(){
+   document.getElementById('subhead').textContent='Choose the situation that fits best. You will only work on one plan at a time.';
+   const grouped={}; plans.forEach(p=>{const c=p.category||'other';(grouped[c]||(grouped[c]=[])).push(p)});
+   app.innerHTML=`<section class="panel"><div class="eyebrow">HELP PLANS</div><h2>What do you need help with?</h2><p>Pick one situation. You can stop anytime and come back later—your checked steps stay saved on this device.</p><input id="planSearch" class="search" type="search" autocomplete="off" placeholder="Search plans, like rent, school, license, recovery..."><div id="groups"></div></section>${disclaimer()}`;
+   const holder=document.getElementById('groups');
+   function draw(q=''){
+     const needle=q.trim().toLowerCase(); holder.innerHTML='';
+     Object.entries(grouped).forEach(([cid,list])=>{
+       const matches=list.filter(p=>!needle || `${p.title||''} ${p.intro||''} ${cats[cid]||cid}`.toLowerCase().includes(needle)); if(!matches.length)return;
+       const sec=document.createElement('section'); sec.className='group'; sec.innerHTML=`<h3>${esc(cats[cid]||cid)}</h3><div class="chooser"></div>`;
+       const ch=sec.querySelector('.chooser'); matches.forEach(p=>{const a=document.createElement('a');a.className='choice';a.href='#'+encodeURIComponent(p.id);const done=(p.checks||[]).filter(x=>isDone(x.id)).length,total=(p.checks||[]).length;a.innerHTML=`${esc(p.title||p.id)}${done?`<div class="small">${done} of ${total} steps checked</div>`:''}`;ch.appendChild(a)});holder.appendChild(sec);
+     });
+     if(!holder.children.length)holder.innerHTML='<div class="panel"><strong>No matching Help Plan.</strong><br>Try a shorter word.</div>';
+   }
+   document.getElementById('planSearch').addEventListener('input',e=>draw(e.target.value)); draw();
+ }
+ function planView(plan){
+   document.getElementById('subhead').textContent='One step at a time. Check it when you finish, then move forward.';
+   const checks=plan.checks||[]; let idx=0;
+   const firstOpen=checks.findIndex(c=>!isDone(c.id)); if(firstOpen>=0)idx=firstOpen; else if(checks.length)idx=checks.length-1;
+   app.innerHTML=`<div class="backrow"><a class="home" href="life-plans.html">← All Help Plans</a></div><section class="panel"><div class="eyebrow">${esc(plan.eyebrow||'HELP PLAN')}</div><h2>${esc(plan.title||'Help Plan')}</h2><p>${esc(plan.intro||'')}</p><div class="progressrow"><span id="stepLabel"></span><span id="doneLabel"></span></div><div class="bar"><div id="barFill"></div></div></section><div id="stepMount"></div><div class="tools"><button class="btn pink" id="printBtn">Print / Save PDF</button><button class="btn" id="shareBtn">Share</button><button class="btn" id="emailBtn">Email</button><button class="btn" id="clearBtn">Clear checks</button></div><div id="afterPlan"></div>${disclaimer()}`;
+   const mount=document.getElementById('stepMount'),after=document.getElementById('afterPlan');
+   function render(){
+     const done=checks.filter(c=>isDone(c.id)).length,total=checks.length;
+     document.getElementById('stepLabel').textContent=total?`Step ${idx+1} of ${total}`:'Plan overview';
+     document.getElementById('doneLabel').textContent=`${done} checked`;
+     document.getElementById('barFill').style.width=(total?Math.round(done/total*100):0)+'%';
+     if(!total){mount.innerHTML='';renderAfter(true);return}
+     const c=checks[idx],checked=isDone(c.id);
+     const contacts=(c.contacts||[]).length?`<div class="stepblock"><h3>Who to contact</h3><div class="quick">${c.contacts.map(q=>`<div class="quickcard"><strong>${esc(q.label||'Contact')}</strong><br>${q.href?`<a href="${esc(q.href)}">${esc(q.value||q.href)}</a>`:esc(q.value||'')}</div>`).join('')}</div></div>`:'';
+     const worksheet=(c.worksheet||[]).length?`<div class="stepblock"><h3>Write it down</h3><div class="worksheet">${c.worksheet.map((x,i)=>`<div class="fieldrow"><div class="fieldprompt">${esc(x)}</div><textarea data-answer-step="${esc(c.id)}" data-answer-index="${i}" aria-label="${esc(x)}">${esc(getAnswer(c.id,i))}</textarea><div class="savedanswer">Saved automatically on this device</div></div>`).join('')}</div></div>`:'';
+     const say=c.script?`<div class="stepblock"><h3>What to say</h3><div class="script">${esc(c.script)}</div></div>`:'';
+     const note=c.note?`<div class="stepnote">${esc(c.note)}</div>`:'';
+     mount.innerHTML=`<section class="stepcard"><div class="stepnum">STEP ${idx+1}</div><h2>${esc(c.title||c.text||'Next step')}</h2>${c.title&&c.text?`<p class="steptext">${esc(c.text)}</p>`:''}${contacts}${say}${worksheet}${note}<label class="checkline ${checked?'done':''}"><input id="stepCheck" type="checkbox" ${checked?'checked':''}><span>${checked?'Done — keep this checked':'Check this box when this step is done'}</span></label><div class="navrow"><button class="btn" id="prevBtn" ${idx===0?'disabled':''}>← Previous</button><button class="btn primary" id="nextBtn">${idx===total-1?'Finish / review →':'Next step →'}</button></div></section>`;
+     mount.querySelectorAll('[data-answer-step]').forEach(el=>{
+       el.addEventListener('input',()=>setAnswer(el.dataset.answerStep,el.dataset.answerIndex,el.value));
+     });
+     document.getElementById('stepCheck').onchange=e=>{setDone(c.id,e.target.checked);render()};
+     document.getElementById('prevBtn').onclick=()=>{if(idx>0){idx--;render();window.scrollTo(0,0)}};
+     document.getElementById('nextBtn').onclick=()=>{if(idx<total-1){idx++;render();window.scrollTo(0,0)}else{renderAfter(true);document.getElementById('afterPlan')?.scrollIntoView({behavior:'smooth'})}};
+     renderAfter(false);
+   }
+   function renderAfter(force){
+     const done=checks.filter(c=>isDone(c.id)).length,total=checks.length,finished=total>0&&done===total;
+     const summary=checks.map(c=>`<div class="item"><span class="mark">${isDone(c.id)?'☑':'☐'}</span><span><strong>${esc(c.title||'Step')}</strong>${c.title&&c.text?`<br><span class="small">${esc(c.text)}</span>`:''}</span></div>`).join('');
+     let html=''; if(force||finished)html+=`<section class="${finished?'complete':'summary'}">${finished?'<h2>Plan complete 🌸</h2><p>You checked every step. Keep the plan saved here or use the resources below for anything still moving.</p>':'<h3>Your checklist</h3>'}${summary}</section>`;
+     if((plan.quick||[]).length)html+=`<section class="summary"><h3>Quick contacts</h3><div class="quick">${plan.quick.map(q=>`<div class="quickcard"><strong>${esc(q.label||'Contact')}</strong><br>${q.href?`<a href="${esc(q.href)}">${esc(q.value||q.href)}</a>`:esc(q.value||'')}</div>`).join('')}</div></section>`;
+     if(plan.script)html+=`<section class="summary"><h3>What to say</h3><div class="script">${esc(plan.script)}</div></section>`;
+     if((plan.actions||[]).length)html+=`<section class="summary"><h3>Where to go next</h3><div class="actions">${plan.actions.map(a=>`<a ${String(a.href||'').startsWith('tel:')?'class="call"':''} href="${esc(a.href||'#')}"${/^https?:/.test(a.href||'')?' target="_blank" rel="noopener"':''}>${esc(a.label||'Open resource')}</a>`).join('')}</div></section>`;
+     after.innerHTML=html;
+   }
+   function planText(){
+     const lines=[plan.title,''];
+     checks.forEach(c=>{
+       lines.push(`${isDone(c.id)?'☑':'☐'} ${c.title||c.text||''}${c.title&&c.text?' — '+c.text:''}`);
+       (c.worksheet||[]).forEach((prompt,i)=>{
+         const answer=getAnswer(c.id,i).trim();
+         if(answer) lines.push(`   ${prompt} ${answer}`);
+       });
+     });
+     if(plan.script)lines.push('','What to say:',plan.script);
+     return lines.join('\n');
+   }
+   document.getElementById('printBtn').onclick=()=>{renderAfter(true);window.print()};
+   document.getElementById('clearBtn').onclick=()=>{if(confirm('Clear all checked steps in this plan?')){checks.forEach(c=>localStorage.removeItem(key(c.id)));idx=0;render()}};
+   document.getElementById('shareBtn').onclick=async()=>{saveVisibleAnswers();const data={title:'Flourish Anyway Help Plan: '+plan.title,text:planText(),url:location.href};if(navigator.share){try{await navigator.share(data)}catch(e){}}else{await navigator.clipboard?.writeText(data.text+'\n\n'+data.url);alert('Plan copied.')}};
+   document.getElementById('emailBtn').onclick=()=>{saveVisibleAnswers();location.href='mailto:?subject='+encodeURIComponent('My Flourish Help Plan: '+plan.title)+'&body='+encodeURIComponent(planText()+'\n\n'+location.href)};
+   render();
+ }
+ function route(){const id=decodeURIComponent(location.hash.slice(1));if(!id)return picker();const p=plans.find(x=>x.id===id);if(!p){location.hash='';return}planView(p);window.scrollTo(0,0)}
+ window.addEventListener('hashchange',route); route();
 })();
 </script>
-</body>
-</html>
+</body></html>
