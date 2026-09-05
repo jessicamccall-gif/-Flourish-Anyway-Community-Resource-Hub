@@ -25,8 +25,8 @@ button,.btn{cursor:pointer}.go{min-height:50px;border:2px solid #111;border-radi
 .meta{display:grid;gap:5px;font-size:.9rem}.actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
 .actions a{text-decoration:none;border:2px solid #111;border-radius:9px;padding:7px 9px;background:#111;color:#fff;font-size:.82rem;font-weight:900}
 .actions a.alt{background:#fff;color:#111}.actions a.call{background:var(--g)}
-.plan{background:#fff;border:3px solid #111;border-radius:18px;padding:17px;box-shadow:4px 4px rgba(0,0,0,.1)}.plan h3{margin:3px 0 8px}.plan a{text-decoration:none;color:#111}.count{font-weight:900;margin:16px 0 6px}.empty{background:white;border:2px dashed #111;border-radius:14px;padding:18px}
-.gateway{background:var(--y);border:3px solid #111;border-radius:18px;padding:17px;margin-top:22px}.searchnote{background:#fff;border:2px solid #111;border-radius:14px;padding:13px;margin:14px 0;font-size:.92rem}.outside{background:#fff;border:3px solid #111;border-radius:18px;padding:17px;margin-top:18px}.outside h3{margin:0 0 6px}.outside p{margin:0 0 10px}.outside .actions{margin-top:8px}
+.count{font-weight:900;margin:16px 0 6px}.empty{background:white;border:2px dashed #111;border-radius:14px;padding:18px}
+.gateway{background:var(--y);border:3px solid #111;border-radius:18px;padding:17px;margin-top:22px}
 .helpbox{background:#fff;border:3px solid #111;border-radius:20px;padding:18px;margin:0 0 22px;box-shadow:5px 5px rgba(0,0,0,.1)}
 .helpbox h2{margin:4px 0 6px}.helpchoices{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
 .helpchoice{display:block;text-decoration:none;color:#111;border:2px solid #111;border-radius:14px;padding:14px;background:var(--c);font-weight:900}
@@ -36,170 +36,120 @@ button,.btn{cursor:pointer}.go{min-height:50px;border:2px solid #111;border-radi
 .notice{margin-top:22px;font-size:.86rem;color:#544d47}
 @media(max-width:760px){.searchgrid,.categories,.results,.helpchoices{grid-template-columns:1fr}.go{width:100%}}
 </style></head><body>
-<header><div class="wrap"><div class="topbar"><a class="brand" href="index.html">✿ FLOURISH ANYWAY</a><a class="home" href="index.html">← Home</a></div><h1>FIND RESOURCES</h1><p class="lead">Ask for what you need in plain language. You can change the search without leaving this page.</p></div></header>
+<header><div class="wrap"><div class="topbar"><a class="brand" href="index.html">✿ FLOURISH ANYWAY</a><a class="home" href="index.html">← Home</a></div><h1>FIND RESOURCES</h1><p class="lead">Ask for what you need in your own words. Search supports English, Spanish, Russian, Chinese, Vietnamese, Korean and Tagalog.</p></div></header>
 <main><div class="wrap"><section class="panel"><form id="form" class="searchgrid">
-<label class="field">What do you need?<input id="q" name="q" type="search" placeholder="Example: I need clothing for my kids"></label>
+<label class="field">What do you need?<input id="q" name="q" type="search" placeholder="Example: I need clothing / Necesito ropa"></label>
 <label class="field">County<select id="county" name="county"><option value="all">Both counties</option><option value="Jackson">Jackson County</option><option value="Josephine">Josephine County</option></select></label>
 <label class="field">City<input id="city" name="city" type="text" placeholder="Optional"></label>
 <button class="go">Find Resources</button></form></section>
 <div id="count" class="count">Loading resources…</div><div id="results" class="results"></div>
-<section id="outsideSearch" class="outside">
-<h3>Search beyond the Flourish directory</h3>
-<p>This page first searches Flourish Anyway's local directory. Use these links when you want to search farther. External results are not verified or endorsed by Flourish Anyway.</p>
-<div class="actions">
-<a id="webSearch" target="_blank" rel="noopener">Search the wider web ↗</a>
-<a id="search211" class="alt" target="_blank" rel="noopener">Search 211 + your words ↗</a>
-<a class="call" href="tel:211">Call 211</a>
-</div>
-</section></div></main>
+<section class="gateway"><h3>Still not finding it?</h3><div class="actions"><a href="https://www.211info.org/" target="_blank" rel="noopener">Search 211info ↗</a><a class="call" href="tel:211">Call 211</a></div></section></div></main>
 <script src="resource-loader.js"></script><script>
 const p=new URLSearchParams(location.search),q=document.getElementById("q"),county=document.getElementById("county"),city=document.getElementById("city");
 q.value=p.get("q")||"";county.value=p.get("county")||"all";city.value=p.get("city")||"";
-const HELP_PLANS=[
-{title:"Getting my first driver's license",cat:"Transportation",url:"life-plans.html#first-license",terms:["first license","permit","drivers test","driving test","learn to drive","get license"]},
-{title:"Getting my license back",cat:"Transportation",url:"life-plans.html#license-back",terms:["license back","suspended license","revoked license","reinstatement","dws","duii","hardship permit"]},
-{title:"Fixing SR-22 or car insurance",cat:"Transportation",url:"life-plans.html#car-legal#insurance",terms:["sr22","sr-22","insurance lapse","car insurance","insurance canceled","uninsured"]},
-{title:"Tickets, court debt & DMV holds",cat:"Transportation",url:"life-plans.html#car-legal#tickets",terms:["ticket","tickets","court debt","traffic fine","dmv hold","fines"]},
-{title:"Tags, registration & title",cat:"Transportation",url:"life-plans.html#car-legal#tags",terms:["tags","registration","title","plates","car legal"]},
-{title:"Divorce papers & Oregon court forms",cat:"Legal & Government Help",url:"life-plans.html#divorce",terms:["divorce","divorce papers","dissolution","separation","respond to divorce"]},
-{title:"Child support help",cat:"Parenting & Legal",url:"life-plans.html#child-support",terms:["child support","support order","arrears","modify support"]},
-{title:"Apply for OHP / health coverage",cat:"Health & Wellness",url:"life-plans.html#ohp",terms:["ohp","health insurance","medicaid","uninsured","health coverage"]},
-{title:"Apply for food, cash or child-care benefits",cat:"Food & Everyday Needs",url:"life-plans.html#food-now",terms:["snap","food stamps","tanf","cash assistance","child care benefits","benefits"]},
-{title:"School, tutoring & learning help",cat:"Kids & Family",url:"life-plans.html#school",terms:["school","tutor","tutoring","homework","learning","iep","special education"]}
-];
 
-const STOP=new Set([
-"the","and","for","with","that","this","from","into","need","needs","needed","needing",
-"help","helping","find","finding","looking","look","want","wanting","would","like","right",
-"please","can","could","you","your","some","something","anything","maybe","just","really",
-"near","around","local","someone","my","me","i","im","ive","we","our","a","an","of","to","in","on",
-"is","are","am","be","get","getting"
+const MULTILINGUAL_PHRASES = {
+  // Spanish
+  "ropa":"clothing","vestimenta":"clothing","zapatos":"clothing","comida":"food","alimentos":"food",
+  "despensa":"food","hambre":"food","alquiler":"rent","renta":"rent","vivienda":"housing",
+  "refugio":"shelter","sin hogar":"homeless shelter","luz":"utilities","electricidad":"utilities",
+  "agua":"utilities","trabajo":"jobs","empleo":"jobs","medico":"health","médico":"health",
+  "salud":"health","doctor":"health","dentista":"dental","terapia":"therapy","terapeuta":"therapy",
+  "salud mental":"mental health","guarderia":"childcare","guardería":"childcare","cuidado infantil":"childcare",
+  "escuela":"school","colegio":"school","abogado":"legal","legal":"legal","inmigracion":"immigration",
+  "inmigración":"immigration","interprete":"interpreter","intérprete":"interpreter","transporte":"transportation",
+  "autobus":"transportation","autobús":"transportation","licencia":"license","violencia domestica":"domestic violence",
+  "violencia doméstica":"domestic violence","adiccion":"recovery","adicción":"recovery","recuperacion":"recovery",
+  "recuperación":"recovery","veterano":"veterans","veteranos":"veterans","anciano":"senior","personas mayores":"senior",
+  "discapacidad":"disability","niño":"children","niños":"children","familia":"family","embarazada":"pregnancy",
+
+  // Russian
+  "одежда":"clothing","обувь":"clothing","еда":"food","продукты":"food","жилье":"housing","жильё":"housing",
+  "аренда":"rent","приют":"shelter","бездомный":"homeless shelter","работа":"jobs","здоровье":"health",
+  "врач":"health","стоматолог":"dental","психолог":"therapy","психическое здоровье":"mental health",
+  "детский сад":"childcare","школа":"school","юрист":"legal","иммиграция":"immigration",
+  "переводчик":"interpreter","транспорт":"transportation","автобус":"transportation","права":"license",
+  "домашнее насилие":"domestic violence","зависимость":"recovery","ветеран":"veterans","инвалидность":"disability",
+  "дети":"children","семья":"family",
+
+  // Simplified + Traditional Chinese
+  "衣服":"clothing","鞋":"clothing","食物":"food","食品":"food","住房":"housing","房租":"rent","租金":"rent",
+  "庇护所":"shelter","收容所":"shelter","工作":"jobs","就业":"jobs","就業":"jobs","健康":"health",
+  "医生":"health","醫生":"health","牙医":"dental","牙醫":"dental","心理健康":"mental health","托儿":"childcare",
+  "托兒":"childcare","学校":"school","學校":"school","律师":"legal","律師":"legal","移民":"immigration",
+  "翻译":"interpreter","翻譯":"interpreter","交通":"transportation","驾照":"license","駕照":"license",
+  "家庭暴力":"domestic violence","康复":"recovery","康復":"recovery","退伍军人":"veterans","退伍軍人":"veterans",
+  "残疾":"disability","殘疾":"disability","儿童":"children","兒童":"children","家庭":"family",
+
+  // Vietnamese
+  "quần áo":"clothing","giày":"clothing","thức ăn":"food","thực phẩm":"food","nhà ở":"housing",
+  "tiền thuê nhà":"rent","nơi trú ẩn":"shelter","việc làm":"jobs","công việc":"jobs","sức khỏe":"health",
+  "bác sĩ":"health","nha sĩ":"dental","sức khỏe tâm thần":"mental health","giữ trẻ":"childcare",
+  "trường học":"school","luật sư":"legal","nhập cư":"immigration","phiên dịch":"interpreter",
+  "giao thông":"transportation","bằng lái":"license","bạo lực gia đình":"domestic violence",
+  "phục hồi":"recovery","cựu chiến binh":"veterans","khuyết tật":"disability","trẻ em":"children","gia đình":"family",
+
+  // Korean
+  "옷":"clothing","신발":"clothing","음식":"food","식품":"food","주택":"housing","임대료":"rent",
+  "보호소":"shelter","직업":"jobs","일자리":"jobs","건강":"health","의사":"health","치과":"dental",
+  "정신 건강":"mental health","보육":"childcare","학교":"school","변호사":"legal","이민":"immigration",
+  "통역":"interpreter","교통":"transportation","운전면허":"license","가정 폭력":"domestic violence",
+  "회복":"recovery","재향군인":"veterans","장애":"disability","어린이":"children","가족":"family",
+
+  // Tagalog
+  "damit":"clothing","sapatos":"clothing","pagkain":"food","pabahay":"housing","upa":"rent",
+  "silungan":"shelter","trabaho":"jobs","kalusugan":"health","doktor":"health","dentista":"dental",
+  "kalusugang pangkaisipan":"mental health","pag aalaga ng bata":"childcare","pag-aalaga ng bata":"childcare",
+  "paaralan":"school","abogado":"legal","imigrasyon":"immigration","tagasalin":"interpreter",
+  "transportasyon":"transportation","lisensya":"license","karahasan sa tahanan":"domestic violence",
+  "pagbawi":"recovery","beterano":"veterans","kapansanan":"disability","mga bata":"children","pamilya":"family"
+};
+
+const MULTILINGUAL_FILLER = new Set([
+  // English
+  "the","and","for","with","that","this","from","into","need","needs","needed","help","find","looking","want",
+  "right","please","can","could","you","your","some","something","anything","my","me","i","im","a","an","of","to","in","on",
+  // Spanish
+  "yo","necesito","necesita","necesitamos","ayuda","ayudar","busco","buscar","quiero","para","con","mi","mis","un","una","de","en","por","favor",
+  // Tagalog common filler
+  "kailangan","ko","ng","mga","para","tulong","hanap","ako"
 ]);
-const WORD_ALIASES={
-  "clothes":"clothing","coat":"clothing","coats":"clothing","shirt":"clothing","shirts":"clothing",
-  "pants":"clothing","shoes":"clothing","shoe":"clothing",
-  "foodbank":"food","groceries":"food","grocery":"food",
-  "renting":"rent","rental":"rent",
-  "doctor":"health","doctors":"health","medical":"health",
-  "counseling":"therapy","counselor":"therapy","therapist":"therapy",
-  "daycare":"childcare","preschool":"childcare",
-  "job":"jobs","work":"jobs","employment":"jobs"
-};
-function wordsOf(x){
-  return norm(x).split(/\s+/)
-    .map(w=>w.replace(/[^a-z0-9-]/g,""))
-    .filter(w=>w.length>1&&!STOP.has(w))
-    .map(w=>WORD_ALIASES[w]||w)
-}
-function textParts(r){
-  return {
-    name:norm(r.name),
-    helps:norm(r.helps||r.description||r.service),
-    kw:norm([...(r.keywords||[]),...(r.labels||[])].join(" ")),
-    cat:norm(r.category||""),
-    audience:norm((r.audience||[]).join(" ")),
-    addr:norm([r.city,r.address].join(" ")),
-    all:resourceHaystack(r)
-  }
-}
-function scoreResource(r,term,ci){
-  if(!term&&!ci)return 1;
-  const t=textParts(r), ws=wordsOf(term);
-  let score=0, matched=0;
 
-  if(term){
-    if(t.name===term)score+=220;
-    if(t.name.includes(term))score+=150;
-    if(t.kw.includes(term))score+=125;
-    if(t.helps.includes(term))score+=105;
-    if(t.audience.includes(term))score+=55;
-
-    for(const w of ws){
-      let hit=false;
-      if(t.name.includes(w)){score+=34;hit=true}
-      if(t.kw.includes(w)){score+=30;hit=true}
-      if(t.helps.includes(w)){score+=22;hit=true}
-      if(t.audience.includes(w)){score+=12;hit=true}
-      if(t.cat.includes(w)){score+=8;hit=true}
-      if(hit)matched++;
+function multilingualIntent(raw){
+  let s=norm(raw);
+  const intents=[];
+  // Longest phrases first so "salud mental" becomes mental health before "salud" becomes health.
+  Object.keys(MULTILINGUAL_PHRASES).sort((a,b)=>b.length-a.length).forEach(k=>{
+    if(s.includes(norm(k))){
+      intents.push(MULTILINGUAL_PHRASES[k]);
+      s=s.split(norm(k)).join(" ");
     }
+  });
+  const leftovers=s.split(/\s+/).map(w=>w.replace(/[^\p{L}\p{N}-]/gu,"")).filter(w=>w.length>1&&!MULTILINGUAL_FILLER.has(w));
+  return [...new Set([...intents,...leftovers])].join(" ").trim();
+}
 
-    // Multi-word searches must match the idea, not just one stray word.
-    if(ws.length>=2){
-      const needed=Math.ceil(ws.length*0.75);
-      if(matched<needed)return 0;
-    } else if(ws.length===1 && matched===0 && !t.name.includes(term) && !t.kw.includes(term) && !t.helps.includes(term)){
-      return 0;
-    }
-
-    // Extra reward when every meaningful word appears somewhere in the record.
-    if(ws.length && ws.every(w=>t.all.includes(w)))score+=70;
-  }
-
-  if(ci){
-    if(t.addr.includes(ci))score+=70;
-    else if(!t.all.includes(ci))return 0;
-  }
-  return score;
-}
-function planMatches(term){
-  if(!term)return[];
-  const ws=wordsOf(term);
-  return HELP_PLANS.map(p=>{
-    const h=norm(p.title+" "+p.cat+" "+p.terms.join(" "));
-    let matched=0,score=h.includes(term)?180:0;
-    for(const w of ws)if(h.includes(w)){matched++;score+=35}
-    if(ws.length>=2 && matched<Math.ceil(ws.length*.75))score=0;
-    return {...p,score}
-  }).filter(p=>p.score>=35).sort((a,b)=>b.score-a.score).slice(0,2)
-}
-function planCard(p){
-  return `<article class="plan"><div class="category">HELP PLAN • ${esc(p.cat)}</div><h3><a href="${p.url}">📋 ${esc(p.title)} →</a></h3><p>Step-by-step help: what to do, what to gather, who to call and what to ask.</p></article>`
-}
-function updateOutsideLinks(){
-  const term=q.value.trim();
-  const ci=city.value.trim();
-  const place=ci?`${ci}, Oregon`:"Jackson Josephine County Oregon";
-  const webQ=[term,place].filter(Boolean).join(" ");
-  const q211=["site:211info.org",term,place].filter(Boolean).join(" ");
-  document.getElementById("webSearch").href="https://www.google.com/search?q="+encodeURIComponent(webQ);
-  document.getElementById("search211").href="https://www.google.com/search?q="+encodeURIComponent(q211);
-}
 function render(){
-  const rawTerm=norm(q.value),cleanWords=wordsOf(rawTerm),term=cleanWords.join(" ")||rawTerm,co=county.value,ci=norm(city.value.trim());
-  let scored=RES
-    .filter(r=>co==="all"||(r.counties||[]).includes(co))
-    .map(r=>({r,score:scoreResource(r,term,ci)}))
-    .filter(x=>x.score>0)
-    .sort((a,b)=>b.score-a.score||a.r.name.localeCompare(b.r.name));
-
-  // Show up to 30 genuinely relevant matches for the searched need.
-  if(term)scored=scored.slice(0,30);
-
-  const plans=planMatches(term);
-  const cards=[...plans.map(planCard),...scored.map(x=>resultCard(x.r))];
-
-  const count=document.getElementById("count");
-  if(cards.length){
-    count.textContent=`${cards.length} focused match${cards.length===1?"":"es"} from the Flourish directory`;
-  }else{
-    count.textContent="No focused matches in the Flourish directory";
-  }
-
-  document.getElementById("results").innerHTML=cards.length?cards.join(""):`<div class="empty">
-    <b>No close directory match yet.</b>
-    <p>That does not mean the service does not exist. Try a shorter phrase, pick a county/city, or use the wider-search tools below.</p>
-  </div>`;
-  updateOutsideLinks();
+  const raw=norm(q.value),term=multilingualIntent(raw)||raw,co=county.value,ci=norm(city.value.trim());
+  const words=term.split(/\s+/).filter(w=>w.length>1);
+  let a=RES.filter(r=>{
+    if(co!=="all"&&!(r.counties||[]).includes(co))return false;
+    const h=resourceHaystack(r);
+    if(ci&&!h.includes(ci))return false;
+    if(!term)return true;
+    if(h.includes(term))return true;
+    // Natural-language search: any meaningful translated intent may qualify,
+    // but rank stronger matches first below.
+    return words.some(w=>h.includes(w));
+  });
+  a=a.map(r=>{
+    const h=resourceHaystack(r);
+    let score=h.includes(term)?100:0;
+    words.forEach(w=>{if(h.includes(w))score+=20});
+    return {r,score};
+  }).sort((a,b)=>b.score-a.score||a.r.name.localeCompare(b.r.name)).map(x=>x.r).slice(0,40);
+  document.getElementById("count").textContent=`${a.length} resource${a.length===1?"":"s"} found`;
+  document.getElementById("results").innerHTML=a.length?a.map(resultCard).join(""):`<div class="empty"><b>No close directory match yet.</b><p>Try fewer words, leave city blank, or use 211 below.</p></div>`;
 }
-getResources().then(render).catch(err=>{
-  console.error(err);
-  document.getElementById("count").textContent="Resources could not load. Please refresh or use the wider-search tools below.";
-  updateOutsideLinks();
-});
-document.getElementById("form").onsubmit=e=>{
-  e.preventDefault();
-  history.replaceState(null,"",`?q=${encodeURIComponent(q.value)}&county=${encodeURIComponent(county.value)}&city=${encodeURIComponent(city.value)}`);
-  render()
-};
+getResources().then(render);document.getElementById("form").onsubmit=e=>{e.preventDefault();history.replaceState(null,"",`?q=${encodeURIComponent(q.value)}&county=${encodeURIComponent(county.value)}&city=${encodeURIComponent(city.value)}`);render()}
 </script></body></html>
