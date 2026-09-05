@@ -36,13 +36,13 @@ button,.btn{cursor:pointer}.go{min-height:50px;border:2px solid #111;border-radi
 .notice{margin-top:22px;font-size:.86rem;color:#544d47}
 @media(max-width:760px){.searchgrid,.categories,.results,.helpchoices{grid-template-columns:1fr}.go{width:100%}}
 </style></head><body>
-<header><div class="wrap"><div class="topbar"><a class="brand" href="https://weflourishanyway.org/" target="_blank" rel="noopener">✿ FLOURISH ANYWAY ↗</a><a class="home" href="index.html">← Home</a></div><h1>FIND RESOURCES</h1><p class="lead">Ask for what you need in plain language. You can change the search without leaving this page.</p></div></header>
+<header><div class="wrap"><div class="topbar"><a class="brand" href="index.html">✿ FLOURISH ANYWAY</a><a class="home" href="index.html">← Home</a></div><h1>FIND RESOURCES</h1><p class="lead">Ask for what you need in plain language. You can change the search without leaving this page.</p></div></header>
 <main><div class="wrap"><section class="panel"><form id="form" class="searchgrid">
-<label class="field">What do you need?<input id="q" name="q" type="search" placeholder="Example: help getting my license back"></label>
+<label class="field">What do you need?<input id="q" name="q" type="search" placeholder="Example: I need clothing for my kids"></label>
 <label class="field">County<select id="county" name="county"><option value="all">Both counties</option><option value="Jackson">Jackson County</option><option value="Josephine">Josephine County</option></select></label>
 <label class="field">City<input id="city" name="city" type="text" placeholder="Optional"></label>
 <button class="go">Find Resources</button></form></section>
-<div id="count" class="count">Type what you need, then press Find Resources.</div><div id="results" class="results"></div>
+<div id="count" class="count">Loading resources…</div><div id="results" class="results"></div>
 <section id="outsideSearch" class="outside">
 <h3>Search beyond the Flourish directory</h3>
 <p>This page first searches Flourish Anyway's local directory. Use these links when you want to search farther. External results are not verified or endorsed by Flourish Anyway.</p>
@@ -53,8 +53,8 @@ button,.btn{cursor:pointer}.go{min-height:50px;border:2px solid #111;border-radi
 </div>
 </section></div></main>
 <script src="resource-loader.js"></script><script>
-const q=document.getElementById("q"),county=document.getElementById("county"),city=document.getElementById("city");
-q.value=""; county.value="all"; city.value="";
+const p=new URLSearchParams(location.search),q=document.getElementById("q"),county=document.getElementById("county"),city=document.getElementById("city");
+q.value=p.get("q")||"";county.value=p.get("county")||"all";city.value=p.get("city")||"";
 const HELP_PLANS=[
 {title:"Getting my first driver's license",cat:"Transportation",url:"life-plans.html#first-license",terms:["first license","permit","drivers test","driving test","learn to drive","get license"]},
 {title:"Getting my license back",cat:"Transportation",url:"life-plans.html#license-back",terms:["license back","suspended license","revoked license","reinstatement","dws","duii","hardship permit"]},
@@ -68,9 +68,28 @@ const HELP_PLANS=[
 {title:"School, tutoring & learning help",cat:"Kids & Family",url:"life-plans.html#school",terms:["school","tutor","tutoring","homework","learning","iep","special education"]}
 ];
 
-const STOP=new Set(["the","and","for","with","that","this","from","into","need","help","find","near","around","local","someone","my","me","i","a","an","of","to","in","on"]);
+const STOP=new Set([
+"the","and","for","with","that","this","from","into","need","needs","needed","needing",
+"help","helping","find","finding","looking","look","want","wanting","would","like","right",
+"please","can","could","you","your","some","something","anything","maybe","just","really",
+"near","around","local","someone","my","me","i","im","ive","we","our","a","an","of","to","in","on",
+"is","are","am","be","get","getting"
+]);
+const WORD_ALIASES={
+  "clothes":"clothing","coat":"clothing","coats":"clothing","shirt":"clothing","shirts":"clothing",
+  "pants":"clothing","shoes":"clothing","shoe":"clothing",
+  "foodbank":"food","groceries":"food","grocery":"food",
+  "renting":"rent","rental":"rent",
+  "doctor":"health","doctors":"health","medical":"health",
+  "counseling":"therapy","counselor":"therapy","therapist":"therapy",
+  "daycare":"childcare","preschool":"childcare",
+  "job":"jobs","work":"jobs","employment":"jobs"
+};
 function wordsOf(x){
-  return norm(x).split(/\s+/).map(w=>w.replace(/[^a-z0-9-]/g,"")).filter(w=>w.length>1&&!STOP.has(w))
+  return norm(x).split(/\s+/)
+    .map(w=>w.replace(/[^a-z0-9-]/g,""))
+    .filter(w=>w.length>1&&!STOP.has(w))
+    .map(w=>WORD_ALIASES[w]||w)
 }
 function textParts(r){
   return {
@@ -147,7 +166,7 @@ function updateOutsideLinks(){
   document.getElementById("search211").href="https://www.google.com/search?q="+encodeURIComponent(q211);
 }
 function render(){
-  const term=norm(q.value),co=county.value,ci=norm(city.value.trim());
+  const rawTerm=norm(q.value),cleanWords=wordsOf(rawTerm),term=cleanWords.join(" ")||rawTerm,co=county.value,ci=norm(city.value.trim());
   let scored=RES
     .filter(r=>co==="all"||(r.counties||[]).includes(co))
     .map(r=>({r,score:scoreResource(r,term,ci)}))
@@ -173,24 +192,14 @@ function render(){
   </div>`;
   updateOutsideLinks();
 }
-getResources().then(()=>{
-  document.getElementById("count").textContent="Type what you need, then press Find Resources.";
-  document.getElementById("results").innerHTML="";
-  updateOutsideLinks();
-  q.focus();
-}).catch(err=>{
+getResources().then(render).catch(err=>{
   console.error(err);
   document.getElementById("count").textContent="Resources could not load. Please refresh or use the wider-search tools below.";
   updateOutsideLinks();
 });
 document.getElementById("form").onsubmit=e=>{
   e.preventDefault();
-  if(!q.value.trim() && !city.value.trim()){
-    document.getElementById("count").textContent="Type what you need first.";
-    document.getElementById("results").innerHTML="";
-    q.focus();
-    return;
-  }
-  render();
+  history.replaceState(null,"",`?q=${encodeURIComponent(q.value)}&county=${encodeURIComponent(county.value)}&city=${encodeURIComponent(city.value)}`);
+  render()
 };
 </script></body></html>
