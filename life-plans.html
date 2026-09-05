@@ -16,7 +16,7 @@ h1{font-size:clamp(2.1rem,8vw,4.2rem);line-height:.96;margin:24px 0 8px}main{pad
 .group{margin:20px 0}.group h3{margin:0 0 9px;background:var(--y);border:2px solid var(--d);border-radius:12px;padding:9px 11px}.chooser{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:10px}
 .choice{display:block;background:#fff;border:2px solid var(--d);border-radius:14px;padding:13px;text-decoration:none;color:var(--d);font-weight:900;min-height:62px}.choice:hover{background:var(--pl)}
 .backrow{margin-bottom:10px}.progressrow{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:10px 0 8px;font-weight:900}.bar{height:12px;background:#eee;border:2px solid var(--d);border-radius:999px;overflow:hidden}.bar>div{height:100%;background:var(--p);width:0}
-.stepcard{background:#fff;border:3px solid var(--d);border-radius:20px;padding:20px;margin:16px 0;box-shadow:5px 5px rgba(44,26,34,.10)}.stepnum{font-size:.8rem;font-weight:900;color:var(--p);letter-spacing:.06em}.stepcard h2{margin:5px 0 8px;font-size:1.5rem}.steptext{margin:0 0 16px}
+.checklist{background:#fff;border:3px solid var(--d);border-radius:20px;padding:8px 18px;margin:16px 0;box-shadow:5px 5px rgba(44,26,34,.10)}.checkitem{display:flex;gap:12px;align-items:flex-start;padding:15px 2px;border-bottom:1px solid #e6dadd}.checkitem:last-child{border-bottom:0}.checkitem input{width:25px;height:25px;flex:0 0 auto;accent-color:var(--p);margin-top:2px}.checkcopy{flex:1}.checkcopy strong{display:block;font-size:1.04rem}.checkcopy .small{display:block;margin-top:3px}.checkitem.done .checkcopy{opacity:.62}.checkitem.done strong{text-decoration:line-through}.details{margin:14px 0;background:#fff;border:2px solid var(--d);border-radius:14px;padding:0 13px}.details summary{cursor:pointer;font-weight:900;padding:12px 0}.details .inside{padding:0 0 13px}
 .checkline{display:flex;gap:12px;align-items:flex-start;background:var(--pl);border:2px solid var(--d);border-radius:14px;padding:13px;font-weight:900}.checkline input{width:25px;height:25px;flex:0 0 auto;accent-color:var(--p)}.checkline.done{opacity:.68;text-decoration:line-through}
 .navrow{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:15px}.btn{border:2px solid var(--d);border-radius:11px;padding:10px 13px;background:#fff;color:var(--d);font-weight:900;text-decoration:none;cursor:pointer;font:inherit}.btn.primary{background:var(--d);color:#fff}.btn.pink{background:var(--p);color:#fff}.btn:disabled{opacity:.4;cursor:default}
 .summary{background:#fff;border:3px solid var(--d);border-radius:18px;padding:16px;margin-top:18px}.summary h3{margin:0 0 10px}.summary .item{display:flex;gap:9px;padding:8px 0;border-bottom:1px solid #ddd}.summary .item:last-child{border-bottom:0}.summary .mark{font-weight:900;min-width:22px}
@@ -29,7 +29,7 @@ h1{font-size:clamp(2.1rem,8vw,4.2rem);line-height:.96;margin:24px 0 8px}main{pad
 </style>
 </head>
 <body>
-<header><div class="wrap"><div class="top"><a class="brand" href="https://weflourishanyway.org/" target="_blank" rel="noopener">✿ FLOURISH ANYWAY ↗</a><a class="home" href="index.html">← Resource Hub</a></div><h1>HELP ME MAKE A PLAN</h1><p id="subhead">Choose one situation. We will walk through it one step at a time.</p></div></header>
+<header><div class="wrap"><div class="top"><a class="brand" href="https://weflourishanyway.org/" target="_blank" rel="noopener">✿ FLOURISH ANYWAY ↗</a><a class="home" href="index.html">← Resource Hub</a></div><h1>HELP ME MAKE A PLAN</h1><p id="subhead">Choose one situation and work through a short checklist.</p></div></header>
 <main><div class="wrap" id="app"><div class="panel">Loading Help Plans…</div></div></main>
 <script src="life-plans-data.js?v=20260905"></script>
 <script>
@@ -59,36 +59,30 @@ h1{font-size:clamp(2.1rem,8vw,4.2rem);line-height:.96;margin:24px 0 8px}main{pad
    document.getElementById('planSearch').addEventListener('input',e=>draw(e.target.value)); draw();
  }
  function planView(plan){
-   document.getElementById('subhead').textContent='One step at a time. Check it when you finish, then move forward.';
-   const checks=plan.checks||[]; let idx=0;
-   const firstOpen=checks.findIndex(c=>!isDone(c.id)); if(firstOpen>=0)idx=firstOpen; else if(checks.length)idx=checks.length-1;
-   app.innerHTML=`<div class="backrow"><a class="home" href="life-plans.html">← All Help Plans</a></div><section class="panel"><div class="eyebrow">${esc(plan.eyebrow||'HELP PLAN')}</div><h2>${esc(plan.title||'Help Plan')}</h2><p>${esc(plan.intro||'')}</p><div class="progressrow"><span id="stepLabel"></span><span id="doneLabel"></span></div><div class="bar"><div id="barFill"></div></div></section><div id="stepMount"></div><div class="tools"><button class="btn pink" id="printBtn">Print / Save PDF</button><button class="btn" id="shareBtn">Share</button><button class="btn" id="emailBtn">Email</button><button class="btn" id="clearBtn">Clear checks</button></div><div id="afterPlan"></div>${disclaimer()}`;
-   const mount=document.getElementById('stepMount'),after=document.getElementById('afterPlan');
+   document.getElementById('subhead').textContent='See the whole plan at once. Check things off in any order.';
+   const checks=plan.checks||[];
+   app.innerHTML=`<div class="backrow"><a class="home" href="life-plans.html">← All Help Plans</a></div><section class="panel"><div class="eyebrow">${esc(plan.eyebrow||'HELP PLAN')}</div><h2>${esc(plan.title||'Help Plan')}</h2><p>${esc(plan.intro||'')}</p><div class="progressrow"><span>YOUR CHECKLIST</span><span id="doneLabel"></span></div><div class="bar"><div id="barFill"></div></div></section><div id="checkMount"></div><div id="supportMount"></div><div class="tools"><button class="btn pink" id="printBtn">Print / Save PDF</button><button class="btn" id="shareBtn">Share</button><button class="btn" id="emailBtn">Email</button><button class="btn" id="clearBtn">Clear checks</button></div>${disclaimer()}`;
+   const mount=document.getElementById('checkMount'),support=document.getElementById('supportMount');
    function render(){
      const done=checks.filter(c=>isDone(c.id)).length,total=checks.length;
-     document.getElementById('stepLabel').textContent=total?`Step ${idx+1} of ${total}`:'Plan overview';
-     document.getElementById('doneLabel').textContent=`${done} checked`;
+     document.getElementById('doneLabel').textContent=total?`${done} of ${total} done`:'Plan overview';
      document.getElementById('barFill').style.width=(total?Math.round(done/total*100):0)+'%';
-     if(!total){mount.innerHTML='';renderAfter(true);return}
-     const c=checks[idx],checked=isDone(c.id);
-     mount.innerHTML=`<section class="stepcard"><div class="stepnum">STEP ${idx+1}</div><h2>${esc(c.title||c.text||'Next step')}</h2>${c.title&&c.text?`<p class="steptext">${esc(c.text)}</p>`:''}<label class="checkline ${checked?'done':''}"><input id="stepCheck" type="checkbox" ${checked?'checked':''}><span>${checked?'Done — keep this checked':'Check this box when this step is done'}</span></label><div class="navrow"><button class="btn" id="prevBtn" ${idx===0?'disabled':''}>← Previous</button><button class="btn primary" id="nextBtn">${idx===total-1?'Finish / review →':'Next step →'}</button></div></section>`;
-     document.getElementById('stepCheck').onchange=e=>{setDone(c.id,e.target.checked);render()};
-     document.getElementById('prevBtn').onclick=()=>{if(idx>0){idx--;render();window.scrollTo(0,0)}};
-     document.getElementById('nextBtn').onclick=()=>{if(idx<total-1){idx++;render();window.scrollTo(0,0)}else{renderAfter(true);document.getElementById('afterPlan')?.scrollIntoView({behavior:'smooth'})}};
-     renderAfter(false);
+     mount.innerHTML=total?`<section class="checklist">${checks.map((c,i)=>`<label class="checkitem ${isDone(c.id)?'done':''}"><input type="checkbox" data-check="${esc(c.id)}" ${isDone(c.id)?'checked':''}><span class="checkcopy"><strong>${i+1}. ${esc(c.title||c.text||'Next step')}</strong>${c.title&&c.text?`<span class="small">${esc(c.text)}</span>`:''}</span></label>`).join('')}</section>`:'';
+     mount.querySelectorAll('[data-check]').forEach(x=>x.onchange=()=>{setDone(x.dataset.check,x.checked);render()});
+     renderSupport(done,total);
    }
-   function renderAfter(force){
-     const done=checks.filter(c=>isDone(c.id)).length,total=checks.length,finished=total>0&&done===total;
-     const summary=checks.map(c=>`<div class="item"><span class="mark">${isDone(c.id)?'☑':'☐'}</span><span><strong>${esc(c.title||'Step')}</strong>${c.title&&c.text?`<br><span class="small">${esc(c.text)}</span>`:''}</span></div>`).join('');
-     let html=''; if(force||finished)html+=`<section class="${finished?'complete':'summary'}">${finished?'<h2>Plan complete 🌸</h2><p>You checked every step. Keep the plan saved here or use the resources below for anything still moving.</p>':'<h3>Your checklist</h3>'}${summary}</section>`;
+   function renderSupport(done,total){
+     let html='';
+     if(total&&done===total)html+=`<section class="complete"><h2>Checklist complete 🌸</h2><p>Your checks stay saved on this device. Use the contacts below if there is still something to follow up on.</p></section>`;
      if((plan.quick||[]).length)html+=`<section class="summary"><h3>Quick contacts</h3><div class="quick">${plan.quick.map(q=>`<div class="quickcard"><strong>${esc(q.label||'Contact')}</strong><br>${q.href?`<a href="${esc(q.href)}">${esc(q.value||q.href)}</a>`:esc(q.value||'')}</div>`).join('')}</div></section>`;
-     if(plan.script)html+=`<section class="summary"><h3>What to say</h3><div class="script">${esc(plan.script)}</div></section>`;
-     if((plan.actions||[]).length)html+=`<section class="summary"><h3>Where to go next</h3><div class="actions">${plan.actions.map(a=>`<a ${String(a.href||'').startsWith('tel:')?'class="call"':''} href="${esc(a.href||'#')}"${/^https?:/.test(a.href||'')?' target="_blank" rel="noopener"':''}>${esc(a.label||'Open resource')}</a>`).join('')}</div></section>`;
-     after.innerHTML=html;
+     if(plan.script)html+=`<details class="details"><summary>What can I say when I call?</summary><div class="inside"><div class="script">${esc(plan.script)}</div></div></details>`;
+     if(plan.resourcePack){const rp=plan.resourcePack;let inside='';if((rp.contacts||[]).length)inside+=`<h3>Who can help</h3><div class="quick">${rp.contacts.map(q=>`<div class="quickcard"><strong>${esc(q.name||'Contact')}</strong>${q.phone?`<br><a href="tel:${esc(String(q.phone).replace(/[^0-9+]/g,''))}">${esc(q.phone)}</a>`:''}${q.url?`<br><a href="${esc(q.url)}" target="_blank" rel="noopener">Official website ↗</a>`:''}${q.why?`<br><span class="small">${esc(q.why)}</span>`:''}</div>`).join('')}</div>`;if((rp.bring||[]).length)inside+=`<h3>Have this ready</h3><ul>${rp.bring.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`;if((rp.ask||[]).length)inside+=`<h3>What to ask</h3><ul>${rp.ask.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`;if((rp.backup||[]).length)inside+=`<h3>If the first option does not work</h3><ul>${rp.backup.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`;if(inside)html+=`<details class="details"><summary>Need more help with this plan?</summary><div class="inside">${inside}</div></details>`}
+     if((plan.actions||[]).length)html+=`<section class="summary"><h3>Next / backup help</h3><div class="actions">${plan.actions.map(a=>`<a ${String(a.href||'').startsWith('tel:')?'class="call"':''} href="${esc(a.href||'#')}"${/^https?:/.test(a.href||'')?' target="_blank" rel="noopener"':''}>${esc(a.label||'Open resource')}</a>`).join('')}</div></section>`;
+     support.innerHTML=html;
    }
    function planText(){return `${plan.title}\n\n`+checks.map(c=>`${isDone(c.id)?'☑':'☐'} ${c.title||c.text||''}${c.title&&c.text?' — '+c.text:''}`).join('\n')+(plan.script?`\n\nWhat to say:\n${plan.script}`:'')}
-   document.getElementById('printBtn').onclick=()=>{renderAfter(true);window.print()};
-   document.getElementById('clearBtn').onclick=()=>{if(confirm('Clear all checked steps in this plan?')){checks.forEach(c=>localStorage.removeItem(key(c.id)));idx=0;render()}};
+   document.getElementById('printBtn').onclick=()=>window.print();
+   document.getElementById('clearBtn').onclick=()=>{if(confirm('Clear all checked steps in this plan?')){checks.forEach(c=>localStorage.removeItem(key(c.id)));render()}};
    document.getElementById('shareBtn').onclick=async()=>{const data={title:'Flourish Anyway Help Plan: '+plan.title,text:planText(),url:location.href};if(navigator.share){try{await navigator.share(data)}catch(e){}}else{await navigator.clipboard?.writeText(data.text+'\n\n'+data.url);alert('Plan copied.')}};
    document.getElementById('emailBtn').onclick=()=>{location.href='mailto:?subject='+encodeURIComponent('My Flourish Help Plan: '+plan.title)+'&body='+encodeURIComponent(planText()+'\n\n'+location.href)};
    render();
