@@ -1,15 +1,70 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Flourish Anyway Community Resource Hub</title><style>
-*{box-sizing:border-box}:root{--p:#ce3c5f;--y:#fad569;--c:#FDF8F5;--l:#fce8ed;--i:#2C1A22}body{margin:0;font-family:Arial,sans-serif;background:var(--c);color:var(--i);line-height:1.45}.w{width:min(980px,calc(100% - 28px));margin:auto}header{background:var(--y);border-bottom:4px solid var(--i);padding:22px 0}.brand{display:inline-block;background:var(--p);color:#fff;border:3px solid var(--i);border-radius:999px;padding:7px 13px;font-weight:900}h1{font-size:clamp(2.2rem,8vw,4.5rem);line-height:1;margin:22px 0 8px}main{padding:22px 0}.box{background:#fff;border:3px solid var(--i);border-radius:19px;padding:18px;margin-bottom:18px;box-shadow:5px 5px #0001}.tag{font-size:.78rem;font-weight:900;color:var(--p)}.search{display:grid;grid-template-columns:1fr auto;gap:8px}input,button{font:inherit;min-height:50px;border:2px solid var(--i);border-radius:11px;padding:10px}button{background:var(--i);color:#fff;font-weight:900}.doors{display:grid;grid-template-columns:1fr 1fr;gap:10px}.door{border:3px solid var(--i);border-radius:15px;padding:15px;text-decoration:none;color:var(--i);font-weight:900}.door:nth-child(odd){background:var(--y)}.door:nth-child(even){background:var(--l)}.door small{display:block;font-weight:500;margin-top:4px}.three{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.three a{border:2px solid var(--i);border-radius:12px;padding:12px;text-align:center;text-decoration:none;color:var(--i);font-weight:900}.outside{background:var(--y)}@media(max-width:650px){.search,.doors,.three{grid-template-columns:1fr}}</style></head><body>
-<header><div class="w"><div class="brand">✿ FLOURISH ANYWAY</div><h1>COMMUNITY<br>RESOURCE HUB</h1><p>Jackson + Josephine Counties. You do not need to know what category your problem belongs in.</p></div></header><main><div class="w">
-<section class="box"><div class="tag">FASTEST WAY</div><h2>What do you need help with?</h2><p>Use your own words. Short is fine.</p><form class="search" action="search.html"><input name="q" placeholder="rent, dentist, school help, license"><button>Find help →</button></form></section>
-<section class="box"><div class="tag">OR PICK ONE PLACE TO START</div><h2>What feels closest?</h2><div class="doors">
-<a class="door" href="search.html?q=urgent+food+shelter+safety+emergency">🆘 Help right now<small>Food today, shelter, safety, crisis.</small></a>
-<a class="door" href="search.html?q=food+rent+utilities+money+credit+basic+needs">🏠 Money & basic needs<small>Food, rent, bills, credit and basics.</small></a>
-<a class="door" href="search.html?q=health+doctor+dentist+mental+health+recovery">❤️ Health & recovery<small>Medical, dental, mental health and recovery.</small></a>
-<a class="door" href="search.html?q=kids+parenting+childcare+school+activities">👪 Kids & family<small>Child care, school, parenting and activities.</small></a>
-<a class="door" href="search.html?q=jobs+education+training+transportation+license">🛠️ Work, school & transportation<small>Jobs, education, rides and license help.</small></a>
-<a class="door" href="search.html?q=legal+senior+veteran+immigration+community+events">🌻 Community, legal & life stuff<small>Legal, seniors, veterans, language and community.</small></a>
-</div></section>
-<section class="box"><div class="tag">MORE CONTROL</div><h2>Choose how you want to look.</h2><div class="three"><a href="category.html?cat=food">Browse resources</a><a href="life-plans.html">Help Me Make a Plan</a><a href="search.html">Search + filters</a></div><p>You can stop and come back. Checked Help Plan steps stay saved on this device.</p></section>
-<section class="box outside"><div class="tag">OUTSIDE SOURCES</div><h2>Still not seeing it?</h2><div class="three"><a href="https://www.211info.org/">Search 211 ↗</a><a href="tel:211">Call 211</a><a href="events.html">Community information</a></div></section>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Flourish Anyway Community Resource Hub</title><meta name="description" content="Local support in Jackson and Josephine Counties, Oregon."><style>
+*{box-sizing:border-box}:root{--p:#d23b67;--y:#f6d86f;--c:#fff8d8;--g:#4e8f3a;--i:#111;--w:#fffdf3;--t:#c96745}
+body{margin:0;font-family:Arial,sans-serif;color:var(--i);background:var(--c);line-height:1.45}
+.wrap{width:min(1050px,calc(100% - 28px));margin:auto}
+header{padding:24px 0;background:var(--y);border-bottom:4px solid #111}
+.topbar{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.brand{display:inline-block;background:var(--p);color:white;border:3px solid #111;border-radius:999px;padding:7px 13px;font-weight:900;box-shadow:4px 4px #111;text-decoration:none}
+.home{font-weight:900;color:#111;text-decoration:none;border:2px solid #111;border-radius:999px;padding:7px 11px;background:#fff}
+h1{font-size:clamp(2rem,7vw,4.2rem);line-height:1;margin:24px 0 12px}
+.lead{font-size:1.05rem;max-width:760px}
+main{padding:26px 0 48px}
+.panel{background:var(--w);border:3px solid #111;border-radius:20px;padding:20px;box-shadow:5px 5px rgba(0,0,0,.10)}
+.eyebrow{font-size:.8rem;font-weight:900;letter-spacing:.08em;color:var(--p)}
+.searchgrid{display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:10px;margin-top:16px;align-items:end}
+.field{display:grid;gap:5px;font-weight:900}
+input,select,button{font:inherit}input,select{min-height:50px;border:2px solid #111;border-radius:12px;background:#fff;padding:10px;width:100%}
+button,.btn{cursor:pointer}.go{min-height:50px;border:2px solid #111;border-radius:12px;background:#111;color:#fff;font-weight:900;padding:0 18px}
+.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:18px}
+.cat{display:block;text-align:left;background:#fff;border:3px solid #111;border-radius:18px;padding:17px;box-shadow:4px 4px rgba(0,0,0,.1);text-decoration:none;color:#111}
+.cat span{font-size:1.7rem;display:block}.cat b{font-size:1.05rem;display:block;margin:5px 0}.cat small{font-size:.86rem;line-height:1.3;display:block}
+.results{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;margin-top:16px}
+.result{background:#fff;border:3px solid #111;border-radius:18px;padding:17px;box-shadow:4px 4px rgba(0,0,0,.1)}
+.result h3{margin:3px 0 8px}.category{font-size:.75rem;font-weight:900;color:var(--p);text-transform:uppercase}
+.meta{display:grid;gap:5px;font-size:.9rem}.actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.actions a{text-decoration:none;border:2px solid #111;border-radius:9px;padding:7px 9px;background:#111;color:#fff;font-size:.82rem;font-weight:900}
+.actions a.alt{background:#fff;color:#111}.actions a.call{background:var(--g)}
+.count{font-weight:900;margin:16px 0 6px}.empty{background:white;border:2px dashed #111;border-radius:14px;padding:18px}
+.gateway{background:var(--y);border:3px solid #111;border-radius:18px;padding:17px;margin-top:22px}
+.helpbox{background:#fff;border:3px solid #111;border-radius:20px;padding:18px;margin:0 0 22px;box-shadow:5px 5px rgba(0,0,0,.1)}
+.helpbox h2{margin:4px 0 6px}.helpchoices{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
+.helpchoice{display:block;text-decoration:none;color:#111;border:2px solid #111;border-radius:14px;padding:14px;background:var(--c);font-weight:900}
+.guide-step{background:#fff;border:3px solid #111;border-radius:18px;padding:17px;margin:14px 0}
+.guide-step h2{margin:0 0 8px}.ask{background:var(--y);border-left:6px solid #111;padding:12px;border-radius:8px;margin-top:10px}
+.checks{display:grid;gap:7px;margin-top:10px}.check{background:#fff;border:2px solid #111;border-radius:10px;padding:10px}
+.notice{margin-top:22px;font-size:.86rem;color:#544d47}
+@media(max-width:760px){.searchgrid,.categories,.results,.helpchoices{grid-template-columns:1fr}.go{width:100%}}
+</style></head><body>
+<header><div class="wrap"><div class="topbar"><a class="brand" href="https://weflourishanyway.org/" target="_blank" rel="noopener">✿ FLOURISH ANYWAY ↗</a><a class="home" href="life-plans.html">Help Me Make a Plan</a></div>
+<h1>COMMUNITY<br>RESOURCE HUB</h1><p class="lead">Local support, practical help and community resources across Jackson and Josephine Counties.</p></div></header>
+<main><div class="wrap">
+<section class="panel"><div class="eyebrow">I DON'T KNOW WHERE TO START</div><h2>Tell us what you need.</h2>
+<p>Type your need or question in your own words. City is optional.</p>
+<form class="searchgrid" action="search.html" method="get">
+<label class="field">What do you need?<input name="q" type="search" autocomplete="off" placeholder="Example: I need help paying rent"></label>
+<label class="field">County<select name="county"><option value="all">Both counties</option><option value="Jackson">Jackson County</option><option value="Josephine">Josephine County</option></select></label>
+<label class="field">City<input name="city" type="text" placeholder="Example: Medford"></label>
+<button class="go" type="submit">Find Resources →</button></form></section>
+<h2>Browse resources</h2><p>Pick the kind of help you need. Each section opens its full list of resources.</p><div class="categories">
+<a class="cat" href="category.html?cat=emergency"><span>🆘</span><b>Emergency Help</b><small>Emergency now, preparedness and recovery.</small></a>
+<a class="cat" href="category.html?cat=food"><span>🍎</span><b>Food & Everyday Needs</b><small>Pantries, meals, benefits and basic items.</small></a>
+<a class="cat" href="category.html?cat=housing"><span>🏠</span><b>Housing, Rent & Utilities</b><small>Rent, shelter, utilities and housing navigation.</small></a>
+<a class="cat" href="category.html?cat=transportation"><span>🚗</span><b>Transportation & Driver's License</b><small>Rides, buses, DMV, license restoration and car help.</small></a>
+<a class="cat" href="category.html?cat=money"><span>💰</span><b>Money & Credit</b><small>Benefits, banking, credit, debt and financial learning.</small></a>
+<a class="cat" href="category.html?cat=health"><span>❤️</span><b>Health & Wellness</b><small>Medical, dental, mental health and women's health.</small></a>
+<a class="cat" href="category.html?cat=recovery"><span>🌱</span><b>Recovery & Peer Support</b><small>Treatment, meetings, harm reduction and recovery community.</small></a>
+<a class="cat" href="category.html?cat=parenting"><span>🤱</span><b>Parenting & Family Support</b><small>New parents, classes, respite, custody and family support.</small></a>
+<a class="cat" href="category.html?cat=kids-family"><span>🧸</span><b>Kids & Family Needs</b><small>Clothing, supplies, activities, health and one-off help.</small></a>
+<a class="cat" href="category.html?cat=childcare"><span>🧒</span><b>Child Care</b><small>Providers, preschool, Montessori and child-care help.</small></a>
+<a class="cat" href="category.html?cat=education"><span>🎓</span><b>School & Education</b><small>K–12, IEP/504, GED, college, tutoring and learning support.</small></a>
+<a class="cat" href="category.html?cat=jobs"><span>🛠️</span><b>Jobs & Skills</b><small>Job search, training, workforce programs and employment help.</small></a>
+<a class="cat" href="category.html?cat=legal"><span>⚖️</span><b>Legal & Government Help</b><small>Family law, renters, work, benefits, records and rights.</small></a>
+<a class="cat" href="category.html?cat=safety"><span>🛡️</span><b>Personal Safety & Survivor Support</b><small>Domestic violence, sexual assault, trafficking and safety planning.</small></a>
+<a class="cat" href="category.html?cat=senior"><span>🌼</span><b>Seniors & Disability</b><small>Benefits, caregiving, independent living and aging support.</small></a>
+<a class="cat" href="category.html?cat=veterans"><span>🎖️</span><b>Veterans & Military Families</b><small>Benefits, health, housing, jobs, family and caregiver support.</small></a>
+<a class="cat" href="category.html?cat=language"><span>🌎</span><b>Immigration & Language Access</b><small>Interpreters, legal help, benefits, schools, health and work.</small></a>
+<a class="cat" href="category.html?cat=events"><span>📍</span><b>Community Information & Events</b><small>Calendars, flyers, classes, publications and community sources.</small></a>
+</div>
+<section class="gateway"><h3>Can't find it here?</h3><p>211info maintains Oregon's larger statewide resource directory.</p><div class="actions"><a href="https://www.211info.org/" target="_blank" rel="noopener">Search 211info ↗</a><a class="call" href="tel:211">Call 211</a><a class="alt" href="sms:898211">Text ZIP to 898211</a></div></section>
 </div></main></body></html>
