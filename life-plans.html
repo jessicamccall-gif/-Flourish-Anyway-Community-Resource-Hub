@@ -25,7 +25,7 @@ h1{font-size:clamp(2.1rem,8vw,4.2rem);line-height:.96;margin:24px 0 8px}main{pad
 .script{background:#fff8d8;border-left:6px solid var(--p);padding:12px;border-radius:10px;margin-top:14px}.notice{font-size:.84rem;color:#65565c;margin-top:24px}.tools{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
 .complete{background:var(--y);border:3px solid var(--d);border-radius:18px;padding:18px;margin-top:18px}.complete h2{margin:0 0 8px}
 @media(max-width:680px){.chooser{grid-template-columns:1fr}.navrow .btn{flex:1;text-align:center}.progressrow{align-items:flex-start;flex-direction:column}}
-@media print{header,.backrow,.navrow,.tools,.notice,.search{display:none!important}body{background:#fff}.panel,.stepcard,.summary,.complete{box-shadow:none;border:1px solid #777}.wrap{width:100%}.stepcard{display:block!important}}
+@media print{header,.backrow,.navrow,.tools,.notice,.search{display:none!important}body{background:#fff}.panel,.stepcard,.summary,.complete{box-shadow:none;border:1px solid #777}.wrap{width:100%}.stepcard{display:block!important;break-inside:avoid}}
 
 .stepblock{margin:22px 0 0;padding-top:18px;border-top:2px solid #eee5df}.stepblock h3{margin:0 0 12px;font-size:1.12rem}.worksheet{background:#fffaf0;border:2px solid #ead9a2;border-radius:18px;padding:16px}.worksheet div{padding:9px 0;border-bottom:1px solid #eadfc5;line-height:1.45}.worksheet div:last-child{border-bottom:0}.worksheet .fieldrow{padding:10px 0}.worksheet .fieldprompt{font-weight:800;margin-bottom:7px}.worksheet input[type="text"],.worksheet textarea{width:100%;box-sizing:border-box;border:2px solid #bcae91;border-radius:10px;background:#fff;padding:10px 11px;font:inherit;color:var(--d);resize:vertical}.worksheet textarea{min-height:72px}.worksheet .savedanswer{font-size:.78rem;font-weight:800;color:#6f5d64;margin-top:5px}@media print{.worksheet input[type="text"],.worksheet textarea{border:1px solid #777;background:#fff;color:#000;overflow:visible}.worksheet .savedanswer{display:none}}.stepnote{margin:18px 0 0;padding:14px 16px;background:#fff6cf;border-left:6px solid #d83d67;border-radius:12px;line-height:1.5}.stepcard .quick{display:grid;gap:10px}.stepcard .quickcard{background:#ffd96f;border:2px solid #332028;border-radius:16px;padding:14px 16px}.stepcard .quickcard a{color:#332028;font-weight:800}.stepcard .script{margin:0;background:#fff8d9;border-left:7px solid #d83d67;border-radius:14px;padding:16px;line-height:1.55}
 </style>
@@ -43,9 +43,6 @@ h1{font-size:clamp(2.1rem,8vw,4.2rem);line-height:.96;margin:24px 0 8px}main{pad
  const key=id=>'flourish-plan-'+id;
  const isDone=id=>localStorage.getItem(key(id))==='1';
  const setDone=(id,v)=>localStorage.setItem(key(id),v?'1':'0');
- const answerKey=(stepId,i)=>'flourish-answer-'+plan.id+'-'+stepId+'-'+i;
- const getAnswer=(stepId,i)=>localStorage.getItem(answerKey(stepId,i))||'';
- const setAnswer=(stepId,i,v)=>localStorage.setItem(answerKey(stepId,i),v);
  function disclaimer(){return `<p class="notice"><strong>Community information only.</strong> Flourish Anyway provides navigation and community-resource information, not legal, medical, financial or emergency advice. Program details can change; confirm important information with the provider or official agency. For immediate danger call 911; for suicide or mental-health crisis support call or text 988.</p>`}
  function picker(){
    document.getElementById('subhead').textContent='Choose the situation that fits best. You will only work on one plan at a time.';
@@ -64,39 +61,100 @@ h1{font-size:clamp(2.1rem,8vw,4.2rem);line-height:.96;margin:24px 0 8px}main{pad
    document.getElementById('planSearch').addEventListener('input',e=>draw(e.target.value)); draw();
  }
  function planView(plan){
-   document.getElementById('subhead').textContent='One step at a time. Check it when you finish, then move forward.';
-   const checks=plan.checks||[]; let idx=0;
-   const firstOpen=checks.findIndex(c=>!isDone(c.id)); if(firstOpen>=0)idx=firstOpen; else if(checks.length)idx=checks.length-1;
-   app.innerHTML=`<div class="backrow"><a class="home" href="life-plans.html">← All Help Plans</a></div><section class="panel"><div class="eyebrow">${esc(plan.eyebrow||'HELP PLAN')}</div><h2>${esc(plan.title||'Help Plan')}</h2><p>${esc(plan.intro||'')}</p><div class="progressrow"><span id="stepLabel"></span><span id="doneLabel"></span></div><div class="bar"><div id="barFill"></div></div></section><div id="stepMount"></div><div class="tools"><button class="btn pink" id="printBtn">Print / Save PDF</button><button class="btn" id="shareBtn">Share</button><button class="btn" id="emailBtn">Email</button><button class="btn" id="clearBtn">Clear checks</button></div><div id="afterPlan"></div>${disclaimer()}`;
-   const mount=document.getElementById('stepMount'),after=document.getElementById('afterPlan');
-   function render(){
-     const done=checks.filter(c=>isDone(c.id)).length,total=checks.length;
-     document.getElementById('stepLabel').textContent=total?`Step ${idx+1} of ${total}`:'Plan overview';
-     document.getElementById('doneLabel').textContent=`${done} checked`;
-     document.getElementById('barFill').style.width=(total?Math.round(done/total*100):0)+'%';
-     if(!total){mount.innerHTML='';renderAfter(true);return}
-     const c=checks[idx],checked=isDone(c.id);
-     const contacts=(c.contacts||[]).length?`<div class="stepblock"><h3>Who to contact</h3><div class="quick">${c.contacts.map(q=>`<div class="quickcard"><strong>${esc(q.label||'Contact')}</strong><br>${q.href?`<a href="${esc(q.href)}">${esc(q.value||q.href)}</a>`:esc(q.value||'')}</div>`).join('')}</div></div>`:'';
-     const worksheet=(c.worksheet||[]).length?`<div class="stepblock"><h3>Write it down</h3><div class="worksheet">${c.worksheet.map((x,i)=>`<div class="fieldrow"><div class="fieldprompt">${esc(x)}</div><textarea data-answer-step="${esc(c.id)}" data-answer-index="${i}" aria-label="${esc(x)}">${esc(getAnswer(c.id,i))}</textarea><div class="savedanswer">Saved automatically on this device</div></div>`).join('')}</div></div>`:'';
-     const say=c.script?`<div class="stepblock"><h3>What to say</h3><div class="script">${esc(c.script)}</div></div>`:'';
-     const note=c.note?`<div class="stepnote">${esc(c.note)}</div>`:'';
-     mount.innerHTML=`<section class="stepcard"><div class="stepnum">STEP ${idx+1}</div><h2>${esc(c.title||c.text||'Next step')}</h2>${c.title&&c.text?`<p class="steptext">${esc(c.text)}</p>`:''}${contacts}${say}${worksheet}${note}<label class="checkline ${checked?'done':''}"><input id="stepCheck" type="checkbox" ${checked?'checked':''}><span>${checked?'Done — keep this checked':'Check this box when this step is done'}</span></label><div class="navrow"><button class="btn" id="prevBtn" ${idx===0?'disabled':''}>← Previous</button><button class="btn primary" id="nextBtn">${idx===total-1?'Finish / review →':'Next step →'}</button></div></section>`;
-     mount.querySelectorAll('[data-answer-step]').forEach(el=>{
-       el.addEventListener('input',()=>setAnswer(el.dataset.answerStep,el.dataset.answerIndex,el.value));
-     });
-     document.getElementById('stepCheck').onchange=e=>{setDone(c.id,e.target.checked);render()};
-     document.getElementById('prevBtn').onclick=()=>{if(idx>0){idx--;render();window.scrollTo(0,0)}};
-     document.getElementById('nextBtn').onclick=()=>{if(idx<total-1){idx++;render();window.scrollTo(0,0)}else{renderAfter(true);document.getElementById('afterPlan')?.scrollIntoView({behavior:'smooth'})}};
-     renderAfter(false);
+   document.getElementById('subhead').textContent='Work through the steps in order. Everything stays on one page so you can see the whole plan.';
+   const checks=plan.checks||plan.steps||[];
+   const answerKey=(stepId,i)=>'flourish-answer-'+plan.id+'-'+stepId+'-'+i;
+   const getAnswer=(stepId,i)=>localStorage.getItem(answerKey(stepId,i))||'';
+   const setAnswer=(stepId,i,v)=>localStorage.setItem(answerKey(stepId,i),v);
+
+   function contactsHtml(c){
+     if(!(c.contacts||[]).length)return '';
+     return `<div class="stepblock"><h3>Who to contact</h3><div class="quick">${
+       c.contacts.map(q=>`<div class="quickcard"><strong>${esc(q.label||'Contact')}</strong><br>${
+         q.href?`<a href="${esc(q.href)}"${/^https?:/.test(q.href||'')?' target="_blank" rel="noopener"':''}>${esc(q.value||q.href)}</a>`:esc(q.value||'')
+       }</div>`).join('')
+     }</div></div>`;
    }
-   function renderAfter(force){
-     const done=checks.filter(c=>isDone(c.id)).length,total=checks.length,finished=total>0&&done===total;
-     const summary=checks.map(c=>`<div class="item"><span class="mark">${isDone(c.id)?'☑':'☐'}</span><span><strong>${esc(c.title||'Step')}</strong>${c.title&&c.text?`<br><span class="small">${esc(c.text)}</span>`:''}</span></div>`).join('');
-     let html=''; if(force||finished)html+=`<section class="${finished?'complete':'summary'}">${finished?'<h2>Plan complete 🌸</h2><p>You checked every step. Keep the plan saved here or use the resources below for anything still moving.</p>':'<h3>Your checklist</h3>'}${summary}</section>`;
-     if((plan.quick||[]).length)html+=`<section class="summary"><h3>Quick contacts</h3><div class="quick">${plan.quick.map(q=>`<div class="quickcard"><strong>${esc(q.label||'Contact')}</strong><br>${q.href?`<a href="${esc(q.href)}">${esc(q.value||q.href)}</a>`:esc(q.value||'')}</div>`).join('')}</div></section>`;
-     if(plan.script)html+=`<section class="summary"><h3>What to say</h3><div class="script">${esc(plan.script)}</div></section>`;
-     if((plan.actions||[]).length)html+=`<section class="summary"><h3>Where to go next</h3><div class="actions">${plan.actions.map(a=>`<a ${String(a.href||'').startsWith('tel:')?'class="call"':''} href="${esc(a.href||'#')}"${/^https?:/.test(a.href||'')?' target="_blank" rel="noopener"':''}>${esc(a.label||'Open resource')}</a>`).join('')}</div></section>`;
-     after.innerHTML=html;
+
+   function worksheetHtml(c){
+     if(!(c.worksheet||[]).length)return '';
+     return `<div class="stepblock"><h3>Write it down</h3><div class="worksheet">${
+       c.worksheet.map((x,i)=>`<div class="fieldrow"><div class="fieldprompt">${esc(x)}</div><textarea data-answer-step="${esc(c.id)}" data-answer-index="${i}" aria-label="${esc(x)}">${esc(getAnswer(c.id,i))}</textarea><div class="savedanswer">Saved automatically on this device</div></div>`).join('')
+     }</div></div>`;
+   }
+
+   function stepHtml(c,idx){
+     const checked=isDone(c.id);
+     const say=c.script?`<div class="stepblock"><h3>Ask exactly</h3><div class="script">${esc(c.script)}</div></div>`:'';
+     const note=c.note?`<div class="stepnote"><strong>Good to know:</strong> ${esc(c.note)}</div>`:'';
+     return `<section class="stepcard" id="${esc(c.id)}">
+       <div class="stepnum">STEP ${idx+1}</div>
+       <h2>${esc(c.title||c.text||'Next step')}</h2>
+       ${c.title&&c.text?`<p class="steptext">${esc(c.text)}</p>`:''}
+       ${contactsHtml(c)}
+       ${say}
+       ${worksheetHtml(c)}
+       ${note}
+       <label class="checkline ${checked?'done':''}">
+         <input type="checkbox" data-step-check="${esc(c.id)}" ${checked?'checked':''}>
+         <span>${checked?'Done — keep this checked':'Check this box when this step is done'}</span>
+       </label>
+     </section>`;
+   }
+
+   const done=checks.filter(c=>isDone(c.id)).length,total=checks.length;
+   const quick=(plan.quick||[]).length?`<section class="summary"><h3>Quick contacts</h3><div class="quick">${
+     plan.quick.map(q=>`<div class="quickcard"><strong>${esc(q.label||'Contact')}</strong><br>${q.href?`<a href="${esc(q.href)}"${/^https?:/.test(q.href||'')?' target="_blank" rel="noopener"':''}>${esc(q.value||q.href)}</a>`:esc(q.value||'')}</div>`).join('')
+   }</div></section>`:'';
+   const actions=(plan.actions||[]).length?`<section class="summary"><h3>Official resources</h3><div class="actions">${
+     plan.actions.map(a=>`<a ${String(a.href||'').startsWith('tel:')?'class="call"':''} href="${esc(a.href||'#')}"${/^https?:/.test(a.href||'')?' target="_blank" rel="noopener"':''}>${esc(a.label||'Open resource')}</a>`).join('')
+   }</div></section>`:'';
+   const topScript=plan.script?`<section class="summary"><h3>What to say</h3><div class="script">${esc(plan.script)}</div></section>`:'';
+
+   app.innerHTML=`<div class="backrow"><a class="home" href="life-plans.html">← All Help Plans</a></div>
+   <section class="panel">
+     <div class="eyebrow">${esc(plan.eyebrow||'HELP PLAN')}</div>
+     <h2>${esc(plan.title||'Help Plan')}</h2>
+     <p>${esc(plan.intro||'')}</p>
+     <div class="progressrow"><span>${total} steps</span><span id="doneLabel">${done} checked</span></div>
+     <div class="bar"><div id="barFill" style="width:${total?Math.round(done/total*100):0}%"></div></div>
+   </section>
+   <div id="allSteps">${checks.map(stepHtml).join('')}</div>
+   ${quick}${topScript}${actions}
+   <div class="tools">
+     <button class="btn pink" id="printBtn">Print / Save PDF</button>
+     <button class="btn" id="shareBtn">Share</button>
+     <button class="btn" id="emailBtn">Email</button>
+     <button class="btn" id="clearBtn">Clear checks</button>
+   </div>
+   ${disclaimer()}`;
+
+   function refreshProgress(){
+     const doneNow=checks.filter(c=>isDone(c.id)).length;
+     const dl=document.getElementById('doneLabel');
+     const bf=document.getElementById('barFill');
+     if(dl)dl.textContent=`${doneNow} checked`;
+     if(bf)bf.style.width=(total?Math.round(doneNow/total*100):0)+'%';
+   }
+
+   app.querySelectorAll('[data-answer-step]').forEach(el=>{
+     el.addEventListener('input',()=>setAnswer(el.dataset.answerStep,el.dataset.answerIndex,el.value));
+   });
+   app.querySelectorAll('[data-step-check]').forEach(box=>{
+     box.addEventListener('change',e=>{
+       setDone(e.target.dataset.stepCheck,e.target.checked);
+       const label=e.target.closest('.checkline');
+       if(label){
+         label.classList.toggle('done',e.target.checked);
+         const span=label.querySelector('span');
+         if(span)span.textContent=e.target.checked?'Done — keep this checked':'Check this box when this step is done';
+       }
+       refreshProgress();
+     });
+   });
+
+   function saveVisibleAnswers(){
+     app.querySelectorAll('[data-answer-step]').forEach(el=>setAnswer(el.dataset.answerStep,el.dataset.answerIndex,el.value));
    }
    function planText(){
      const lines=[plan.title,''];
@@ -104,19 +162,40 @@ h1{font-size:clamp(2.1rem,8vw,4.2rem);line-height:.96;margin:24px 0 8px}main{pad
        lines.push(`${isDone(c.id)?'☑':'☐'} ${c.title||c.text||''}${c.title&&c.text?' — '+c.text:''}`);
        (c.worksheet||[]).forEach((prompt,i)=>{
          const answer=getAnswer(c.id,i).trim();
-         if(answer) lines.push(`   ${prompt} ${answer}`);
+         if(answer)lines.push(`   ${prompt} ${answer}`);
        });
      });
      if(plan.script)lines.push('','What to say:',plan.script);
      return lines.join('\n');
    }
-   document.getElementById('printBtn').onclick=()=>{renderAfter(true);window.print()};
-   document.getElementById('clearBtn').onclick=()=>{if(confirm('Clear all checked steps in this plan?')){checks.forEach(c=>localStorage.removeItem(key(c.id)));idx=0;render()}};
-   document.getElementById('shareBtn').onclick=async()=>{saveVisibleAnswers();const data={title:'Flourish Anyway Help Plan: '+plan.title,text:planText(),url:location.href};if(navigator.share){try{await navigator.share(data)}catch(e){}}else{await navigator.clipboard?.writeText(data.text+'\n\n'+data.url);alert('Plan copied.')}};
-   document.getElementById('emailBtn').onclick=()=>{saveVisibleAnswers();location.href='mailto:?subject='+encodeURIComponent('My Flourish Help Plan: '+plan.title)+'&body='+encodeURIComponent(planText()+'\n\n'+location.href)};
-   render();
- }
- function route(){const id=decodeURIComponent(location.hash.slice(1));if(!id)return picker();const p=plans.find(x=>x.id===id);if(!p){location.hash='';return}planView(p);window.scrollTo(0,0)}
+
+   document.getElementById('printBtn').onclick=()=>{saveVisibleAnswers();window.print()};
+   document.getElementById('shareBtn').onclick=async()=>{
+     saveVisibleAnswers();
+     const data={title:'Flourish Anyway Help Plan: '+plan.title,text:planText(),url:location.href};
+     if(navigator.share){try{await navigator.share(data)}catch(e){}}
+     else{await navigator.clipboard?.writeText(data.text+'\n\n'+data.url);alert('Plan copied.')}
+   };
+   document.getElementById('emailBtn').onclick=()=>{
+     saveVisibleAnswers();
+     location.href='mailto:?subject='+encodeURIComponent('My Flourish Help Plan: '+plan.title)+'&body='+encodeURIComponent(planText()+'\n\n'+location.href)
+   };
+   document.getElementById('clearBtn').onclick=()=>{
+     if(confirm('Clear all checked steps in this plan? Your written answers will stay saved.')){
+       checks.forEach(c=>localStorage.removeItem(key(c.id)));
+       app.querySelectorAll('[data-step-check]').forEach(box=>{
+         box.checked=false;
+         const label=box.closest('.checkline');
+         if(label){
+           label.classList.remove('done');
+           const span=label.querySelector('span');
+           if(span)span.textContent='Check this box when this step is done';
+         }
+       });
+       refreshProgress();
+     }
+   };
+ } function route(){const id=decodeURIComponent(location.hash.slice(1));if(!id)return picker();const p=plans.find(x=>x.id===id);if(!p){location.hash='';return}planView(p);window.scrollTo(0,0)}
  window.addEventListener('hashchange',route); route();
 })();
 </script>
